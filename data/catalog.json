@@ -1,0 +1,71 @@
+{
+  "brand": {
+    "scriptName": "Matcha",
+    "serifName": "On Ice",
+    "capsName": "Cafe",
+    "tagline": "Drink Catalogue & Technical Sheets",
+    "edition": "Volume One",
+    "year": "2026",
+    "footer": "Matcha On Ice Cafe"
+  },
+  "documentTitle": "Matcha On Ice Cafe — Drink Catalogue",
+  "sections": [
+    {
+      "id": "signature-matchas",
+      "label": "Signature Matchas",
+      "numeral": "I",
+      "blurb": "Ceremonial-grade matcha, whisked to order and poured over ice.",
+      "drinks": [
+        { "name": "Matcha On Ice", "photo": "matcha-on-ice.jpg" },
+        { "name": "Banana Bread Matcha", "photo": "banana-bread-matcha.jpg" },
+        { "name": "Strawberry Glaze", "photo": "strawberry-glaze.jpg" },
+        { "name": "Mango Matcha", "photo": "mango-matcha.jpg" },
+        { "name": "Coconut Cloud", "photo": "coconut-cloud.jpg" },
+        { "name": "Double Match", "photo": "double-match.jpg" }
+      ]
+    },
+    {
+      "id": "signature-coffees",
+      "label": "Signature Coffees",
+      "numeral": "II",
+      "blurb": "Single-origin espresso, built slow and served cold.",
+      "drinks": [
+        { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
+        { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
+        { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
+        { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
+      ]
+    },
+    {
+      "id": "seasonal-add-ons",
+      "label": "Seasonal Add-Ons",
+      "numeral": "III",
+      "blurb": "A rotating chapter. New drinks are added here as they launch.",
+      "expandable": true,
+      "drinks": [
+        {
+          "name": "Seasonal Drink",
+          "photo": "seasonal-drink.jpg",
+          "note": "Template page — placeholder. Duplicate this entry to add a new seasonal drink to the chapter."
+        }
+      ]
+    }
+  ],
+  "placeholders": {
+    "ingredients": [
+      { "item": "Ingredient 1", "qty": "2 tbsp" },
+      { "item": "Ingredient 2", "qty": "180 ml" },
+      { "item": "Ingredient 3", "qty": "30 ml" },
+      { "item": "Ingredient 4", "qty": "1 tsp" },
+      { "item": "Ingredient 5", "qty": "to taste" }
+    ],
+    "method": [
+      "Step 1: Describe the first preparation action here.",
+      "Step 2: Describe the second preparation action here.",
+      "Step 3: Describe the third preparation action here.",
+      "Step 4: Finish, garnish and serve over ice."
+    ],
+    "serves": "Serves 1  ·  16 oz",
+    "notes": "Barista note — placeholder text. Replace with the working note for this drink."
+  }
+}
