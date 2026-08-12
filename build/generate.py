@@ -74,13 +74,21 @@ def find_photo(name: str | None) -> Path | None:
     return None
 
 
-def find_logo() -> Path | None:
-    if not BRAND.exists():
-        return None
-    for ext in PHOTO_EXTS + (".svg",):
-        for candidate in sorted(BRAND.glob(f"logo{ext}")):
-            return candidate
-    return None
+def brand_mark(stem: str, colour: str) -> Path | None:
+    """Resolve a logo mark produced by build/extract_logo.py.
+
+    `stem` is one of logo-lockup / logo-wordmark / logo-script; `colour` is
+    sage (for cream backgrounds) or cream (for sage backgrounds).
+    """
+    path = BRAND / f"{stem}-{colour}.png"
+    return path if path.exists() else None
+
+
+def mark_img(stem: str, colour: str, css_class: str) -> str:
+    mark = brand_mark(stem, colour)
+    if not mark:
+        return ""
+    return f'<img class="{css_class}" src="{data_uri(mark)}" alt="Matcha On Ice Cafe">'
 
 
 # --------------------------------------------------------------------------
@@ -88,10 +96,12 @@ def find_logo() -> Path | None:
 # --------------------------------------------------------------------------
 
 def stylesheet() -> str:
+    # Pinyon Script matches the high-contrast roundhand of the logo's "Matcha"; Playfair
+    # Display matches the Didone of its "On Ice"; Jost matches its spaced "CAFE".
     faces = "".join([
-        font_face("Brand Script", "Allura-Regular.ttf", "400"),
-        font_face("Brand Serif", "CormorantGaramond-Variable.ttf", "300 700"),
-        font_face("Brand Serif", "CormorantGaramond-Italic-Variable.ttf", "300 700", "italic"),
+        font_face("Brand Script", "PinyonScript-Regular.ttf", "400"),
+        font_face("Brand Serif", "PlayfairDisplay-Variable.ttf", "400 700"),
+        font_face("Brand Serif", "PlayfairDisplay-Italic-Variable.ttf", "400 700", "italic"),
         font_face("Brand Sans", "Jost-Variable.ttf", "300 700"),
     ])
 
@@ -164,19 +174,15 @@ html,body{
   flex-direction:column;
 }
 
-.lockup{text-align:center;padding-top:4mm;}
-.lockup-logo{max-width:78mm;max-height:42mm;margin:0 auto 4mm;display:block;}
-.lockup .script{
-  font-size:70pt;
-  color:var(--sage-deep);
-  margin-bottom:-4mm;
-}
+.lockup{text-align:center;padding-top:7mm;}
+.lockup-logo{width:122mm;margin:0 auto;display:block;}
+
+/* fallback only — used if the extracted logo artwork is missing */
+.lockup .script{font-size:56pt;color:var(--sage-deep);margin-bottom:-3mm;}
 .lockup .on-ice{
   font-family:'Brand Serif',serif;
-  font-weight:400;
-  font-size:27pt;
-  letter-spacing:.18em;
-  text-transform:uppercase;
+  font-weight:500;
+  font-size:26pt;
   color:var(--ink);
 }
 .lockup-bar{
@@ -184,7 +190,7 @@ html,body{
   align-items:center;
   justify-content:center;
   gap:5mm;
-  margin-top:3.5mm;
+  margin-top:4mm;
 }
 .lockup-bar span.caps{font-size:8.5pt;color:var(--sage-deep);}
 .lockup-bar i{display:block;width:16mm;height:1px;background:var(--sage-soft);}
@@ -199,7 +205,7 @@ html,body{
   font-family:'Brand Serif',serif;
   font-style:italic;
   font-weight:400;
-  font-size:14.5pt;
+  font-size:13pt;
   color:var(--ink-soft);
 }
 .cover-meta .edition{
@@ -221,7 +227,7 @@ html,body{
 .index-numeral{
   font-family:'Brand Serif',serif;
   font-weight:400;
-  font-size:10pt;
+  font-size:9pt;
   letter-spacing:.12em;
   color:var(--sage);
   min-width:9mm;
@@ -234,7 +240,7 @@ html,body{
   margin-left:auto;
   font-family:'Brand Serif',serif;
   font-style:italic;
-  font-size:9.5pt;
+  font-size:8.5pt;
   color:var(--sage);
 }
 
@@ -255,7 +261,7 @@ html,body{
 .index-row .name{
   font-family:'Brand Serif',serif;
   font-weight:400;
-  font-size:13pt;
+  font-size:11.5pt;
   color:var(--ink);
   white-space:nowrap;
 }
@@ -305,14 +311,14 @@ html,body{
   opacity:.85;
 }
 .divider .script{
-  font-size:60pt;
-  margin:6mm 0 5mm;
+  font-size:52pt;
+  margin:7mm 0 9mm;
   color:var(--cream);
 }
 .divider .blurb{
   font-family:'Brand Serif',serif;
   font-style:italic;
-  font-size:13.5pt;
+  font-size:11.5pt;
   line-height:1.6;
   max-width:138mm;
   margin:0 auto;
@@ -327,6 +333,7 @@ html,body{
   font-size:6.8pt;
   opacity:.8;
 }
+.divider-logo{width:46mm;margin:0 auto;display:block;}
 
 /* ---------- drink page ---------- */
 
@@ -350,7 +357,7 @@ html,body{
   margin-bottom:3.5mm;
 }
 .drink-title .script{
-  font-size:47pt;
+  font-size:44pt;
   color:var(--sage-deep);
   padding:0 4mm;
 }
@@ -396,7 +403,7 @@ html,body{
 }
 .shot-placeholder.cream{background:var(--sage-mist);}
 .shot-placeholder .script{
-  font-size:33pt;
+  font-size:31pt;
   color:var(--cream);
   line-height:1.06;
 }
@@ -447,7 +454,7 @@ html,body{
 }
 .ing .item{
   font-family:'Brand Serif',serif;
-  font-size:11.5pt;
+  font-size:10.5pt;
   color:var(--ink);
   white-space:nowrap;
 }
@@ -480,7 +487,7 @@ html,body{
   padding-left:9mm;
   padding-bottom:4.2mm;
   font-family:'Brand Serif',serif;
-  font-size:11.5pt;
+  font-size:10.5pt;
   line-height:1.5;
   color:var(--ink);
 }
@@ -501,7 +508,7 @@ html,body{
   border-top:1px solid var(--sage-soft);
   font-family:'Brand Serif',serif;
   font-style:italic;
-  font-size:9.5pt;
+  font-size:8.8pt;
   line-height:1.5;
   color:var(--ink-soft);
 }
@@ -516,11 +523,10 @@ html,body{
   font-size:6.4pt;
   color:var(--sage-deep);
 }
-.drink-foot .mark{
+.drink-foot .mark{height:6mm;display:block;opacity:.85;}
+.drink-foot .mark-text{
   font-family:'Brand Script',cursive;
   font-size:15pt;
-  letter-spacing:0;
-  text-transform:none;
   color:var(--sage);
   line-height:1;
 }
@@ -548,11 +554,12 @@ html,body{
   font-size:6.4pt;
   color:var(--sage-deep);
 }
-.endcard .script{font-size:46pt;color:var(--sage-deep);margin-bottom:7mm;}
+.endcard-logo{width:44mm;margin:0 auto;display:block;opacity:.9;}
+.endcard .script{font-size:42pt;color:var(--sage-deep);margin-bottom:7mm;}
 .endcard .body{
   font-family:'Brand Serif',serif;
   font-style:italic;
-  font-size:13.5pt;
+  font-size:11.5pt;
   line-height:1.65;
   color:var(--ink-soft);
   max-width:118mm;
@@ -586,13 +593,14 @@ html,body{
 # page builders
 # --------------------------------------------------------------------------
 
-def build_cover(brand, sections, logo, page_map) -> str:
-    if logo:
-        lockup = f'<img class="lockup-logo" src="{data_uri(logo)}" alt="">'
-    else:
+def build_cover(brand, sections, page_map) -> str:
+    lockup = mark_img("logo-lockup", "sage", "lockup-logo")
+    if not lockup:
         lockup = (
             f'<div class="script">{escape(brand["scriptName"])}</div>'
             f'<div class="on-ice">{escape(brand["serifName"])}</div>'
+            f'<div class="lockup-bar"><i></i>'
+            f'<span class="caps">{escape(brand["capsName"])}</span><i></i></div>'
         )
 
     blocks = []
@@ -634,10 +642,7 @@ def build_cover(brand, sections, logo, page_map) -> str:
     return f"""
 <section class="page cover">
   <div class="cover-frame">
-    <div class="lockup">
-      {lockup}
-      <div class="lockup-bar"><i></i><span class="caps">{escape(brand["capsName"])}</span><i></i></div>
-    </div>
+    <div class="lockup">{lockup}</div>
     <div class="cover-meta">
       <div class="tagline">{escape(brand["tagline"])}</div>
       <div class="caps edition">{escape(brand["edition"])} &nbsp;&middot;&nbsp; {escape(brand["year"])}</div>
@@ -659,7 +664,10 @@ def build_divider(section, brand) -> str:
     <div class="numeral">{escape(section["numeral"])}</div>
     <div class="script">{escape(section["label"])}</div>
     <div class="blurb">{escape(section["blurb"])}</div>
-    <div class="caps divider-mark">{escape(brand["footer"])}</div>
+    <div class="divider-mark">
+      {mark_img("logo-wordmark", "cream", "divider-logo")
+       or f'<span class="caps">{escape(brand["footer"])}</span>'}
+    </div>
   </div>
 </section>
 """
@@ -728,7 +736,7 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
     </div>
   </div>
   <div class="drink-foot">
-    <span class="mark">{escape(brand["scriptName"])}</span>
+    {mark_img("logo-script", "sage", "mark") or f'<span class="mark-text script">{escape(brand["scriptName"])}</span>'}
     <span class="caps">{escape(brand["footer"])}</span>
     <span class="caps">Page {page_no}</span>
   </div>
@@ -751,7 +759,10 @@ def build_endcard(brand) -> str:
     <hr class="rule">
     <div class="slots">{slots}</div>
   </div>
-  <div class="caps endcard-mark">{escape(brand["footer"])}</div>
+  <div class="endcard-mark">
+    {mark_img("logo-wordmark", "sage", "endcard-logo")
+     or f'<span class="caps">{escape(brand["footer"])}</span>'}
+  </div>
 </section>
 """
 
@@ -764,7 +775,6 @@ def build_document(catalog) -> str:
     brand = catalog["brand"]
     sections = catalog["sections"]
     defaults = catalog["placeholders"]
-    logo = find_logo()
 
     # Pass 1 — assign page numbers (cover = 1, then divider + drink pages).
     page_map = {}
@@ -778,7 +788,7 @@ def build_document(catalog) -> str:
             page_no += 1  # end card
 
     # Pass 2 — render.
-    pages = [build_cover(brand, sections, logo, page_map)]
+    pages = [build_cover(brand, sections, page_map)]
     for section in sections:
         pages.append(build_divider(section, brand))
         for number, drink in enumerate(section["drinks"], start=1):

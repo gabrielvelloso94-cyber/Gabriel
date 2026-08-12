@@ -15,8 +15,12 @@ python3 build/generate.py --html   # HTML only
 ```
 
 Requires Python 3 and headless Chromium (auto-detected from `/opt/pw-browsers` or `PATH`).
-No third-party Python packages. Fonts are embedded into the HTML, so `dist/catalog.html`
-is self-contained and can be opened or shared on its own.
+No third-party Python packages. Fonts and logo artwork are embedded into the HTML, so
+`dist/catalog.html` is self-contained and can be opened or shared on its own.
+
+`build/extract_logo.py` is a separate one-off step that re-derives the logo artwork from
+`assets/brand/logo-source.jpeg`. It only needs rerunning if the logo itself changes, and
+it is the only thing here that needs `numpy` and `Pillow`.
 
 ## Structure
 
@@ -24,9 +28,10 @@ is self-contained and can be opened or shared on its own.
 | --- | --- |
 | `data/catalog.json` | All content — brand strings, sections, drinks, placeholder text |
 | `build/generate.py` | Renders the HTML and prints it to PDF |
+| `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
 | `assets/photos/` | Drink photography — drop files here |
-| `assets/brand/` | Optional `logo.png` / `logo.svg` for the cover |
+| `assets/brand/` | Source logo plus the transparent marks derived from it |
 | `dist/` | Generated `catalog.html` and the PDF |
 
 Pages: cover with the 3-block index → section divider + one page per drink, per section →
@@ -34,11 +39,16 @@ a closing "More to come" card at the end of Seasonal Add-Ons.
 
 ## Brand system
 
+The wordmark itself is never re-typeset — every appearance of it in the catalogue is the
+real logo artwork (see below). The three faces below are chosen to sit with it: Pinyon
+Script for its high-contrast roundhand "Matcha", Playfair Display for the Didone of its
+"On Ice", Jost for its spaced "CAFE".
+
 | Role | Face | Used for |
 | --- | --- | --- |
-| Script | Allura | Brand name, drink names, placeholder blocks, footer mark |
-| Serif | Cormorant Garamond | "ON ICE", ingredients, method steps, blurbs |
-| Caps | Jost, letterspaced | "CAFE", category labels, step numbers, page furniture |
+| Script | Pinyon Script | Drink names, section names, placeholder blocks |
+| Serif | Playfair Display | Ingredients, method steps, blurbs, index |
+| Caps | Jost, letterspaced | Category labels, step numbers, page furniture |
 
 | Token | Hex | Role |
 | --- | --- | --- |
@@ -59,8 +69,25 @@ Any drink without a photo falls back to a solid sage block with its name set in 
 script, so the catalogue stays visually consistent while photography is outstanding.
 The block is portrait (116 × 124 mm) and images are cropped to fill, so **shoot vertical**.
 
-For the cover, add `assets/brand/logo.png` (or `.svg`) and it replaces the typographic
-lockup automatically.
+## The logo
+
+The cover, the section dividers, the closing card and every drink-page footer use the
+actual logo artwork rather than a typeset imitation, so the letterforms are exact.
+
+`build/extract_logo.py` lifts the white artwork off the sage field in
+`assets/brand/logo-source.jpeg` into transparent PNGs, in sage (for cream backgrounds) and
+cream (for sage backgrounds):
+
+| Mark | Contents | Used on |
+| --- | --- | --- |
+| `logo-lockup-*` | "Matcha On Ice" over "CAFE" | Cover |
+| `logo-wordmark-*` | "Matcha On Ice" | Section dividers, closing card |
+| `logo-script-*` | the "Matcha" script alone | Drink-page footers |
+
+To swap in a new logo, replace `logo-source.jpeg`, rerun `python3 build/extract_logo.py`,
+then rebuild. If the new file has different proportions, the two crop constants at the top
+of that script (`SCRIPT_END_X`, `BAND_SPLIT_Y`) need remeasuring. If the marks are missing
+altogether, the cover falls back to a typeset lockup.
 
 ## Adding a drink
 
