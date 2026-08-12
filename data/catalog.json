@@ -4,7 +4,6 @@
     "serifName": "On Ice",
     "capsName": "Cafe",
     "tagline": "Drink Catalogue & Technical Sheets",
-    "edition": "Volume One",
     "year": "2026",
     "footer": "Matcha On Ice Cafe"
   },
@@ -21,7 +20,7 @@
         { "name": "Strawberry Glaze", "photo": "strawberry-glaze.jpg" },
         { "name": "Mango Matcha", "photo": "mango-matcha.jpg" },
         { "name": "Coconut Cloud", "photo": "coconut-cloud.jpg" },
-        { "name": "Double Match", "photo": "double-match.jpg" }
+        { "name": "Double Matcha", "photo": "double-matcha.jpg" }
       ]
     },
     {
@@ -53,11 +52,11 @@
   ],
   "placeholders": {
     "ingredients": [
-      { "item": "Ingredient 1", "qty": "2 tbsp" },
-      { "item": "Ingredient 2", "qty": "180 ml" },
-      { "item": "Ingredient 3", "qty": "30 ml" },
-      { "item": "Ingredient 4", "qty": "1 tsp" },
-      { "item": "Ingredient 5", "qty": "to taste" }
+      { "item": "Ingredient 1", "qty12": "1.5 tbsp", "qty16": "2 tbsp" },
+      { "item": "Ingredient 2", "qty12": "140 ml", "qty16": "180 ml" },
+      { "item": "Ingredient 3", "qty12": "24 ml", "qty16": "30 ml" },
+      { "item": "Ingredient 4", "qty12": "3/4 tsp", "qty16": "1 tsp" },
+      { "item": "Ingredient 5", "qty12": "to taste", "qty16": "to taste" }
     ],
     "method": [
       "Step 1: Describe the first preparation action here.",
@@ -65,7 +64,7 @@
       "Step 3: Describe the third preparation action here.",
       "Step 4: Finish, garnish and serve over ice."
     ],
-    "serves": "Serves 1  ·  16 oz",
+    "serves": "Serves 1",
     "notes": "Barista note — placeholder text. Replace with the working note for this drink."
   }
 }

@@ -433,16 +433,38 @@ html,body{
   margin-top:8mm;
   border-top:1px solid var(--sage-soft);
   min-height:0;
+  overflow:hidden;
 }
-.col-ingredients{flex:0 0 62mm;}
+.col-ingredients{flex:0 0 70mm;}
 .col-method{flex:1;}
 
 .col-label{
+  display:block;
   font-size:7pt;
   color:var(--sage-deep);
   padding-bottom:2.5mm;
   margin-bottom:4mm;
   border-bottom:1px solid var(--sage);
+}
+
+.ing-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  padding-bottom:2.5mm;
+  margin-bottom:4mm;
+  border-bottom:1px solid var(--sage);
+}
+.ing-head .col-label{padding:0;margin:0;border:0;}
+.ing-sizes{display:flex;gap:3mm;}
+.ing-sizes span{
+  font-family:'Brand Sans',sans-serif;
+  font-weight:400;
+  font-size:6.2pt;
+  letter-spacing:.1em;
+  color:var(--sage);
+  width:14mm;
+  text-align:right;
 }
 
 .ing{list-style:none;}
@@ -460,6 +482,7 @@ html,body{
 }
 .ing .dots{
   flex:1;
+  min-width:4mm;
   border-bottom:1px dotted var(--sage-soft);
   transform:translateY(-1mm);
 }
@@ -470,6 +493,9 @@ html,body{
   letter-spacing:.06em;
   color:var(--sage-deep);
   white-space:nowrap;
+  width:14mm;
+  flex-shrink:0;
+  text-align:right;
 }
 
 .serves{
@@ -645,7 +671,7 @@ def build_cover(brand, sections, page_map) -> str:
     <div class="lockup">{lockup}</div>
     <div class="cover-meta">
       <div class="tagline">{escape(brand["tagline"])}</div>
-      <div class="caps edition">{escape(brand["edition"])} &nbsp;&middot;&nbsp; {escape(brand["year"])}</div>
+      <div class="caps edition">{escape(brand["year"])}</div>
     </div>
     <div class="index">{"".join(blocks)}</div>
     <div class="cover-foot">
@@ -704,7 +730,8 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
         '<li>'
         f'<span class="item">{escape(row["item"])}</span>'
         '<span class="dots"></span>'
-        f'<span class="qty">{escape(row["qty"])}</span>'
+        f'<span class="qty">{escape(row["qty12"])}</span>'
+        f'<span class="qty">{escape(row["qty16"])}</span>'
         "</li>"
         for row in ingredients
     )
@@ -725,7 +752,10 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
   {build_shot(drink)}
   <div class="recipe">
     <div class="col-ingredients">
-      <div class="caps col-label">Ingredients</div>
+      <div class="ing-head">
+        <span class="caps col-label">Ingredients</span>
+        <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
+      </div>
       <ul class="ing">{ing_html}</ul>
       <div class="caps serves">{escape(serves)}</div>
     </div>

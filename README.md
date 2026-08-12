@@ -6,6 +6,7 @@ A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe.
 
 > **Status: layout test.** Ingredients and method steps are placeholder text on every
 > drink page, for validating typography, colour and layout before the real recipes go in.
+> Ingredients are quoted for two pour sizes, 12 oz and 16 oz.
 
 ## Build
 
@@ -99,21 +100,23 @@ index rows and the "No. 0X" labels are all derived, so nothing else needs updati
   "name": "Pumpkin Spice Matcha",
   "photo": "pumpkin-spice-matcha.jpg",
   "ingredients": [
-    { "item": "Ceremonial matcha", "qty": "2 tsp" },
-    { "item": "Oat milk", "qty": "180 ml" }
+    { "item": "Ceremonial matcha", "qty12": "1.5 tsp", "qty16": "2 tsp" },
+    { "item": "Oat milk", "qty12": "140 ml", "qty16": "180 ml" }
   ],
   "method": [
     "Sift the matcha and whisk with hot water until smooth.",
     "Pour over ice and top with oat milk."
   ],
-  "serves": "Serves 1  ·  16 oz",
+  "serves": "Serves 1",
   "note": "Barista note — keep the syrup under the ice line."
 }
 ```
 
-`ingredients`, `method`, `serves` and `note` are all optional — anything omitted falls back
-to the placeholder text in `placeholders` at the bottom of `catalog.json`. That is what
-every drink is using right now.
+Every drink is served in two sizes, so each ingredient row carries two quantities —
+`qty12` for the 12 oz pour, `qty16` for the 16 oz — printed as two right-aligned columns
+under "12 OZ" / "16 OZ" headers. `ingredients`, `method`, `serves` and `note` are all
+optional — anything omitted falls back to the placeholder text in `placeholders` at the
+bottom of `catalog.json`. That is what every drink is using right now.
 
 The **Seasonal Add-Ons** section is marked `"expandable": true`, which gives it the
 "Open chapter" index treatment and the closing card. New seasonal drinks are just new
