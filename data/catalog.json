@@ -41,8 +41,8 @@
           ]
         },
         {
-          "name": "Strawberry Glaze",
-          "photo": "strawberry-glaze.jpg",
+          "name": "Strawberry Glaze Matcha",
+          "photo": "strawberry-glaze-matcha.jpg",
           "measures": [
             { "item": "Strawberry Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
           ]
@@ -70,7 +70,16 @@
           "photo": "double-matcha.jpg",
           "measures": [
             { "item": "Vanilla Syrup (optional)", "qty12": "1 oz", "qty16": "1.5 oz" }
-          ]
+          ],
+          "method": [
+            "Fill the cup with ice.",
+            "Weigh or measure the syrup for the cup size.",
+            "Pour milk to about three-fifths of the cup, leaving room for the matcha and matcha cold foam.",
+            "Spoon the matcha over the milk.",
+            "Top with matcha cold foam.",
+            "Garnish and serve."
+          ],
+          "note": "The double: matcha in the drink, matcha again in the cold foam on top."
         }
       ]
     },

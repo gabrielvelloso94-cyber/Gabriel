@@ -366,8 +366,8 @@ html,body{
 
 .shot{
   position:relative;
-  width:87mm;
-  height:94mm;
+  width:83mm;
+  height:90mm;
   flex-shrink:0;
   margin:0 auto;
 }
@@ -511,7 +511,7 @@ html,body{
   counter-increment:step;
   position:relative;
   padding-left:9mm;
-  padding-bottom:2.8mm;
+  padding-bottom:2.4mm;
   font-family:'Brand Serif',serif;
   font-size:10.5pt;
   line-height:1.4;
@@ -530,7 +530,7 @@ html,body{
 
 .note{
   margin-top:auto;
-  padding-top:4mm;
+  padding-top:3mm;
   border-top:1px solid var(--sage-soft);
   font-family:'Brand Serif',serif;
   font-style:italic;
