@@ -23,7 +23,8 @@
           "Nekohama's A1 Organic is our cornerstone ceremonial-grade matcha — a first-harvest, single-origin matcha made from tencha leaves grown in the volcanic soils of Kagoshima, Japan, using a cultivar blend of Sayamakaori, Okumidori, Saemidori and Yabukita.",
           "Flavor-wise it's naturally sweet and creamy with a strong umami note and no bitterness. It's JAS-certified organic, milled monthly using modern low-heat, low-moisture grinding technology that preserves colour and aroma."
         ],
-        "water": {
+        "callout": {
+          "label": "Water Temperature",
           "range": "160°F – 175°F",
           "sub": "70°C – 80°C",
           "note": "Never use boiling water — it scorches the delicate green tea powder and creates an overly bitter, harsh taste."

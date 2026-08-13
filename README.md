@@ -7,7 +7,7 @@ page furniture — defined once in `build/common.py`.
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Syrups complete; Cold Foam still placeholder |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete except the matcha add-on's quantity |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` (seed only) | — not yet built — | — | Not started |
 
 ## Build
@@ -159,7 +159,8 @@ text, since a placeholder note would read as real copy in a finished page.
 sourcing story, the water-temperature guidance, and the ratios (individual and event-batch)
 every Signature Matcha is built from. Its two pages are fixed rather than data-driven per
 entry, so its content lives directly on the section object: `story` (the sourcing copy,
-plus an optional `water` callout), `measureBlocks` (a list of `"sized"` — 12oz/16oz columns
+plus an optional `callout` — a labeled stat, e.g. water temperature or a component ratio),
+`measureBlocks` (a list of `"sized"` — 12oz/16oz columns
 — or `"single"` — one quantity column — measure lists), `recipesPage` (the second page's
 heading), and `method`. To change any of it, edit those keys in `catalog.json` and rebuild.
 
@@ -169,8 +170,9 @@ Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo,
 12oz/16oz split, since these are build components, not menu drinks.
 
 **Syrups** (Vanilla, Banana Bread, Strawberry, Mango) are real recipes. **Cold Foam** is
-still placeholder — its story paragraphs and both measure blocks are generic stand-ins,
-awaiting the real explanation and recipe.
+filled in too — the 2:1:1 cream/milk/syrup ratio, the base batch, and the two-stage
+whip-then-texture method — except the Matcha Cold Foam add-on's matcha quantity, still
+`"TBD"` pending that number.
 
 ### Adding a syrup
 

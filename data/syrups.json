@@ -100,18 +100,24 @@
         "heading": "About Cold Foam",
         "shortLabel": "About",
         "body": [
-          "Placeholder — describe what cold foam is and how it's made: the base ingredients, how it's whipped or frothed, and the texture it should hold on top of a drink.",
-          "Placeholder — describe why it's used on the Signature Matchas, and how the matcha variant (used on Double Matcha) differs from the base."
-        ]
+          "Cold foam comes together from three components: two parts Heavy Cream, which brings fat, creaminess and structure; one part Whole Milk, which lightens the texture; and one part Syrup or purée, which brings flavor, sugar and liquid.",
+          "It's built in two stages. First, air is whipped into the mixture, so it gains volume and grows in size. Then that air is textured into the base, giving the foam its velvety, light finish."
+        ],
+        "callout": {
+          "label": "Base Ratio",
+          "range": "2 : 1 : 1",
+          "sub": "Cream : Milk : Syrup",
+          "note": "For every 4 oz of base — 2 oz heavy cream, 1 oz whole milk, 1 oz syrup or purée."
+        }
       },
       "measureBlocks": [
         {
           "type": "single",
-          "label": "Cold Foam — Base",
+          "label": "Batch — Makes ≈ 32 oz",
           "rows": [
-            { "item": "Ingredient 1", "qty": "1 cup" },
-            { "item": "Ingredient 2", "qty": "2 tbsp" },
-            { "item": "Ingredient 3", "qty": "1 tsp" }
+            { "item": "Heavy Cream", "qty": "16 oz" },
+            { "item": "Whole Milk", "qty": "8 oz" },
+            { "item": "Syrup", "qty": "8 oz" }
           ]
         },
         {
@@ -125,10 +131,11 @@
       ],
       "recipesPage": { "heading": "Recipe", "shortLabel": "Recipe" },
       "method": [
-        "Step 1: Combine the base ingredients.",
-        "Step 2: Whip or froth until it holds soft peaks.",
-        "Step 3: For the matcha variant, whisk the matcha into the base before frothing.",
-        "Step 4: Use immediately, spooned or poured over the finished drink."
+        "Combine the heavy cream, whole milk and syrup in a 2:1:1 ratio.",
+        "Whip to incorporate air — the mixture will grow in volume.",
+        "Continue whipping to texture that air into the base, until velvety and light.",
+        "For the matcha variant, whisk the matcha into the base before whipping.",
+        "Batch ahead of the shift and keep refrigerated for quick service."
       ],
       "drinks": [
         { "name": "About Cold Foam" },

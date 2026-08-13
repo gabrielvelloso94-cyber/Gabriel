@@ -928,16 +928,16 @@ def build_simple_recipe(item, section, brand, number, page_no) -> str:
 
 def build_foundation_story(section, brand, page_no) -> str:
     story = section["story"]
-    water = story.get("water")
+    callout = story.get("callout")
     body_html = "".join(f"<p>{escape(p)}</p>" for p in story["body"])
 
     callout_html = ""
-    if water:
+    if callout:
         callout_html = f"""
     <div class="callout">
-      <span class="caps col-label">{escape(water.get("label", "Water Temperature"))}</span>
-      <div class="callout-value">{escape(water["range"])} <span class="callout-sub">({escape(water["sub"])})</span></div>
-      <p class="callout-note">{escape(water["note"])}</p>
+      <span class="caps col-label">{escape(callout["label"])}</span>
+      <div class="callout-value">{escape(callout["range"])} <span class="callout-sub">({escape(callout["sub"])})</span></div>
+      <p class="callout-note">{escape(callout["note"])}</p>
     </div>"""
 
     return f"""
