@@ -7,7 +7,7 @@ page furniture — defined once in `build/common.py`.
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete except the matcha add-on's quantity |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` (seed only) | — not yet built — | — | Not started |
 
 ## Build
@@ -171,8 +171,7 @@ Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo,
 
 **Syrups** (Vanilla, Banana Bread, Strawberry, Mango) are real recipes. **Cold Foam** is
 filled in too — the 2:1:1 cream/milk/syrup ratio, the base batch, and the two-stage
-whip-then-texture method — except the Matcha Cold Foam add-on's matcha quantity, still
-`"TBD"` pending that number.
+whip-then-texture method.
 
 ### Adding a syrup
 
@@ -202,7 +201,6 @@ whip-then-texture method — except the Matcha Cold Foam add-on's matcha quantit
 ### Cold Foam
 
 `cold-foam` is `"kind": "foundation"`, the same shape as The Matcha Base: a story page
-(what cold foam is, why it's used, how the matcha variant differs) and a recipe page. Its
-`measureBlocks` currently holds two `"single"` lists — the base and the matcha add-on — so
-both recipes sit on one page above a shared Method that covers making the base and, in its
-last step, the matcha variant.
+(the three components, the whip-then-texture process, the 2:1:1 ratio callout) and a
+recipe page (the batch, then Method). `measureBlocks` is a list, so a second block — a
+flavor variant, say — is just another entry away.

@@ -73,7 +73,7 @@
         {
           "name": "Mango Syrup",
           "ingredients": [
-            { "item": "Fresh Mango", "qty": "250 g" },
+            { "item": "Mango, fresh or frozen", "qty": "250 g" },
             { "item": "Sugar", "qty": "1 cup (≈ 180 g)" },
             { "item": "Water", "qty": "1 cup (≈ 220 ml)" }
           ],
@@ -94,7 +94,7 @@
       "kind": "foundation",
       "label": "Cold Foam",
       "numeral": "II",
-      "blurb": "The base cold foam, and its matcha variant, used across the Signature Matchas.",
+      "blurb": "The base cold foam used across the Signature Matchas.",
       "story": {
         "eyebrow": "Cold Foam",
         "heading": "About Cold Foam",
@@ -119,14 +119,6 @@
             { "item": "Whole Milk", "qty": "8 oz" },
             { "item": "Syrup", "qty": "8 oz" }
           ]
-        },
-        {
-          "type": "single",
-          "label": "Matcha Cold Foam — Add-On",
-          "rows": [
-            { "item": "Cold Foam Base", "qty": "1 batch" },
-            { "item": "Matcha", "qty": "TBD" }
-          ]
         }
       ],
       "recipesPage": { "heading": "Recipe", "shortLabel": "Recipe" },
@@ -134,7 +126,6 @@
         "Combine the heavy cream, whole milk and syrup in a 2:1:1 ratio.",
         "Whip to incorporate air — the mixture will grow in volume.",
         "Continue whipping to texture that air into the base, until velvety and light.",
-        "For the matcha variant, whisk the matcha into the base before whipping.",
         "Batch ahead of the shift and keep refrigerated for quick service."
       ],
       "drinks": [
