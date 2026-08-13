@@ -3,15 +3,20 @@
 A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe's matcha program: the
 matcha base itself, then the Signature Matchas built on it.
 
-**Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 14 pages.
+**Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages.
 
 > **Status: in progress.** The Matcha Base and Signature Matchas are filled in with real
-> content. Seasonal Add-Ons is still a placeholder template, pending its first drink.
+> content — the whole document, right now.
 
-Signature Coffees split out of this document into a future **Coffee Bar Manual** (to
-include the espresso classics too — cappuccino, latte, americano, etc.). Its
-already-written content (the lattes, the espresso default measure) is seeded in
-`data/coffee-bar-manual.json`, not yet wired into the generator.
+Two chapters split out of this document into future documents of their own, in each case
+keeping the layout, fonts and brand system identical:
+- **Signature Coffees** → a future **Coffee Bar Manual**, alongside the espresso classics
+  (cappuccino, latte, americano, etc.). Its already-written content (the lattes, the
+  espresso default measure) is seeded in `data/coffee-bar-manual.json`, not yet wired
+  into the generator.
+- **Seasonal Add-Ons** → removed for now; the expandable-chapter machinery
+  (`"expandable": true`, `build_endcard`) stays in the generator, unused, ready for
+  whichever document picks the chapter back up.
 
 ## Build
 
@@ -41,9 +46,11 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `assets/brand/` | Source logo plus the transparent marks derived from it |
 | `dist/` | Generated `catalog.html` and the PDF |
 
-Pages: cover with the 3-block index → section divider + its pages, per section → a closing
-"More to come" card at the end of Seasonal Add-Ons. Two section shapes:
-- **Drinks** (Signature Matchas, Seasonal Add-Ons) — divider, then one page per drink.
+Pages: cover with the 2-block index → section divider + its pages, per section. Two section
+shapes:
+- **Drinks** (Signature Matchas) — divider, then one page per drink. An `"expandable": true`
+  section (used previously by Seasonal Add-Ons) also gets a closing "More to come" card —
+  see `build_endcard` in `build/generate.py`.
 - **Foundation** (The Matcha Base) — divider, then two fixed pages: a sourcing/water-temperature
   page and a proportions/batch/method page. See `build_foundation_story` /
   `build_foundation_recipes` in `build/generate.py`.
@@ -137,9 +144,10 @@ foam step is mandatory rather than optional. `serves` and `note` are optional; a
 `note` renders no note at all rather than filler text, since a placeholder note would read
 as real copy in a finished page.
 
-The **Seasonal Add-Ons** section is marked `"expandable": true`, which gives it the
-"Open chapter" index treatment and the closing card. New seasonal drinks are just new
-entries in its `drinks` array.
+A section marked `"expandable": true` gets the "Open chapter" index treatment and a closing
+"More to come" card — the treatment Seasonal Add-Ons used before it split out of this
+document; a future Seasonal chapter (here or elsewhere) just needs `"expandable": true` and
+a `drinks` array to pick it back up.
 
 ## The Matcha Base
 

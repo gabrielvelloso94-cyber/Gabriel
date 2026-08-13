@@ -45,7 +45,7 @@
       },
       "method": [
         "Add the matcha into a warm bowl.",
-        "Pour in hot water (175°F–180°F).",
+        "Pour in hot water (160°F–175°F).",
         "Whisk briskly in a zig-zag “W” or “M” motion with a bamboo whisk until smooth and frothy."
       ],
       "drinks": [
@@ -124,20 +124,6 @@
             "Garnish and serve."
           ],
           "note": "The double: matcha in the drink, matcha again in the cold foam on top."
-        }
-      ]
-    },
-    {
-      "id": "seasonal-add-ons",
-      "label": "Seasonal Add-Ons",
-      "numeral": "III",
-      "blurb": "A rotating chapter. New drinks are added here as they launch.",
-      "expandable": true,
-      "drinks": [
-        {
-          "name": "Seasonal Drink",
-          "photo": "seasonal-drink.jpg",
-          "note": "Template page — placeholder. Duplicate this entry to add a new seasonal drink to the chapter."
         }
       ]
     }

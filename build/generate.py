@@ -561,8 +561,8 @@ html,body{
 .foundation-method{margin-top:2mm;}
 .foundation-copy p{
   font-family:'Brand Serif',serif;
-  font-size:11.5pt;
-  line-height:1.75;
+  font-size:10.5pt;
+  line-height:1.6;
   color:var(--ink);
   margin-bottom:5mm;
   text-align:left;
@@ -593,7 +593,7 @@ html,body{
 .callout-note{
   font-family:'Brand Serif',serif;
   font-style:italic;
-  font-size:9.5pt;
+  font-size:8.8pt;
   line-height:1.5;
   color:var(--ink-soft);
   max-width:108mm;
