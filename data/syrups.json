@@ -1,0 +1,128 @@
+{
+  "brand": {
+    "scriptName": "Matcha",
+    "serifName": "On Ice",
+    "capsName": "Cafe",
+    "tagline": "Syrups & Cold Foam — Build Components",
+    "year": "2026",
+    "footer": "Matcha On Ice Cafe"
+  },
+  "documentTitle": "Matcha On Ice Cafe — Syrups & Cold Foam",
+  "sections": [
+    {
+      "id": "syrups",
+      "kind": "simple",
+      "label": "Syrups",
+      "numeral": "I",
+      "blurb": "The flavored syrups behind every Signature Matcha, made in-house.",
+      "drinks": [
+        {
+          "name": "Vanilla Syrup",
+          "ingredients": [
+            { "item": "Ingredient 1", "qty": "2 cups" },
+            { "item": "Ingredient 2", "qty": "2 cups" },
+            { "item": "Ingredient 3", "qty": "1 tbsp" }
+          ],
+          "method": [
+            "Step 1: Combine the ingredients in a saucepan.",
+            "Step 2: Bring to a simmer, stirring until fully dissolved.",
+            "Step 3: Remove from heat and let cool completely.",
+            "Step 4: Strain, bottle and refrigerate."
+          ],
+          "yield": "Yield — TBD"
+        },
+        {
+          "name": "Banana Bread Syrup",
+          "ingredients": [
+            { "item": "Ingredient 1", "qty": "2 cups" },
+            { "item": "Ingredient 2", "qty": "2 cups" },
+            { "item": "Ingredient 3", "qty": "1 tbsp" }
+          ],
+          "method": [
+            "Step 1: Combine the ingredients in a saucepan.",
+            "Step 2: Bring to a simmer, stirring until fully dissolved.",
+            "Step 3: Remove from heat and let cool completely.",
+            "Step 4: Strain, bottle and refrigerate."
+          ],
+          "yield": "Yield — TBD"
+        },
+        {
+          "name": "Strawberry Syrup",
+          "ingredients": [
+            { "item": "Ingredient 1", "qty": "2 cups" },
+            { "item": "Ingredient 2", "qty": "2 cups" },
+            { "item": "Ingredient 3", "qty": "1 tbsp" }
+          ],
+          "method": [
+            "Step 1: Combine the ingredients in a saucepan.",
+            "Step 2: Bring to a simmer, stirring until fully dissolved.",
+            "Step 3: Remove from heat and let cool completely.",
+            "Step 4: Strain, bottle and refrigerate."
+          ],
+          "yield": "Yield — TBD"
+        },
+        {
+          "name": "Mango Syrup",
+          "ingredients": [
+            { "item": "Ingredient 1", "qty": "2 cups" },
+            { "item": "Ingredient 2", "qty": "2 cups" },
+            { "item": "Ingredient 3", "qty": "1 tbsp" }
+          ],
+          "method": [
+            "Step 1: Combine the ingredients in a saucepan.",
+            "Step 2: Bring to a simmer, stirring until fully dissolved.",
+            "Step 3: Remove from heat and let cool completely.",
+            "Step 4: Strain, bottle and refrigerate."
+          ],
+          "yield": "Yield — TBD"
+        }
+      ]
+    },
+    {
+      "id": "cold-foam",
+      "kind": "foundation",
+      "label": "Cold Foam",
+      "numeral": "II",
+      "blurb": "The base cold foam, and its matcha variant, used across the Signature Matchas.",
+      "story": {
+        "eyebrow": "Cold Foam",
+        "heading": "About Cold Foam",
+        "shortLabel": "About",
+        "body": [
+          "Placeholder — describe what cold foam is and how it's made: the base ingredients, how it's whipped or frothed, and the texture it should hold on top of a drink.",
+          "Placeholder — describe why it's used on the Signature Matchas, and how the matcha variant (used on Double Matcha) differs from the base."
+        ]
+      },
+      "measureBlocks": [
+        {
+          "type": "single",
+          "label": "Cold Foam — Base",
+          "rows": [
+            { "item": "Ingredient 1", "qty": "1 cup" },
+            { "item": "Ingredient 2", "qty": "2 tbsp" },
+            { "item": "Ingredient 3", "qty": "1 tsp" }
+          ]
+        },
+        {
+          "type": "single",
+          "label": "Matcha Cold Foam — Add-On",
+          "rows": [
+            { "item": "Cold Foam Base", "qty": "1 batch" },
+            { "item": "Matcha", "qty": "TBD" }
+          ]
+        }
+      ],
+      "recipesPage": { "heading": "Recipe", "shortLabel": "Recipe" },
+      "method": [
+        "Step 1: Combine the base ingredients.",
+        "Step 2: Whip or froth until it holds soft peaks.",
+        "Step 3: For the matcha variant, whisk the matcha into the base before frothing.",
+        "Step 4: Use immediately, spooned or poured over the finished drink."
+      ],
+      "drinks": [
+        { "name": "About Cold Foam" },
+        { "name": "Recipe" }
+      ]
+    }
+  ]
+}

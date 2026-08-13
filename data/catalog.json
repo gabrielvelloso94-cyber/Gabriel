@@ -18,6 +18,7 @@
       "story": {
         "eyebrow": "The Matcha Base",
         "heading": "Our Matcha",
+        "shortLabel": "Sourcing",
         "body": [
           "Nekohama's A1 Organic is our cornerstone ceremonial-grade matcha — a first-harvest, single-origin matcha made from tencha leaves grown in the volcanic soils of Kagoshima, Japan, using a cultivar blend of Sayamakaori, Okumidori, Saemidori and Yabukita.",
           "Flavor-wise it's naturally sweet and creamy with a strong umami note and no bitterness. It's JAS-certified organic, milled monthly using modern low-heat, low-moisture grinding technology that preserves colour and aroma."
@@ -28,21 +29,26 @@
           "note": "Never use boiling water — it scorches the delicate green tea powder and creates an overly bitter, harsh taste."
         }
       },
-      "individual": {
-        "label": "Individual — 1:10 Ratio",
-        "rows": [
-          { "item": "Matcha", "qty12": "4 g", "qty16": "4.5 g" },
-          { "item": "Hot Water", "qty12": "40 ml", "qty16": "45 ml" }
-        ]
-      },
-      "batch": {
-        "label": "Batch — For Events",
-        "rows": [
-          { "item": "Matcha", "qty": "160 g" },
-          { "item": "Water", "qty": "1.2 L", "note": "≈ 40.6 fl oz" },
-          { "item": "Ice", "qty": "400 g" }
-        ]
-      },
+      "measureBlocks": [
+        {
+          "type": "sized",
+          "label": "Individual — 1:10 Ratio",
+          "rows": [
+            { "item": "Matcha", "qty12": "4 g", "qty16": "4.5 g" },
+            { "item": "Hot Water", "qty12": "40 ml", "qty16": "45 ml" }
+          ]
+        },
+        {
+          "type": "single",
+          "label": "Batch — For Events",
+          "rows": [
+            { "item": "Matcha", "qty": "160 g" },
+            { "item": "Water", "qty": "1.2 L", "note": "≈ 40.6 fl oz" },
+            { "item": "Ice", "qty": "400 g" }
+          ]
+        }
+      ],
+      "recipesPage": { "heading": "Proportions", "shortLabel": "Proportions" },
       "method": [
         "Add the matcha into a warm bowl.",
         "Pour in hot water (160°F–175°F).",

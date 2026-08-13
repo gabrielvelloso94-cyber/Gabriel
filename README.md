@@ -1,33 +1,26 @@
-# Matcha On Ice Cafe — Matcha Catalogue
+# Matcha On Ice Cafe — Documents
 
-A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe's matcha program: the
-matcha base itself, then the Signature Matchas built on it.
+A4 portrait catalogue / technical-sheet PDFs for Matcha On Ice Cafe. Each document is its
+own JSON file and build script, sharing one brand system — fonts, palette, cover, dividers,
+page furniture — defined once in `build/common.py`.
 
-**Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages.
-
-> **Status: in progress.** The Matcha Base and Signature Matchas are filled in with real
-> content — the whole document, right now.
-
-Two chapters split out of this document into future documents of their own, in each case
-keeping the layout, fonts and brand system identical:
-- **Signature Coffees** → a future **Coffee Bar Manual**, alongside the espresso classics
-  (cappuccino, latte, americano, etc.). Its already-written content (the lattes, the
-  espresso default measure) is seeded in `data/coffee-bar-manual.json`, not yet wired
-  into the generator.
-- **Seasonal Add-Ons** → removed for now; the expandable-chapter machinery
-  (`"expandable": true`, `build_endcard`) stays in the generator, unused, ready for
-  whichever document picks the chapter back up.
+| Document | Data | Build | Output | Status |
+| --- | --- | --- | --- | --- |
+| Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Layout test — placeholder recipes |
+| Coffee Bar Manual | `data/coffee-bar-manual.json` (seed only) | — not yet built — | — | Not started |
 
 ## Build
 
 ```bash
-python3 build/generate.py          # writes dist/catalog.html + the PDF
-python3 build/generate.py --html   # HTML only
+python3 build/generate.py                 # Matcha Catalogue: HTML + PDF
+python3 build/generate_syrups.py           # Syrups & Cold Foam: HTML + PDF
+python3 build/generate.py --html           # either script: HTML only
 ```
 
 Requires Python 3 and headless Chromium (auto-detected from `/opt/pw-browsers` or `PATH`).
-No third-party Python packages. Fonts and logo artwork are embedded into the HTML, so
-`dist/catalog.html` is self-contained and can be opened or shared on its own.
+No third-party Python packages. Fonts and logo artwork are embedded into the HTML, so the
+generated `dist/*.html` files are self-contained and can be opened or shared on their own.
 
 `build/extract_logo.py` is a separate one-off step that re-derives the logo artwork from
 `assets/brand/logo-source.jpeg`. It only needs rerunning if the logo itself changes, and
@@ -37,41 +30,55 @@ it is the only thing here that needs `numpy` and `Pillow`.
 
 | Path | What it is |
 | --- | --- |
-| `data/catalog.json` | All content in this document — brand strings, sections, drinks |
-| `data/coffee-bar-manual.json` | Seed content for the future Coffee Bar Manual (unused by the build) |
-| `build/generate.py` | Renders the HTML and prints it to PDF |
+| `build/common.py` | Shared brand system — stylesheet, page builders, PDF rendering |
+| `build/generate.py` | Matcha Catalogue: loads `data/catalog.json` |
+| `build/generate_syrups.py` | Syrups & Cold Foam: loads `data/syrups.json` |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
+| `data/catalog.json` | Matcha Catalogue content |
+| `data/syrups.json` | Syrups & Cold Foam content |
+| `data/coffee-bar-manual.json` | Seed content for the not-yet-built Coffee Bar Manual |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
 | `assets/photos/` | Drink photography — drop files here |
 | `assets/brand/` | Source logo plus the transparent marks derived from it |
-| `dist/` | Generated `catalog.html` and the PDF |
+| `dist/` | Generated HTML and PDFs |
 
-Pages: cover with the 2-block index → section divider + its pages, per section. Two section
-shapes:
-- **Drinks** (Signature Matchas) — divider, then one page per drink. An `"expandable": true`
-  section (used previously by Seasonal Add-Ons) also gets a closing "More to come" card —
-  see `build_endcard` in `build/generate.py`.
-- **Foundation** (The Matcha Base) — divider, then two fixed pages: a sourcing/water-temperature
-  page and a proportions/batch/method page. See `build_foundation_story` /
-  `build_foundation_recipes` in `build/generate.py`.
+## Section shapes
+
+Every document is a `sections` array; each section is a chapter (cover index entry +
+divider + its pages). A section's `"kind"` decides what its pages look like:
+
+| `kind` | Pages | Used by |
+| --- | --- | --- |
+| *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas |
+| `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam |
+| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo, no size split | Syrups |
+
+A section can also be `"expandable": true` (independent of `kind`), which gives it the
+"Open chapter" index treatment and a closing "More to come" card instead of ending flush —
+the treatment Seasonal Add-Ons used before it split out of the Matcha Catalogue. The
+machinery (`build_endcard`) stays in `build/common.py`, unused, ready for whichever
+document picks up an open-ended chapter next.
+
+See `build_drink`, `build_foundation_story` / `build_foundation_recipes`, and
+`build_simple_recipe` in `build/common.py` for exactly what each shape renders.
 
 ## Brand system
 
-The wordmark itself is never re-typeset — every appearance of it in the catalogue is the
+The wordmark itself is never re-typeset — every appearance of it in any document is the
 real logo artwork (see below). The three faces below are chosen to sit with it: Pinyon
 Script for its high-contrast roundhand "Matcha", Playfair Display for the Didone of its
 "On Ice", Jost for its spaced "CAFE".
 
 | Role | Face | Used for |
 | --- | --- | --- |
-| Script | Pinyon Script | Drink names, section names, placeholder blocks |
-| Serif | Playfair Display | Measures, method steps, blurbs, index |
+| Script | Pinyon Script | Drink/item names, section names, placeholder blocks |
+| Serif | Playfair Display | Measures, method steps, blurbs, index, body copy |
 | Caps | Jost, letterspaced | Category labels, step numbers, page furniture |
 
 | Token | Hex | Role |
 | --- | --- | --- |
 | `--sage` | `#8a9b6e` | Primary — dividers, placeholder blocks |
-| `--sage-deep` | `#5d6b45` | Drink names, headings |
+| `--sage-deep` | `#5d6b45` | Item names, headings |
 | `--sage-soft` | `#b6c19d` | Hairlines, keylines, dot leaders |
 | `--cream` | `#f6f2e8` | Page background (off-white, not pure white) |
 | `--ink` | `#2f3328` | Body text |
@@ -85,12 +92,13 @@ all resolve by name.
 
 Any drink without a photo falls back to a solid sage block with its name set in the brand
 script, so the catalogue stays visually consistent while photography is outstanding.
-The block is portrait (87 × 94 mm) and images are cropped to fill, so **shoot vertical**.
+The block is portrait (83 × 90 mm) and images are cropped to fill, so **shoot vertical**.
+(Only the default drink-page shape has a photo — `"simple"` and `"foundation"` pages don't.)
 
 ## The logo
 
-The cover, the section dividers, the closing card and every drink-page footer use the
-actual logo artwork rather than a typeset imitation, so the letterforms are exact.
+The cover, the section dividers, the closing card and every page's footer use the actual
+logo artwork rather than a typeset imitation, so the letterforms are exact.
 
 `build/extract_logo.py` lifts the white artwork off the sage field in
 `assets/brand/logo-source.jpeg` into transparent PNGs, in sage (for cream backgrounds) and
@@ -100,21 +108,23 @@ cream (for sage backgrounds):
 | --- | --- | --- |
 | `logo-lockup-*` | "Matcha On Ice" over "CAFE" | Cover |
 | `logo-wordmark-*` | "Matcha On Ice" | Section dividers, closing card |
-| `logo-script-*` | the "Matcha" script alone | Drink-page footers |
+| `logo-script-*` | the "Matcha" script alone | Page footers |
 
 To swap in a new logo, replace `logo-source.jpeg`, rerun `python3 build/extract_logo.py`,
-then rebuild. If the new file has different proportions, the two crop constants at the top
-of that script (`SCRIPT_END_X`, `BAND_SPLIT_Y`) need remeasuring. If the marks are missing
-altogether, the cover falls back to a typeset lockup.
+then rebuild every document. If the new file has different proportions, the two crop
+constants at the top of that script (`SCRIPT_END_X`, `BAND_SPLIT_Y`) need remeasuring. If
+the marks are missing altogether, the cover falls back to a typeset lockup.
 
-## Adding a drink
+## Matcha Catalogue (`data/catalog.json`)
 
-Add an entry to the relevant section in `data/catalog.json` and rebuild. Page numbers,
-index rows and the "No. 0X" labels are all derived, so nothing else needs updating.
+### Adding a drink
+
+Add an entry to `signature-matchas` and rebuild. Page numbers, index rows and the "No. 0X"
+labels are all derived, so nothing else needs updating.
 
 There's no ingredients table. Things like ice, milk and cold foam aren't measured — they're
 assembly steps, not a quantity — so they live in the Method text. **Measures** is reserved
-for the few things worth calling out precisely: matcha, syrup, an espresso shot.
+for the few things worth calling out precisely: matcha, syrup.
 
 ```json
 {
@@ -137,25 +147,59 @@ for the few things worth calling out precisely: matcha, syrup, an espresso shot.
 
 A drink's Measures list is its section's `defaultMeasures` (a section-wide constant — every
 Signature Matcha pours the same matcha) followed by whatever the drink adds on top (its
-syrup) — see `signature-matchas` in `catalog.json`. A drink with no syrup (Coconut Cloud)
-just omits `measures`, and one whose method departs from the section's `defaultMethod`
-overrides it in full, the way Coconut Cloud drops the syrup step and Double Matcha's cold
-foam step is mandatory rather than optional. `serves` and `note` are optional; a missing
-`note` renders no note at all rather than filler text, since a placeholder note would read
-as real copy in a finished page.
+syrup). A drink with no syrup (Coconut Cloud) just omits `measures`, and one whose method
+departs from the section's `defaultMethod` overrides it in full, the way Coconut Cloud
+drops the syrup step and Double Matcha's cold foam step is mandatory rather than optional.
+`serves` and `note` are optional; a missing `note` renders no note at all rather than filler
+text, since a placeholder note would read as real copy in a finished page.
 
-A section marked `"expandable": true` gets the "Open chapter" index treatment and a closing
-"More to come" card — the treatment Seasonal Add-Ons used before it split out of this
-document; a future Seasonal chapter (here or elsewhere) just needs `"expandable": true` and
-a `drinks` array to pick it back up.
+### The Matcha Base
 
-## The Matcha Base
+`matcha-base` is marked `"kind": "foundation"` — it isn't a list of drinks, it's the
+sourcing story, the water-temperature guidance, and the ratios (individual and event-batch)
+every Signature Matcha is built from. Its two pages are fixed rather than data-driven per
+entry, so its content lives directly on the section object: `story` (the sourcing copy,
+plus an optional `water` callout), `measureBlocks` (a list of `"sized"` — 12oz/16oz columns
+— or `"single"` — one quantity column — measure lists), `recipesPage` (the second page's
+heading), and `method`. To change any of it, edit those keys in `catalog.json` and rebuild.
 
-Unlike the other two sections, `matcha-base` is marked `"kind": "foundation"` — it isn't a
-list of drinks, it's the sourcing story, the water-temperature guidance, and the ratios
-(individual and event-batch) every Signature Matcha is built from. Its two pages are fixed
-rather than data-driven per entry (there's no "add a foundation page" the way there's "add a
-drink"), so its content lives directly on the section object: `story` (the sourcing copy and
-water-temperature callout), `individual` and `batch` (both rendered with the same `.ing`
-measures-row styling drink pages use), and `method`. To change any of it, edit those keys in
-`catalog.json` directly and rebuild.
+## Syrups & Cold Foam (`data/syrups.json`)
+
+Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo, no
+12oz/16oz split, since these are build components, not menu drinks. **Placeholder content
+throughout right now** — every syrup's ingredients and method are generic stand-ins
+(`"Ingredient 1"`, `"Step 1: Combine..."`), and Cold Foam's story paragraphs are literal
+placeholders, awaiting the real recipes and explanation.
+
+### Adding a syrup
+
+`syrups` is marked `"kind": "simple"`. Add an entry and rebuild:
+
+```json
+{
+  "name": "Pumpkin Spice Syrup",
+  "ingredients": [
+    { "item": "Brown sugar", "qty": "1 cup" },
+    { "item": "Water", "qty": "1 cup" },
+    { "item": "Pumpkin spice blend", "qty": "1 tbsp" }
+  ],
+  "method": [
+    "Combine the ingredients in a saucepan.",
+    "Bring to a simmer, stirring until fully dissolved.",
+    "Remove from heat and let cool completely.",
+    "Strain, bottle and refrigerate."
+  ],
+  "yield": "Yield — 16 oz",
+  "note": "Keeps refrigerated for 2 weeks."
+}
+```
+
+`ingredients`, `yield` and `note` are all optional.
+
+### Cold Foam
+
+`cold-foam` is `"kind": "foundation"`, the same shape as The Matcha Base: a story page
+(what cold foam is, why it's used, how the matcha variant differs) and a recipe page. Its
+`measureBlocks` currently holds two `"single"` lists — the base and the matcha add-on — so
+both recipes sit on one page above a shared Method that covers making the base and, in its
+last step, the matcha variant.
