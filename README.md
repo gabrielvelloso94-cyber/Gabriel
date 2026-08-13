@@ -4,9 +4,8 @@ A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe.
 
 **Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 16 pages.
 
-> **Status: layout test.** Ingredients and method steps are placeholder text on every
-> drink page, for validating typography, colour and layout before the real recipes go in.
-> Ingredients are quoted for two pour sizes, 12 oz and 16 oz.
+> **Status: in progress.** Signature Matchas are filled in with real measures and method.
+> Signature Coffees and Seasonal Add-Ons are still placeholder, pending their recipes.
 
 ## Build
 
@@ -48,7 +47,7 @@ Script for its high-contrast roundhand "Matcha", Playfair Display for the Didone
 | Role | Face | Used for |
 | --- | --- | --- |
 | Script | Pinyon Script | Drink names, section names, placeholder blocks |
-| Serif | Playfair Display | Ingredients, method steps, blurbs, index |
+| Serif | Playfair Display | Measures, method steps, blurbs, index |
 | Caps | Jost, letterspaced | Category labels, step numbers, page furniture |
 
 | Token | Hex | Role |
@@ -68,7 +67,7 @@ all resolve by name.
 
 Any drink without a photo falls back to a solid sage block with its name set in the brand
 script, so the catalogue stays visually consistent while photography is outstanding.
-The block is portrait (116 × 124 mm) and images are cropped to fill, so **shoot vertical**.
+The block is portrait (87 × 94 mm) and images are cropped to fill, so **shoot vertical**.
 
 ## The logo
 
@@ -95,28 +94,37 @@ altogether, the cover falls back to a typeset lockup.
 Add an entry to the relevant section in `data/catalog.json` and rebuild. Page numbers,
 index rows and the "No. 0X" labels are all derived, so nothing else needs updating.
 
+There's no ingredients table. Things like ice, milk and cold foam aren't measured — they're
+assembly steps, not a quantity — so they live in the Method text. **Measures** is reserved
+for the few things worth calling out precisely: matcha, syrup, an espresso shot.
+
 ```json
 {
   "name": "Pumpkin Spice Matcha",
   "photo": "pumpkin-spice-matcha.jpg",
-  "ingredients": [
-    { "item": "Ceremonial matcha", "qty12": "1.5 tsp", "qty16": "2 tsp" },
-    { "item": "Oat milk", "qty12": "140 ml", "qty16": "180 ml" }
+  "measures": [
+    { "item": "Pumpkin Spice Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
   ],
   "method": [
-    "Sift the matcha and whisk with hot water until smooth.",
-    "Pour over ice and top with oat milk."
+    "Fill the cup with ice.",
+    "Weigh or measure the syrup for the cup size.",
+    "Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.",
+    "Spoon the matcha over the milk.",
+    "Top with cold foam, if requested.",
+    "Garnish and serve."
   ],
-  "serves": "Serves 1",
   "note": "Barista note — keep the syrup under the ice line."
 }
 ```
 
-Every drink is served in two sizes, so each ingredient row carries two quantities —
-`qty12` for the 12 oz pour, `qty16` for the 16 oz — printed as two right-aligned columns
-under "12 OZ" / "16 OZ" headers. `ingredients`, `method`, `serves` and `note` are all
-optional — anything omitted falls back to the placeholder text in `placeholders` at the
-bottom of `catalog.json`. That is what every drink is using right now.
+A drink's Measures list is its section's `defaultMeasures` (a section-wide constant, e.g.
+every Signature Matcha pours the same matcha) followed by whatever the drink adds on top
+(e.g. its syrup) — see `signature-matchas` and `signature-coffees` in `catalog.json`. A
+drink with no syrup (Coconut Cloud) just omits `measures`, and one whose method departs
+from the section's `defaultMethod` overrides it in full, the way Coconut Cloud drops the
+syrup step. `serves` and `note` are optional; a missing `note` renders no note at all
+rather than filler text, since a placeholder note would read as real copy in a finished
+page.
 
 The **Seasonal Add-Ons** section is marked `"expandable": true`, which gives it the
 "Open chapter" index treatment and the closing card. New seasonal drinks are just new

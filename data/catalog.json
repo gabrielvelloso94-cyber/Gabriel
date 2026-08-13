@@ -14,13 +14,64 @@
       "label": "Signature Matchas",
       "numeral": "I",
       "blurb": "Ceremonial-grade matcha, whisked to order and poured over ice.",
+      "defaultMeasures": [
+        { "item": "Matcha", "qty12": "1.5 oz", "qty16": "2 oz" }
+      ],
+      "defaultMethod": [
+        "Fill the cup with ice.",
+        "Weigh or measure the syrup for the cup size.",
+        "Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.",
+        "Spoon the matcha over the milk.",
+        "Top with cold foam, if requested.",
+        "Garnish and serve."
+      ],
       "drinks": [
-        { "name": "Matcha On Ice", "photo": "matcha-on-ice.jpg" },
-        { "name": "Banana Bread Matcha", "photo": "banana-bread-matcha.jpg" },
-        { "name": "Strawberry Glaze", "photo": "strawberry-glaze.jpg" },
-        { "name": "Mango Matcha", "photo": "mango-matcha.jpg" },
-        { "name": "Coconut Cloud", "photo": "coconut-cloud.jpg" },
-        { "name": "Double Matcha", "photo": "double-matcha.jpg" }
+        {
+          "name": "Matcha On Ice",
+          "photo": "matcha-on-ice.jpg",
+          "measures": [
+            { "item": "Vanilla Syrup (optional)", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ]
+        },
+        {
+          "name": "Banana Bread Matcha",
+          "photo": "banana-bread-matcha.jpg",
+          "measures": [
+            { "item": "Banana Bread Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ]
+        },
+        {
+          "name": "Strawberry Glaze",
+          "photo": "strawberry-glaze.jpg",
+          "measures": [
+            { "item": "Strawberry Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ]
+        },
+        {
+          "name": "Mango Matcha",
+          "photo": "mango-matcha.jpg",
+          "measures": [
+            { "item": "Mango Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ]
+        },
+        {
+          "name": "Coconut Cloud",
+          "photo": "coconut-cloud.jpg",
+          "method": [
+            "Fill the cup with ice.",
+            "Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.",
+            "Spoon the matcha over the milk.",
+            "Top with cold foam, if requested.",
+            "Garnish and serve."
+          ]
+        },
+        {
+          "name": "Double Matcha",
+          "photo": "double-matcha.jpg",
+          "measures": [
+            { "item": "Vanilla Syrup (optional)", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ]
+        }
       ]
     },
     {
@@ -28,6 +79,9 @@
       "label": "Signature Coffees",
       "numeral": "II",
       "blurb": "Single-origin espresso, built slow and served cold.",
+      "defaultMeasures": [
+        { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
+      ],
       "drinks": [
         { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
         { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
@@ -51,20 +105,12 @@
     }
   ],
   "placeholders": {
-    "ingredients": [
-      { "item": "Ingredient 1", "qty12": "1.5 tbsp", "qty16": "2 tbsp" },
-      { "item": "Ingredient 2", "qty12": "140 ml", "qty16": "180 ml" },
-      { "item": "Ingredient 3", "qty12": "24 ml", "qty16": "30 ml" },
-      { "item": "Ingredient 4", "qty12": "3/4 tsp", "qty16": "1 tsp" },
-      { "item": "Ingredient 5", "qty12": "to taste", "qty16": "to taste" }
-    ],
     "method": [
       "Step 1: Describe the first preparation action here.",
       "Step 2: Describe the second preparation action here.",
       "Step 3: Describe the third preparation action here.",
       "Step 4: Finish, garnish and serve over ice."
     ],
-    "serves": "Serves 1",
-    "notes": "Barista note — placeholder text. Replace with the working note for this drink."
+    "serves": "Serves 1"
   }
 }

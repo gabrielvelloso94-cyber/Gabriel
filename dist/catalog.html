@@ -243,7 +243,7 @@ html,body{
   border-bottom:1px solid var(--sage-soft);
 }
 
-.drink-title{text-align:center;padding:7mm 0 6mm;}
+.drink-title{text-align:center;padding:6mm 0 5mm;}
 .drink-title .eyebrow{
   font-size:6.8pt;
   color:var(--sage);
@@ -260,8 +260,8 @@ html,body{
 
 .shot{
   position:relative;
-  width:116mm;
-  height:124mm;
+  width:87mm;
+  height:94mm;
   flex-shrink:0;
   margin:0 auto;
 }
@@ -317,20 +317,20 @@ html,body{
 }
 .shot-placeholder.cream .flourish{background:var(--sage-soft);}
 
-/* recipe columns */
+/* recipe */
 
 .recipe{
   flex:1;
   display:flex;
-  gap:11mm;
-  padding-top:9mm;
-  margin-top:8mm;
+  flex-direction:column;
+  padding-top:6mm;
+  margin-top:5mm;
   border-top:1px solid var(--sage-soft);
   min-height:0;
   overflow:hidden;
 }
-.col-ingredients{flex:0 0 70mm;}
-.col-method{flex:1;}
+.measures{flex:0 0 auto;margin-bottom:5mm;}
+.col-method{flex:1;min-height:0;display:flex;flex-direction:column;}
 
 .col-label{
   display:block;
@@ -405,10 +405,10 @@ html,body{
   counter-increment:step;
   position:relative;
   padding-left:9mm;
-  padding-bottom:4.2mm;
+  padding-bottom:2.8mm;
   font-family:'Brand Serif',serif;
   font-size:10.5pt;
-  line-height:1.5;
+  line-height:1.4;
   color:var(--ink);
 }
 .method li::before{
@@ -544,18 +544,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Matcha On Ice</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li><li><span class="item">Vanilla Syrup (optional)</span><span class="dots"></span><span class="qty">1 oz</span><span class="qty">1.5 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Weigh or measure the syrup for the cup size.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -576,18 +576,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Banana Bread Matcha</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li><li><span class="item">Banana Bread Syrup</span><span class="dots"></span><span class="qty">1 oz</span><span class="qty">1.5 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Weigh or measure the syrup for the cup size.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -608,18 +608,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Strawberry Glaze</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li><li><span class="item">Strawberry Syrup</span><span class="dots"></span><span class="qty">1 oz</span><span class="qty">1.5 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Weigh or measure the syrup for the cup size.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -640,18 +640,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Mango Matcha</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li><li><span class="item">Mango Syrup</span><span class="dots"></span><span class="qty">1 oz</span><span class="qty">1.5 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Weigh or measure the syrup for the cup size.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -672,18 +672,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Coconut Cloud</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -704,18 +704,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Double Matcha</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Matcha</span><span class="dots"></span><span class="qty">1.5 oz</span><span class="qty">2 oz</span></li><li><span class="item">Vanilla Syrup (optional)</span><span class="dots"></span><span class="qty">1 oz</span><span class="qty">1.5 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
-      <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      <ol class="method"><li>Fill the cup with ice.</li><li>Weigh or measure the syrup for the cup size.</li><li>Pour milk to about three-fifths of the cup, leaving room for the matcha and cold foam.</li><li>Spoon the matcha over the milk.</li><li>Top with cold foam, if requested.</li><li>Garnish and serve.</li></ol>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -747,18 +747,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Vanilla Latte</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Espresso (double shot)</span><span class="dots"></span><span class="qty">2 oz</span><span class="qty">2 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -779,18 +779,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Caramel Latte</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Espresso (double shot)</span><span class="dots"></span><span class="qty">2 oz</span><span class="qty">2 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -811,18 +811,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Honey Cinnamon Latte</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Espresso (double shot)</span><span class="dots"></span><span class="qty">2 oz</span><span class="qty">2 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -843,18 +843,18 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Banana Bread Latte</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
+    <div class="measures">
       <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
+        <span class="caps col-label">Measures</span>
         <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
       </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
+      <ul class="ing"><li><span class="item">Espresso (double shot)</span><span class="dots"></span><span class="qty">2 oz</span><span class="qty">2 oz</span></li></ul>
       <div class="caps serves">Serves 1</div>
     </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>
-      <div class="note">Barista note — placeholder text. Replace with the working note for this drink.</div>
+      
     </div>
   </div>
   <div class="drink-foot">
@@ -886,14 +886,6 @@ html,body{
   </div>
   <div class="shot"><div class="shot-keyline"></div><div class="shot-inner"><div class="shot-placeholder"><div class="script">Seasonal Drink</div><div class="flourish"></div><div class="caps stamp">Photography to follow</div></div></div></div>
   <div class="recipe">
-    <div class="col-ingredients">
-      <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
-        <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
-      </div>
-      <ul class="ing"><li><span class="item">Ingredient 1</span><span class="dots"></span><span class="qty">1.5 tbsp</span><span class="qty">2 tbsp</span></li><li><span class="item">Ingredient 2</span><span class="dots"></span><span class="qty">140 ml</span><span class="qty">180 ml</span></li><li><span class="item">Ingredient 3</span><span class="dots"></span><span class="qty">24 ml</span><span class="qty">30 ml</span></li><li><span class="item">Ingredient 4</span><span class="dots"></span><span class="qty">3/4 tsp</span><span class="qty">1 tsp</span></li><li><span class="item">Ingredient 5</span><span class="dots"></span><span class="qty">to taste</span><span class="qty">to taste</span></li></ul>
-      <div class="caps serves">Serves 1</div>
-    </div>
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method"><li>Step 1: Describe the first preparation action here.</li><li>Step 2: Describe the second preparation action here.</li><li>Step 3: Describe the third preparation action here.</li><li>Step 4: Finish, garnish and serve over ice.</li></ol>

@@ -349,7 +349,7 @@ html,body{
   border-bottom:1px solid var(--sage-soft);
 }
 
-.drink-title{text-align:center;padding:7mm 0 6mm;}
+.drink-title{text-align:center;padding:6mm 0 5mm;}
 .drink-title .eyebrow{
   font-size:6.8pt;
   color:var(--sage);
@@ -366,8 +366,8 @@ html,body{
 
 .shot{
   position:relative;
-  width:116mm;
-  height:124mm;
+  width:87mm;
+  height:94mm;
   flex-shrink:0;
   margin:0 auto;
 }
@@ -423,20 +423,20 @@ html,body{
 }
 .shot-placeholder.cream .flourish{background:var(--sage-soft);}
 
-/* recipe columns */
+/* recipe */
 
 .recipe{
   flex:1;
   display:flex;
-  gap:11mm;
-  padding-top:9mm;
-  margin-top:8mm;
+  flex-direction:column;
+  padding-top:6mm;
+  margin-top:5mm;
   border-top:1px solid var(--sage-soft);
   min-height:0;
   overflow:hidden;
 }
-.col-ingredients{flex:0 0 70mm;}
-.col-method{flex:1;}
+.measures{flex:0 0 auto;margin-bottom:5mm;}
+.col-method{flex:1;min-height:0;display:flex;flex-direction:column;}
 
 .col-label{
   display:block;
@@ -511,10 +511,10 @@ html,body{
   counter-increment:step;
   position:relative;
   padding-left:9mm;
-  padding-bottom:4.2mm;
+  padding-bottom:2.8mm;
   font-family:'Brand Serif',serif;
   font-size:10.5pt;
-  line-height:1.5;
+  line-height:1.4;
   color:var(--ink);
 }
 .method li::before{
@@ -721,21 +721,40 @@ def build_shot(drink) -> str:
 
 
 def build_drink(drink, section, brand, defaults, number, page_no) -> str:
-    ingredients = drink.get("ingredients") or defaults["ingredients"]
-    method = drink.get("method") or defaults["method"]
-    serves = drink.get("serves") or defaults["serves"]
-    note = drink.get("note") or defaults["notes"]
+    # Measures are the few things worth calling out precisely (matcha, syrup,
+    # espresso shot) — a section-wide default (e.g. every matcha uses the same
+    # matcha pour) plus whatever this drink adds on top (e.g. its syrup).
+    # Ice, milk and cold foam aren't measured, so they live in the Method text
+    # instead of a fabricated "to taste" ingredients row.
+    measures = [*section.get("defaultMeasures", []), *drink.get("measures", [])]
+    method = drink.get("method") or section.get("defaultMethod") or defaults["method"]
+    serves = drink.get("serves", defaults.get("serves", ""))
+    note = drink.get("note")  # no fallback: an unfinished note would read as real copy
 
-    ing_html = "".join(
-        '<li>'
-        f'<span class="item">{escape(row["item"])}</span>'
-        '<span class="dots"></span>'
-        f'<span class="qty">{escape(row["qty12"])}</span>'
-        f'<span class="qty">{escape(row["qty16"])}</span>'
-        "</li>"
-        for row in ingredients
-    )
+    measures_block = ""
+    if measures:
+        rows = "".join(
+            '<li>'
+            f'<span class="item">{escape(row["item"])}</span>'
+            '<span class="dots"></span>'
+            f'<span class="qty">{escape(row["qty12"])}</span>'
+            f'<span class="qty">{escape(row["qty16"])}</span>'
+            "</li>"
+            for row in measures
+        )
+        serves_html = f'<div class="caps serves">{escape(serves)}</div>' if serves else ""
+        measures_block = f"""
+    <div class="measures">
+      <div class="ing-head">
+        <span class="caps col-label">Measures</span>
+        <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
+      </div>
+      <ul class="ing">{rows}</ul>
+      {serves_html}
+    </div>"""
+
     method_html = "".join(f"<li>{escape(step)}</li>" for step in method)
+    note_html = f'<div class="note">{escape(note)}</div>' if note else ""
 
     singular = section["label"].rstrip("s") if section["label"].endswith("s") else section["label"]
 
@@ -750,19 +769,11 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
     <div class="script">{escape(drink["name"])}</div>
   </div>
   {build_shot(drink)}
-  <div class="recipe">
-    <div class="col-ingredients">
-      <div class="ing-head">
-        <span class="caps col-label">Ingredients</span>
-        <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
-      </div>
-      <ul class="ing">{ing_html}</ul>
-      <div class="caps serves">{escape(serves)}</div>
-    </div>
+  <div class="recipe">{measures_block}
     <div class="col-method">
       <div class="caps col-label">Method</div>
       <ol class="method">{method_html}</ol>
-      <div class="note">{escape(note)}</div>
+      {note_html}
     </div>
   </div>
   <div class="drink-foot">
