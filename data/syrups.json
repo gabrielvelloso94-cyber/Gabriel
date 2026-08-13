@@ -58,7 +58,7 @@
           "ingredients": [
             { "item": "Strawberries, fresh or frozen", "qty": "275 g" },
             { "item": "Sugar", "qty": "325 g" },
-            { "item": "Water", "qty": "325 g" }
+            { "item": "Water", "qty": "325 ml" }
           ],
           "method": [
             "Add the strawberries, sugar and hot water to a pot.",
