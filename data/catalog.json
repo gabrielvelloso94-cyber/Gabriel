@@ -3,16 +3,60 @@
     "scriptName": "Matcha",
     "serifName": "On Ice",
     "capsName": "Cafe",
-    "tagline": "Drink Catalogue & Technical Sheets",
+    "tagline": "Matcha Catalogue & Technical Sheets",
     "year": "2026",
     "footer": "Matcha On Ice Cafe"
   },
-  "documentTitle": "Matcha On Ice Cafe — Drink Catalogue",
+  "documentTitle": "Matcha On Ice Cafe — Matcha Catalogue",
   "sections": [
+    {
+      "id": "matcha-base",
+      "kind": "foundation",
+      "label": "The Matcha Base",
+      "numeral": "I",
+      "blurb": "The single-origin matcha, water temperature and batch ratio every Signature Matcha starts from.",
+      "story": {
+        "eyebrow": "The Matcha Base",
+        "heading": "Our Matcha",
+        "body": [
+          "Nekohama's A1 Organic is our cornerstone ceremonial-grade matcha — a first-harvest, single-origin matcha made from tencha leaves grown in the volcanic soils of Kagoshima, Japan, using a cultivar blend of Sayamakaori, Okumidori, Saemidori and Yabukita.",
+          "Flavor-wise it's naturally sweet and creamy with a strong umami note and no bitterness. It's JAS-certified organic, milled monthly using modern low-heat, low-moisture grinding technology that preserves colour and aroma."
+        ],
+        "water": {
+          "range": "160°F – 175°F",
+          "sub": "70°C – 80°C",
+          "note": "Never use boiling water — it scorches the delicate green tea powder and creates an overly bitter, harsh taste."
+        }
+      },
+      "individual": {
+        "label": "Individual — 1:10 Ratio",
+        "rows": [
+          { "item": "Matcha", "qty12": "4 g", "qty16": "4.5 g" },
+          { "item": "Hot Water", "qty12": "40 ml", "qty16": "45 ml" }
+        ]
+      },
+      "batch": {
+        "label": "Batch — For Events",
+        "rows": [
+          { "item": "Matcha", "qty": "160 g" },
+          { "item": "Water", "qty": "1.2 L", "note": "≈ 40.6 fl oz" },
+          { "item": "Ice", "qty": "400 g" }
+        ]
+      },
+      "method": [
+        "Add the matcha into a warm bowl.",
+        "Pour in hot water (175°F–180°F).",
+        "Whisk briskly in a zig-zag “W” or “M” motion with a bamboo whisk until smooth and frothy."
+      ],
+      "drinks": [
+        { "name": "Sourcing & Water" },
+        { "name": "Proportions & Batch" }
+      ]
+    },
     {
       "id": "signature-matchas",
       "label": "Signature Matchas",
-      "numeral": "I",
+      "numeral": "II",
       "blurb": "Ceremonial-grade matcha, whisked to order and poured over ice.",
       "defaultMeasures": [
         { "item": "Matcha", "qty12": "1.5 oz", "qty16": "2 oz" }
@@ -81,21 +125,6 @@
           ],
           "note": "The double: matcha in the drink, matcha again in the cold foam on top."
         }
-      ]
-    },
-    {
-      "id": "signature-coffees",
-      "label": "Signature Coffees",
-      "numeral": "II",
-      "blurb": "Single-origin espresso, built slow and served cold.",
-      "defaultMeasures": [
-        { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
-      ],
-      "drinks": [
-        { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
-        { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
-        { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
-        { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
       ]
     },
     {

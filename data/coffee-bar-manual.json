@@ -1,0 +1,17 @@
+{
+  "_note": "Seed content for the future Coffee Bar Manual (Signature Coffees + espresso classics — see project discussion). Removed from data/catalog.json when Signature Coffees split out of the matcha document. Not wired into build/generate.py yet.",
+  "section": {
+    "id": "signature-coffees",
+    "label": "Signature Coffees",
+    "blurb": "Single-origin espresso, built slow and served cold.",
+    "defaultMeasures": [
+      { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
+    ],
+    "drinks": [
+      { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
+      { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
+      { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
+      { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
+    ]
+  }
+}

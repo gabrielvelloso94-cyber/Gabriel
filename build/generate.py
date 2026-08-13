@@ -539,6 +539,84 @@ html,body{
   color:var(--ink-soft);
 }
 
+/* ---------- foundation pages (The Matcha Base) ---------- */
+
+.foundation .drink-title{padding-top:8mm;padding-bottom:9mm;}
+
+.story-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+}
+
+.foundation-copy{
+  max-width:132mm;
+  margin:0 auto;
+  width:100%;
+}
+
+.foundation-recipe-body{max-width:132mm;margin:0 auto;width:100%;}
+.foundation-method{margin-top:2mm;}
+.foundation-copy p{
+  font-family:'Brand Serif',serif;
+  font-size:11.5pt;
+  line-height:1.75;
+  color:var(--ink);
+  margin-bottom:5mm;
+  text-align:left;
+}
+.foundation-copy p:last-child{margin-bottom:0;}
+
+.callout{
+  max-width:132mm;
+  margin:10mm auto 0;
+  padding-top:7mm;
+  border-top:1px solid var(--sage-soft);
+  text-align:center;
+}
+.callout-value{
+  font-family:'Brand Serif',serif;
+  font-weight:600;
+  font-size:19pt;
+  color:var(--sage-deep);
+  margin:3mm 0;
+}
+.callout-sub{
+  font-family:'Brand Sans',sans-serif;
+  font-weight:400;
+  font-size:9pt;
+  color:var(--sage);
+  letter-spacing:.04em;
+}
+.callout-note{
+  font-family:'Brand Serif',serif;
+  font-style:italic;
+  font-size:9.5pt;
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:108mm;
+  margin:2mm auto 0;
+}
+
+.ing-batch .qty-single{
+  font-family:'Brand Sans',sans-serif;
+  font-weight:400;
+  font-size:7.6pt;
+  letter-spacing:.06em;
+  color:var(--sage-deep);
+  white-space:nowrap;
+}
+.ing-batch .qty-single i{
+  font-style:italic;
+  font-weight:400;
+  color:var(--sage);
+  margin-left:2mm;
+  font-size:6.6pt;
+  letter-spacing:0;
+}
+
 .drink-foot{
   display:flex;
   justify-content:space-between;
@@ -653,7 +731,12 @@ def build_cover(brand, sections, page_map) -> str:
                 "</li>"
             )
         count = len(section["drinks"])
-        count_label = "Open chapter" if section.get("expandable") else f"{count} drinks"
+        if section.get("expandable"):
+            count_label = "Open chapter"
+        elif section.get("kind") == "foundation":
+            count_label = f"{count} pages"
+        else:
+            count_label = f"{count} drinks"
         blocks.append(
             '<div class="index-block">'
             '<div class="index-block-head">'
@@ -785,6 +868,101 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
 """
 
 
+def build_foundation_story(section, brand, page_no) -> str:
+    story = section["story"]
+    water = story["water"]
+    body_html = "".join(f"<p>{escape(p)}</p>" for p in story["body"])
+
+    return f"""
+<section class="page drink foundation">
+  <div class="drink-head">
+    <span class="caps">{escape(section["label"])}</span>
+    <span class="caps">{escape(section["numeral"])} &middot; Sourcing</span>
+  </div>
+  <div class="drink-title">
+    <span class="caps eyebrow">{escape(story["eyebrow"])}</span>
+    <div class="script">{escape(story["heading"])}</div>
+  </div>
+  <div class="story-body">
+    <div class="foundation-copy">{body_html}</div>
+    <div class="callout">
+      <span class="caps col-label">Water Temperature</span>
+      <div class="callout-value">{escape(water["range"])} <span class="callout-sub">({escape(water["sub"])})</span></div>
+      <p class="callout-note">{escape(water["note"])}</p>
+    </div>
+  </div>
+  <div class="drink-foot">
+    {mark_img("logo-script", "sage", "mark") or f'<span class="mark-text script">{escape(brand["scriptName"])}</span>'}
+    <span class="caps">{escape(brand["footer"])}</span>
+    <span class="caps">Page {page_no}</span>
+  </div>
+</section>
+"""
+
+
+def build_foundation_recipes(section, brand, page_no) -> str:
+    individual = section["individual"]
+    batch = section["batch"]
+    method = section["method"]
+
+    individual_rows = "".join(
+        '<li>'
+        f'<span class="item">{escape(row["item"])}</span>'
+        '<span class="dots"></span>'
+        f'<span class="qty">{escape(row["qty12"])}</span>'
+        f'<span class="qty">{escape(row["qty16"])}</span>'
+        "</li>"
+        for row in individual["rows"]
+    )
+    batch_rows = "".join(
+        '<li>'
+        f'<span class="item">{escape(row["item"])}</span>'
+        '<span class="dots"></span>'
+        f'<span class="qty-single">{escape(row["qty"])}'
+        + (f' <i>{escape(row["note"])}</i>' if row.get("note") else "")
+        + "</span></li>"
+        for row in batch["rows"]
+    )
+    method_html = "".join(f"<li>{escape(step)}</li>" for step in method)
+
+    return f"""
+<section class="page drink foundation">
+  <div class="drink-head">
+    <span class="caps">{escape(section["label"])}</span>
+    <span class="caps">{escape(section["numeral"])} &middot; Proportions</span>
+  </div>
+  <div class="drink-title">
+    <span class="caps eyebrow">{escape(section["label"])}</span>
+    <div class="script">Proportions</div>
+  </div>
+  <div class="story-body">
+    <div class="foundation-recipe-body">
+      <div class="measures">
+        <div class="ing-head">
+          <span class="caps col-label">{escape(individual["label"])}</span>
+          <span class="ing-sizes"><span>12 oz</span><span>16 oz</span></span>
+        </div>
+        <ul class="ing">{individual_rows}</ul>
+      </div>
+      <div class="measures">
+        <span class="caps col-label">{escape(batch["label"])}</span>
+        <ul class="ing ing-batch">{batch_rows}</ul>
+      </div>
+      <div class="foundation-method">
+        <div class="caps col-label">Method</div>
+        <ol class="method">{method_html}</ol>
+      </div>
+    </div>
+  </div>
+  <div class="drink-foot">
+    {mark_img("logo-script", "sage", "mark") or f'<span class="mark-text script">{escape(brand["scriptName"])}</span>'}
+    <span class="caps">{escape(brand["footer"])}</span>
+    <span class="caps">Page {page_no}</span>
+  </div>
+</section>
+"""
+
+
 def build_endcard(brand) -> str:
     slots = "".join(
         '<div class="slot">Next drink</div>' for _ in range(3)
@@ -832,6 +1010,11 @@ def build_document(catalog) -> str:
     pages = [build_cover(brand, sections, page_map)]
     for section in sections:
         pages.append(build_divider(section, brand))
+        if section.get("kind") == "foundation":
+            story_page, recipes_page = section["drinks"]
+            pages.append(build_foundation_story(section, brand, page_map[id(story_page)]))
+            pages.append(build_foundation_recipes(section, brand, page_map[id(recipes_page)]))
+            continue
         for number, drink in enumerate(section["drinks"], start=1):
             pages.append(
                 build_drink(drink, section, brand, defaults, number, page_map[id(drink)])

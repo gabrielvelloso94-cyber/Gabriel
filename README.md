@@ -1,11 +1,17 @@
-# Matcha On Ice Cafe — Drink Catalogue
+# Matcha On Ice Cafe — Matcha Catalogue
 
-A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe.
+A4 portrait catalogue / technical-sheet PDF for Matcha On Ice Cafe's matcha program: the
+matcha base itself, then the Signature Matchas built on it.
 
-**Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 16 pages.
+**Output:** [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 14 pages.
 
-> **Status: in progress.** Signature Matchas are filled in with real measures and method.
-> Signature Coffees and Seasonal Add-Ons are still placeholder, pending their recipes.
+> **Status: in progress.** The Matcha Base and Signature Matchas are filled in with real
+> content. Seasonal Add-Ons is still a placeholder template, pending its first drink.
+
+Signature Coffees split out of this document into a future **Coffee Bar Manual** (to
+include the espresso classics too — cappuccino, latte, americano, etc.). Its
+already-written content (the lattes, the espresso default measure) is seeded in
+`data/coffee-bar-manual.json`, not yet wired into the generator.
 
 ## Build
 
@@ -26,7 +32,8 @@ it is the only thing here that needs `numpy` and `Pillow`.
 
 | Path | What it is |
 | --- | --- |
-| `data/catalog.json` | All content — brand strings, sections, drinks, placeholder text |
+| `data/catalog.json` | All content in this document — brand strings, sections, drinks |
+| `data/coffee-bar-manual.json` | Seed content for the future Coffee Bar Manual (unused by the build) |
 | `build/generate.py` | Renders the HTML and prints it to PDF |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
@@ -34,8 +41,12 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `assets/brand/` | Source logo plus the transparent marks derived from it |
 | `dist/` | Generated `catalog.html` and the PDF |
 
-Pages: cover with the 3-block index → section divider + one page per drink, per section →
-a closing "More to come" card at the end of Seasonal Add-Ons.
+Pages: cover with the 3-block index → section divider + its pages, per section → a closing
+"More to come" card at the end of Seasonal Add-Ons. Two section shapes:
+- **Drinks** (Signature Matchas, Seasonal Add-Ons) — divider, then one page per drink.
+- **Foundation** (The Matcha Base) — divider, then two fixed pages: a sourcing/water-temperature
+  page and a proportions/batch/method page. See `build_foundation_story` /
+  `build_foundation_recipes` in `build/generate.py`.
 
 ## Brand system
 
@@ -117,15 +128,26 @@ for the few things worth calling out precisely: matcha, syrup, an espresso shot.
 }
 ```
 
-A drink's Measures list is its section's `defaultMeasures` (a section-wide constant, e.g.
-every Signature Matcha pours the same matcha) followed by whatever the drink adds on top
-(e.g. its syrup) — see `signature-matchas` and `signature-coffees` in `catalog.json`. A
-drink with no syrup (Coconut Cloud) just omits `measures`, and one whose method departs
-from the section's `defaultMethod` overrides it in full, the way Coconut Cloud drops the
-syrup step. `serves` and `note` are optional; a missing `note` renders no note at all
-rather than filler text, since a placeholder note would read as real copy in a finished
-page.
+A drink's Measures list is its section's `defaultMeasures` (a section-wide constant — every
+Signature Matcha pours the same matcha) followed by whatever the drink adds on top (its
+syrup) — see `signature-matchas` in `catalog.json`. A drink with no syrup (Coconut Cloud)
+just omits `measures`, and one whose method departs from the section's `defaultMethod`
+overrides it in full, the way Coconut Cloud drops the syrup step and Double Matcha's cold
+foam step is mandatory rather than optional. `serves` and `note` are optional; a missing
+`note` renders no note at all rather than filler text, since a placeholder note would read
+as real copy in a finished page.
 
 The **Seasonal Add-Ons** section is marked `"expandable": true`, which gives it the
 "Open chapter" index treatment and the closing card. New seasonal drinks are just new
 entries in its `drinks` array.
+
+## The Matcha Base
+
+Unlike the other two sections, `matcha-base` is marked `"kind": "foundation"` — it isn't a
+list of drinks, it's the sourcing story, the water-temperature guidance, and the ratios
+(individual and event-batch) every Signature Matcha is built from. Its two pages are fixed
+rather than data-driven per entry (there's no "add a foundation page" the way there's "add a
+drink"), so its content lives directly on the section object: `story` (the sourcing copy and
+water-temperature callout), `individual` and `batch` (both rendered with the same `.ing`
+measures-row styling drink pages use), and `method`. To change any of it, edit those keys in
+`catalog.json` directly and rebuild.
