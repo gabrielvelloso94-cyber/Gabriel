@@ -7,7 +7,7 @@ page furniture — defined once in `build/common.py`.
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Layout test — placeholder recipes |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Syrups complete; Cold Foam still placeholder |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` (seed only) | — not yet built — | — | Not started |
 
 ## Build
@@ -166,10 +166,11 @@ heading), and `method`. To change any of it, edit those keys in `catalog.json` a
 ## Syrups & Cold Foam (`data/syrups.json`)
 
 Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo, no
-12oz/16oz split, since these are build components, not menu drinks. **Placeholder content
-throughout right now** — every syrup's ingredients and method are generic stand-ins
-(`"Ingredient 1"`, `"Step 1: Combine..."`), and Cold Foam's story paragraphs are literal
-placeholders, awaiting the real recipes and explanation.
+12oz/16oz split, since these are build components, not menu drinks.
+
+**Syrups** (Vanilla, Banana Bread, Strawberry, Mango) are real recipes. **Cold Foam** is
+still placeholder — its story paragraphs and both measure blocks are generic stand-ins,
+awaiting the real explanation and recipe.
 
 ### Adding a syrup
 
