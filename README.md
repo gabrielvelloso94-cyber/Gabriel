@@ -8,14 +8,15 @@ page furniture — defined once in `build/common.py`.
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
-| Coffee Bar Manual | `data/coffee-bar-manual.json` (seed only) | — not yet built — | — | Not started |
+| Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 17 pages | Draft — see note below |
 
 ## Build
 
 ```bash
 python3 build/generate.py                 # Matcha Catalogue: HTML + PDF
 python3 build/generate_syrups.py           # Syrups & Cold Foam: HTML + PDF
-python3 build/generate.py --html           # either script: HTML only
+python3 build/generate_coffee.py           # Coffee Bar Manual: HTML + PDF
+python3 build/generate.py --html           # any script: HTML only
 ```
 
 Requires Python 3 and headless Chromium (auto-detected from `/opt/pw-browsers` or `PATH`).
@@ -33,10 +34,11 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `build/common.py` | Shared brand system — stylesheet, page builders, PDF rendering |
 | `build/generate.py` | Matcha Catalogue: loads `data/catalog.json` |
 | `build/generate_syrups.py` | Syrups & Cold Foam: loads `data/syrups.json` |
+| `build/generate_coffee.py` | Coffee Bar Manual: loads `data/coffee-bar-manual.json` |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `data/catalog.json` | Matcha Catalogue content |
 | `data/syrups.json` | Syrups & Cold Foam content |
-| `data/coffee-bar-manual.json` | Seed content for the not-yet-built Coffee Bar Manual |
+| `data/coffee-bar-manual.json` | Coffee Bar Manual content |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
 | `assets/photos/` | Drink photography — drop files here |
 | `assets/brand/` | Source logo plus the transparent marks derived from it |
@@ -50,8 +52,8 @@ divider + its pages). A section's `"kind"` decides what its pages look like:
 | `kind` | Pages | Used by |
 | --- | --- | --- |
 | *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas |
-| `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam |
-| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo, no size split | Syrups |
+| `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam, Espresso Basics |
+| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo, no size split | Syrups, Espresso Classics |
 
 A section can also be `"expandable": true` (independent of `kind`), which gives it the
 "Open chapter" index treatment and a closing "More to come" card instead of ending flush —
@@ -204,3 +206,25 @@ whip-then-texture method.
 (the three components, the whip-then-texture process, the 2:1:1 ratio callout) and a
 recipe page (the batch, then Method). `measureBlocks` is a list, so a second block — a
 flavor variant, say — is just another entry away.
+
+## Coffee Bar Manual (`data/coffee-bar-manual.json`)
+
+Same brand system again, three chapters:
+
+- **Espresso Basics** (`"kind": "foundation"`) — what espresso is, the house double shot
+  (dose, yield, extraction time), and the 25–30 sec extraction-time callout every classic
+  and Signature Coffee is timed against.
+- **Espresso Classics** (`"kind": "simple"`) — Espresso, Americano, Macchiato, Cortado,
+  Flat White, Cappuccino, Latte. Each a spec sheet (shot / milk / foam, then Cup as the
+  `yield` caption) rather than a recipe — these are fixed drinks, not proprietary ones.
+- **Signature Coffees** (default `kind`, full drink page) — the four iced lattes, carried
+  over from the Matcha Catalogue when it split out. Same shape as Signature Matchas: photo
+  (or placeholder), sized Measures, Method.
+
+> **Status: draft.** The house double shot (2 oz) is the number already confirmed for
+> Signature Coffees. Everything built on top of it — Espresso Basics' dose (18 g) and
+> extraction time (25–30 sec), and every Espresso Classic's milk/foam/cup spec — is a
+> standard barista-training default, not this bar's confirmed number, and needs a pass to
+> match your actual beans, machine and house pours. Signature Coffees is untouched
+> placeholder, same starting point Signature Matchas had before its real syrups and method
+> came in.

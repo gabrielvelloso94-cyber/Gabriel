@@ -1,17 +1,189 @@
 {
-  "_note": "Seed content for the future Coffee Bar Manual (Signature Coffees + espresso classics — see project discussion). Removed from data/catalog.json when Signature Coffees split out of the matcha document. Not wired into build/generate.py yet.",
-  "section": {
-    "id": "signature-coffees",
-    "label": "Signature Coffees",
-    "blurb": "Single-origin espresso, built slow and served cold.",
-    "defaultMeasures": [
-      { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
+  "brand": {
+    "scriptName": "Matcha",
+    "serifName": "On Ice",
+    "capsName": "Cafe",
+    "tagline": "Coffee Bar Manual — Espresso & Technical Sheets",
+    "year": "2026",
+    "footer": "Matcha On Ice Cafe"
+  },
+  "documentTitle": "Matcha On Ice Cafe — Coffee Bar Manual",
+  "sections": [
+    {
+      "id": "espresso-basics",
+      "kind": "foundation",
+      "label": "Espresso Basics",
+      "numeral": "I",
+      "blurb": "Dose, yield and extraction time — the shot every espresso classic and Signature Coffee is built from.",
+      "story": {
+        "eyebrow": "Espresso Basics",
+        "heading": "Pulling a Shot",
+        "shortLabel": "Extraction",
+        "body": [
+          "Espresso is brewed by forcing hot water through finely-ground, tamped coffee under pressure — roughly 9 bars — extracting a concentrated shot with a layer of golden crema on top.",
+          "Every espresso-based drink in this manual starts from the same double shot: 2 oz, pulled to land in a 25–30 second window. Dial the grind in against that window, not the clock alone — finer if it runs fast and sour, coarser if it runs slow and bitter."
+        ],
+        "callout": {
+          "label": "Extraction Time",
+          "range": "25–30 sec",
+          "sub": "from first drop",
+          "note": "Adjust grind size until the shot lands in this window at your standard dose."
+        }
+      },
+      "measureBlocks": [
+        {
+          "type": "single",
+          "label": "House Shot — Double",
+          "rows": [
+            { "item": "Dose (ground coffee)", "qty": "18 g" },
+            { "item": "Yield (liquid espresso)", "qty": "2 oz" },
+            { "item": "Extraction Time", "qty": "25–30 sec" }
+          ]
+        }
+      ],
+      "recipesPage": { "heading": "The Standard", "shortLabel": "Standard" },
+      "method": [
+        "Dose and distribute the ground coffee evenly in the portafilter basket.",
+        "Tamp level and firm, straight down.",
+        "Lock in and start the shot immediately — don't let it sit.",
+        "Time the extraction from the first drop; stop at 2 oz.",
+        "Adjust the grind size, not the dose, to hit the window."
+      ],
+      "drinks": [
+        { "name": "Pulling a Shot" },
+        { "name": "The Standard" }
+      ]
+    },
+    {
+      "id": "espresso-classics",
+      "kind": "simple",
+      "label": "Espresso Classics",
+      "numeral": "II",
+      "blurb": "The standard bar drinks — same double shot, different milk and water.",
+      "drinks": [
+        {
+          "name": "Espresso",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" }
+          ],
+          "method": [
+            "Pull a double shot directly into the serving cup.",
+            "Serve immediately, while the crema is still fresh.",
+            "Discard and re-pull if the shot didn't land in the 25–30 second window."
+          ],
+          "yield": "Cup — 2–3 oz demitasse",
+          "note": "No milk, no water — just the shot. The purest test of a dial-in."
+        },
+        {
+          "name": "Americano",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Hot Water", "qty": "4–6 oz" }
+          ],
+          "method": [
+            "Add hot water to the cup first.",
+            "Pull the double shot on top of the water.",
+            "Adjust the water for a stronger or lighter cup."
+          ],
+          "yield": "Cup — 8 oz",
+          "note": "Water first, then espresso on top — pulling the shot before the water breaks up the crema."
+        },
+        {
+          "name": "Macchiato",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Milk Foam", "qty": "1 tsp, dolloped" }
+          ],
+          "method": [
+            "Pull a double shot into the serving cup.",
+            "Steam a small amount of milk to a thick foam.",
+            "Spoon a dollop of foam onto the shot — don't stir it in."
+          ],
+          "yield": "Cup — 2–3 oz",
+          "note": "Macchiato means \"marked\" — the foam should mark the surface, not drown the shot."
+        },
+        {
+          "name": "Cortado",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Steamed Milk", "qty": "2 oz" }
+          ],
+          "method": [
+            "Pull a double shot into the serving cup or glass.",
+            "Steam milk to a silky texture with minimal foam.",
+            "Pour in milk to roughly match the espresso, equal parts."
+          ],
+          "yield": "Cup — 4 oz",
+          "note": "Cortado means \"cut\" — the milk cuts the espresso's acidity without floating on top like foam."
+        },
+        {
+          "name": "Flat White",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Steamed Milk", "qty": "4–5 oz, microfoam" }
+          ],
+          "method": [
+            "Pull a double shot into the serving cup.",
+            "Steam milk to a thin, velvety microfoam — about 0.5 cm.",
+            "Pour in a steady stream, integrating the microfoam rather than floating it on top."
+          ],
+          "yield": "Cup — 6 oz",
+          "note": "Less milk and less foam than a latte — the espresso should still lead."
+        },
+        {
+          "name": "Cappuccino",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Steamed Milk", "qty": "3 oz" },
+            { "item": "Milk Foam", "qty": "1 cm cap" }
+          ],
+          "method": [
+            "Pull a double shot into the serving cup.",
+            "Steam milk to a thick, airy foam.",
+            "Pour to fill, finishing with a full foam cap."
+          ],
+          "yield": "Cup — 6 oz",
+          "note": "Traditionally close to equal thirds — espresso, steamed milk, foam."
+        },
+        {
+          "name": "Latte",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Steamed Milk", "qty": "6–8 oz, thin foam" }
+          ],
+          "method": [
+            "Pull a double shot into the serving cup.",
+            "Steam milk to a thin microfoam — about 0.5 cm.",
+            "Pour to fill, finishing with a thin foam layer."
+          ],
+          "yield": "Cup — 8–12 oz",
+          "note": "The most milk-forward of the classics — a mellow, rounded cup."
+        }
+      ]
+    },
+    {
+      "id": "signature-coffees",
+      "label": "Signature Coffees",
+      "numeral": "III",
+      "blurb": "Single-origin espresso, built slow and served cold.",
+      "defaultMeasures": [
+        { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
+      ],
+      "drinks": [
+        { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
+        { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
+        { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
+        { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
+      ]
+    }
+  ],
+  "placeholders": {
+    "method": [
+      "Step 1: Describe the first preparation action here.",
+      "Step 2: Describe the second preparation action here.",
+      "Step 3: Describe the third preparation action here.",
+      "Step 4: Finish, garnish and serve over ice."
     ],
-    "drinks": [
-      { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
-      { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
-      { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
-      { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
-    ]
+    "serves": "Serves 1"
   }
 }
