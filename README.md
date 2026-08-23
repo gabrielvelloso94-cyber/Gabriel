@@ -263,6 +263,12 @@ Content model — `documentTitle`, `footer`, and a `chapters` array. Each chapte
 | `"table"` | A two-column spec table | `heading?`, `rows`: `{ item, value }` |
 | `"steps"` | A numbered list | `heading?`, `items` |
 | `"deflist"` | A dense term/spec definition list, each entry with bulleted use-steps and an italic note | `heading?`, `items`: `{ term, spec, use[], note? }` |
+| `"warning"` | A bordered, all-caps callout for a single critical line | `text` |
+
+A `paragraphs` entry (in `"prose"`) or an `items` entry (in `"steps"`) can be a plain string,
+or `{ "lead": "...", "text": "..." }` for a bold inline lead-in — e.g. Steaming Milk's
+"**Milk Temp.** The ideal range for dairy is 145°F–155°F…" and its "**Groom the milk.**
+Tap the pitcher on the counter…" step both use this.
 
 Four chapters:
 
@@ -270,8 +276,10 @@ Four chapters:
   dosing, stepless adjustment), a specs table, then its dial-in and care routine.
 - **The Espresso Machine** — the Sanremo Zoe Compact, 2 group: independent per-group PID
   boilers, a specs table (including warm-up time), then its startup and care routine.
-- **Steaming Milk** — the stretch-then-texture technique behind microfoam, a setup/target
-  table, then the full pour-by-pour technique as numbered steps.
+- **Steaming Milk** — real, detailed content: drink size / milk temp / milk texture as the
+  three things to know before starting, a setup/target table (145°F–155°F for dairy, lower
+  max for standard dairy alternatives), the full 13-step technique including grooming the
+  milk, and a "never re-steam milk" warning.
 - **Barista Tools** — a `"deflist"` of seven tools (Tamper, WDT Tool, Digital Scale, Milk
   Pitchers, Knock Box, Puck Screen, Cleaning Kit), followed by a short "Workstation Setup"
   prose section on laying out the bar.
@@ -283,5 +291,6 @@ Four chapters:
 > programming, backflushing, shutdown, deep-cleaning) are deliberately left as placeholder
 > steps rather than invented: getting an operational procedure wrong is a different order
 > of risk than a placeholder recipe, so those need to come from the actual equipment
-> manuals or your own training, not general knowledge. Steaming Milk and Barista Tools are
-> standard technique/reference content, same confidence tier as Espresso Basics.
+> manuals or your own training, not general knowledge. Steaming Milk is real, confirmed
+> content; Barista Tools is standard technique/reference content, same confidence tier as
+> Espresso Basics.

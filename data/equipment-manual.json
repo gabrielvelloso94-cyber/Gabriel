@@ -72,42 +72,67 @@
     {
       "numeral": "III",
       "title": "Steaming Milk",
-      "subtitle": "Microfoam Technique",
+      "subtitle": "Milk Texturing",
       "blocks": [
         {
           "type": "prose",
           "paragraphs": [
-            "Good microfoam is glossy and velvety with no visible bubbles — thick enough to hold latte art, light enough to integrate into the drink rather than sitting on top like dry foam.",
-            "It is built in two stages, the same logic as Cold Foam: first stretch, incorporating air near the surface while the milk is still cool and the volume grows; then texture, submerging the wand to spin that air into the milk until smooth."
+            "Milk texturing is achieved by combining air and steam near the surface of the milk as it expands, until the desired texture is reached. Different drinks call for different textures — dry for a cappuccino, wetter for a latte — so proper technique is essential to get good, consistent results every time."
+          ]
+        },
+        {
+          "type": "prose",
+          "heading": "Before You Start",
+          "paragraphs": [
+            {
+              "lead": "Drink Size",
+              "text": "This relates to the pitcher size and how much milk you'll be using — use the right pitcher and portion your milk to the drink, to help reduce waste."
+            },
+            {
+              "lead": "Milk Temp",
+              "text": "The ideal range for dairy is 145°F–155°F. Standard dairy alternatives can usually tolerate a maximum of about 145°F before breaking down in texture; \"Barista\" style alternatives can typically withstand higher temperatures and texture well."
+            },
+            {
+              "lead": "Milk Texture",
+              "text": "Texturing is a race against temperature — know before you start whether the drink calls for a dry, velvety texture (like a cappuccino) or a wet, silky one (like a latte)."
+            }
           ]
         },
         {
           "type": "table",
           "heading": "Setup & Target",
           "rows": [
-            { "item": "Target Temperature", "value": "150°F – 155°F (65°C – 68°C)" },
+            { "item": "Target Temperature (Dairy)", "value": "145°F – 155°F" },
+            { "item": "Dairy Alternative — Max Temp", "value": "~145°F (higher for \"Barista\" style alternatives)" },
             { "item": "Pitcher Fill (before steaming)", "value": "1/3 – 1/2 full" },
-            { "item": "Tip Depth — Stretch", "value": "Just below the surface" },
-            { "item": "Tip Depth — Texture", "value": "Fully submerged, angled to spin" }
-          ]
-        },
-        {
-          "type": "prose",
-          "paragraphs": [
-            "Stop just before the target range — residual heat carries it the rest of the way. Past 170°F / 77°C, milk scalds and turns sweet-flat."
+            { "item": "Starting Position — Tip Depth", "value": "Just below the surface, pitcher angled left or right — never centered" }
           ]
         },
         {
           "type": "steps",
           "heading": "Technique",
           "items": [
-            "Purge the wand briefly to clear condensation before steaming.",
-            "Submerge the tip just below the surface, slightly off-center, to begin stretching — a light hissing or tearing sound means air is incorporating.",
-            "Once the volume has grown by about a third, submerge the tip fully and angle it to create a whirlpool, texturing out any large bubbles.",
-            "Keep spinning the milk until the pitcher is warm to the touch and near the target temperature.",
-            "Purge and wipe the wand immediately after every use.",
-            "Tap the pitcher on the counter and swirl to pop any remaining bubbles before pouring."
+            "Choose the right size steaming pitcher for the drink.",
+            "Portion the milk to the drink's size and texture; use a measuring device if needed.",
+            "Purge the steam wand into the drain tray for a couple of seconds to clear any condensation.",
+            "Get into the Starting Position: wand tip just below the milk's surface, pitcher angled left or right (never centered) so the milk can whirlpool.",
+            "Steam with enough pressure to create a gentle vortex — too little pressure causes a high-pitched squeal or rumble.",
+            "As the milk starts to whirlpool and expand, slowly draw the pitcher down along the wand, keeping the tip just submerged near the surface.",
+            "Once the texture is right, submerge the wand fully and continue heating to the target temperature.",
+            "Turn off the steam wand.",
+            "Set the pitcher aside.",
+            "Purge the wand and wipe it clean with the wand towel.",
+            {
+              "lead": "Groom the milk",
+              "text": "this step is often skipped, but it finishes the texture, not just the look. Tap the pitcher on the counter, then swirl until the milk has a glossy sheen, like melted ice cream or wet paint."
+            },
+            "Pour into the center of the drink or crema.",
+            "Clean the pitcher immediately — never put a dirty pitcher back in the fridge."
           ]
+        },
+        {
+          "type": "warning",
+          "text": "Never re-steam milk that has already been steamed — for quality control and to avoid health hazards."
         }
       ]
     },

@@ -47,13 +47,19 @@ def stylesheet() -> str:
         margin: 20mm 18mm 16mm 18mm;
     }
     .pdf-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 7.5px;
-        color: #999;
+        display: none;
+    }
+    @media print {
+        .pdf-footer {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 7.5px;
+            color: #999;
+        }
     }
 
     .titleblock {
@@ -188,7 +194,23 @@ def stylesheet() -> str:
         font-style: italic;
         font-size: 9.5px;
     }
+
+    .warning {
+        border-left: 3px solid #1a1a1a;
+        background: #f3f3f3;
+        padding: 8px 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 9.5px;
+        letter-spacing: 0.02em;
+    }
     """
+
+
+def _lead_html(entry) -> str:
+    if isinstance(entry, dict):
+        return f'<strong>{escape(entry["lead"])}.</strong> {escape(entry["text"])}'
+    return escape(entry)
 
 
 def build_table(rows) -> str:
@@ -201,7 +223,7 @@ def build_table(rows) -> str:
 
 
 def build_steps(items) -> str:
-    lis = "".join(f"<li>{escape(step)}</li>" for step in items)
+    lis = "".join(f"<li>{_lead_html(step)}</li>" for step in items)
     return f'<ol class="steps">{lis}</ol>'
 
 
@@ -228,7 +250,7 @@ def build_block(block) -> str:
     heading = f'<h3>{escape(block["heading"])}</h3>' if block.get("heading") else ""
 
     if kind == "prose":
-        body = "".join(f"<p>{escape(p)}</p>" for p in block["paragraphs"])
+        body = "".join(f"<p>{_lead_html(p)}</p>" for p in block["paragraphs"])
         return f'<div class="block prose">{heading}{body}</div>'
     if kind == "table":
         return f'<div class="block">{heading}{build_table(block["rows"])}</div>'
@@ -236,6 +258,8 @@ def build_block(block) -> str:
         return f'<div class="block">{heading}{build_steps(block["items"])}</div>'
     if kind == "deflist":
         return f'<div class="block">{heading}{build_deflist(block["items"])}</div>'
+    if kind == "warning":
+        return f'<div class="block warning">{escape(block["text"])}</div>'
     raise ValueError(f"unknown block type: {kind}")
 
 
