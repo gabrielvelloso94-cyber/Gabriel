@@ -12,7 +12,7 @@ stylesheet and page builder in `build/generate_equipment.py`.
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
-| Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 4 pages | Draft — see note below |
+| Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 8 pages | Mostly real content — see note below |
 
 ## Build
 
@@ -260,37 +260,46 @@ Content model — `documentTitle`, `footer`, and a `chapters` array. Each chapte
 | `type` | Renders as | Fields |
 | --- | --- | --- |
 | `"prose"` | Paragraphs, with an optional heading | `heading?`, `paragraphs` |
-| `"table"` | A two-column spec table | `heading?`, `rows`: `{ item, value }` |
+| `"table"` | A spec table — 2-column (bold term / value, no header) by default, or any number of columns with a header row | `heading?`, `rows`, `headers?`, `columns?` |
 | `"steps"` | A numbered list | `heading?`, `items` |
 | `"deflist"` | A dense term/spec definition list, each entry with bulleted use-steps and an italic note | `heading?`, `items`: `{ term, spec, use[], note? }` |
-| `"warning"` | A bordered, all-caps callout for a single critical line | `text` |
+| `"checklist"` | Two (or more) side-by-side checkbox lists, e.g. Opening / Closing | `heading?`, `groups`: `{ label, items }` |
+| `"warning"` | A bordered callout — one bold all-caps line (`text`), or a bulleted list of cautions (`items`) | `heading?`, `text` or `items` |
 
 A `paragraphs` entry (in `"prose"`) or an `items` entry (in `"steps"`) can be a plain string,
 or `{ "lead": "...", "text": "..." }` for a bold inline lead-in — e.g. Steaming Milk's
 "**Milk Temp.** The ideal range for dairy is 145°F–155°F…" and its "**Groom the milk.**
 Tap the pitcher on the counter…" step both use this.
 
-Four chapters:
+A `"table"` defaults to `columns: ["item", "value"]` with no header row (the plain spec-sheet
+look). Pass `headers` (and matching `columns`, since row dicts can use any keys) for a wider
+table with a header row — used for the Controls Reference and the Troubleshooting tables,
+which run to 2–3 columns.
 
-- **The Grinder** — the Fiorenzato E64 Evo Pro: what it is (64mm flat burrs, on-demand
-  dosing, stepless adjustment), a specs table, then its dial-in and care routine.
-- **The Espresso Machine** — the Sanremo Zoe Compact, 2 group: independent per-group PID
-  boilers, a specs table (including warm-up time), then its startup and care routine.
-- **Steaming Milk** — real, detailed content: drink size / milk temp / milk texture as the
-  three things to know before starting, a setup/target table (145°F–155°F for dairy, lower
-  max for standard dairy alternatives), the full 13-step technique including grooming the
-  milk, and a "never re-steam milk" warning.
+Four chapters, largely sourced from the equipment's own daily-operation guides rather than
+general knowledge:
+
+- **The Grinder** — the Fiorenzato F64 Evo Pro: what it is, a specs table, daily startup,
+  the four dosing modes, adjusting grind size, daily cleaning (including the PRO
+  quick-release chamber's deeper clean), monthly deep clean, burr replacement, a
+  troubleshooting table, and a daily opening/closing checklist.
+- **The Espresso Machine** — the Sanremo Zoe Compact 208V, 2 group: specs, a controls
+  reference table (every lettered/numbered control), daily startup, pulling shots, steam
+  and hot water, programming SED dose volumes, pre-infusion, daily backflush per group,
+  periodic maintenance, a "Critical Don'ts" list, a troubleshooting table, and a daily
+  checklist.
+- **Steaming Milk** — drink size / milk temp / milk texture as the three things to know
+  before starting, a setup/target table (145°F–155°F for dairy, lower max for standard
+  dairy alternatives), the full 13-step technique including grooming the milk, and a
+  "never re-steam milk" warning.
 - **Barista Tools** — a `"deflist"` of seven tools (Tamper, WDT Tool, Digital Scale, Milk
   Pitchers, Knock Box, Puck Screen, Cleaning Kit), followed by a short "Workstation Setup"
   prose section on laying out the bar.
 
-> **Status: draft, mixed confidence.** The identifying facts about the two machines (burr
-> size, dosing style, group count, independent PID boilers) are general, commonly
-> published specs for this equipment, not verified against Fiorenzato's or Sanremo's own
-> documentation — worth a check. The day-to-day procedures (daily startup, dose
-> programming, backflushing, shutdown, deep-cleaning) are deliberately left as placeholder
-> steps rather than invented: getting an operational procedure wrong is a different order
-> of risk than a placeholder recipe, so those need to come from the actual equipment
-> manuals or your own training, not general knowledge. Steaming Milk is real, confirmed
-> content; Barista Tools is standard technique/reference content, same confidence tier as
-> Espresso Basics.
+> **Status: mostly real content, one placeholder gap.** The Grinder and Espresso Machine
+> chapters are transcribed from the equipment's own daily-operation guides (Fiorenzato F64
+> Evo Pro, Sanremo Zoe Compact 208V) — startup sequences, control functions, dosing/
+> programming steps, cleaning cadence and troubleshooting tables are the manufacturers'
+> own, not general knowledge. Steaming Milk is likewise real, confirmed content. Barista
+> Tools is standard technique/reference content, same confidence tier as Espresso Basics
+> in the Coffee Bar Manual.

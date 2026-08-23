@@ -5,13 +5,13 @@
     {
       "numeral": "I",
       "title": "The Grinder",
-      "subtitle": "Fiorenzato E64 Evo Pro",
+      "subtitle": "Fiorenzato F64 Evo Pro",
       "blocks": [
         {
           "type": "prose",
           "paragraphs": [
-            "The E64 Evo Pro is a 64 mm flat-burr commercial grinder built for on-demand dosing — it grinds fresh for each shot rather than sitting pre-ground in a hopper, dosed through a programmable touchscreen rather than a mechanical doser.",
-            "Grind size is set with a stepless micrometric adjustment collar, so there are no click-stops to count. Dial in gradually and taste — or better, time the shot — rather than chasing a specific number on the collar. There is no single correct setting: only what lands the shot in the 25–30 second extraction window (see Coffee Bar Manual, Espresso Basics). Adjust in small increments and re-taste."
+            "The F64 Evo Pro is a commercial on-demand grinder — it grinds fresh for each dose rather than sitting pre-ground in a hopper, dosed through a touchscreen rather than a mechanical doser. Grind size is set with a stepless, micrometric adjustment ring, so there are no click-stops to count: adjust in small turns and grind a test amount before committing a full dose.",
+            "This unit has the PRO quick-release chamber, which pulls apart without tools for a deeper daily clean — see the Daily Cleaning steps below."
           ]
         },
         {
@@ -21,17 +21,155 @@
             { "item": "Burr Size", "value": "64 mm" },
             { "item": "Burr Type", "value": "Flat" },
             { "item": "Dosing", "value": "On-demand" },
-            { "item": "Adjustment", "value": "Stepless (no click-stops)" }
+            { "item": "Adjustment", "value": "Stepless (no click-stops)" },
+            { "item": "Chamber", "value": "PRO quick-release" }
           ]
         },
         {
           "type": "steps",
-          "heading": "Dial-In & Care",
+          "heading": "Daily Startup",
           "items": [
-            "[Placeholder] Describe the daily startup procedure here (power on, warm-up time before the first grind).",
-            "[Placeholder] Describe how to select or program a dose on the touchscreen here.",
-            "[Placeholder] Describe the daily cleaning routine here (hopper, chute, exterior).",
-            "[Placeholder] Describe the weekly deep-clean here (burr removal, brush-down)."
+            "Make sure the power switch (rear/side, marked O/I) is in O (off) before plugging in.",
+            "Plug into a grounded outlet and flip the switch to I (on). The display boots to the Home screen after a few seconds.",
+            {
+              "lead": "Load beans",
+              "text": "close the locking slide under the hopper, seat the hopper on top and tighten the fastening screw, remove the hopper lid and fill with beans, replace the lid, then gradually open the locking slide so beans feed into the grinding chamber."
+            },
+            "The grinder is now ready to dose."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Dosing Modes (Settings → Technical Settings → Operating Mode)",
+          "headers": ["Mode", "How It Works"],
+          "columns": ["item", "value"],
+          "rows": [
+            { "item": "Standard (default)", "value": "Press the dose button to select it, then trigger by pressing the portafilter into the activation microswitch under the fork." },
+            { "item": "Direct", "value": "Press the dose button and grinding starts immediately — no portafilter switch needed." },
+            { "item": "Automatic", "value": "No dose buttons — press the portafilter switch once for single, twice quickly for double, three times for triple." },
+            { "item": "Preselection", "value": "Select the dose (stays selected), then press the portafilter switch once to start; stays selected for repeat use." }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "Manual grinding (hold the button) works independently of the mode above, for continuous or free-pour grinding. Dose times are adjustable under Settings → Change dose times — single dose 1.0–12.0 sec, double dose 1.0–25.0 sec (±0.1 sec tolerance), saved automatically on exit."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Adjusting Grind Size",
+          "items": [
+            "Press and hold the adjustment lock lever, on the back of the disk just under the hopper.",
+            "Turn the disk — clockwise for coarser, counter-clockwise for finer.",
+            "Release the lever to re-lock the disk in position."
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "You can adjust while the motor is running. Grind is stepless and micrometric, so small turns matter — grind a small test amount after each adjustment to check before committing to a full dose."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Daily Cleaning — End of Shift",
+          "items": [
+            "Power off and unplug before cleaning.",
+            "Close the locking slide, loosen the hopper fastening screw, and remove the hopper.",
+            "Remove the hopper lid, empty remaining beans back into their original bag, and seal it.",
+            "Wash the hopper (inside and outside) with warm water and a pH-neutral, unscented, food-safe degreaser — no abrasive sponges or aggressive detergents, not dishwasher-safe. Dry thoroughly with a soft cloth.",
+            {
+              "lead": "Grinding chamber",
+              "text": "use a soft, clean/sanitized brush and vacuum only to remove coffee residue. Never use water or detergent inside the chamber or on the burrs."
+            },
+            "Loosen the screw and pull out the coffee discharge tube (chute). Wash it with warm water and the same food-safe degreaser, dry with a soft cloth, and vacuum out the tube housing.",
+            "Wipe the exterior body with a soft cloth and food-safe cleaner only — no abrasive sponges, no water or steam jets on the machine body.",
+            "Reassemble: discharge tube back in and screwed down, then hopper back on and screwed down, then lid on. Refill with beans for the next shift.",
+            "Check the power cable, visually and by touch, for cuts, exposed wire, or plug damage. Replace only with an identical cable type if damaged."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Daily Cleaning — PRO Quick-Release Chamber",
+          "items": [
+            "Close the slide, unscrew and remove the bean hopper.",
+            "Vacuum loose beans and powder from the chamber collar.",
+            "Release the two quick-lock levers and pull out the removable chamber.",
+            "Brush-clean (soft, sanitized brush) the removable chamber and the fixed upper burr attached to it — dry only, no water or detergent, not dishwasher-safe.",
+            "Remove the anti-clumping foil blade, wash it with warm water and food-safe degreaser, and dry it.",
+            "Vacuum and brush-clean the main grinding chamber and the lower (mobile) burr — dry only.",
+            "Reinstall in order: foil blade, then the removable chamber (lock both levers fully closed), then the hopper."
+          ]
+        },
+        {
+          "type": "warning",
+          "items": [
+            "The grinder will not start unless both quick-release levers are fully closed — two internal microswitches block the motor otherwise.",
+            "Wear gloves when handling the burrs — edges are sharp."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Monthly Deep Clean",
+          "items": [
+            "Do this after the end-of-shift clean — the chamber must be completely empty of coffee, hopper detached.",
+            "Pour a dose of a commercial grinder-cleaning product (e.g. Puly Grind or similar food-safe grinder cleaner, in grain/crystal form) into the empty grinding chamber.",
+            "Run a grinding cycle — the product scrubs coffee oils, scale and rancid residue off the burrs without disassembly or losing the grind setting."
+          ]
+        },
+        {
+          "type": "prose",
+          "heading": "Burr Replacement",
+          "paragraphs": [
+            "A warning icon appears near the logo on the Home screen when the burrs are approaching their scheduled replacement point (based on hours of use or kg ground). You can keep grinding until the limit is reached; remaining life can be checked anytime under Settings → \"Replacing the grinders.\"",
+            "Burr replacement itself must be done by a qualified operator or technician using original Fiorenzato parts. After replacement, run \"Reset Grinder\" from Settings to zero the usage counter."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Quick Troubleshooting",
+          "headers": ["Problem", "Likely Cause", "Fix"],
+          "columns": ["problem", "cause", "fix"],
+          "rows": [
+            { "problem": "Won't power on", "cause": "No power", "fix": "Check the switch is on \"I\", check the circuit breaker, check cable/outlet." },
+            { "problem": "Beans won't drop into chamber", "cause": "Locking slide closed", "fix": "Open the slide." },
+            { "problem": "Grinder won't start (PRO models)", "cause": "Quick-release levers not fully closed", "fix": "Close both levers completely." },
+            { "problem": "Settings lost on restart", "cause": "Backup battery flat", "fix": "Contact service to replace the battery." },
+            { "problem": "Motor stops mid-grind", "cause": "Thermal cutout tripped — foreign object jammed the burrs", "fix": "Power off, unplug, let cool, open the chamber, remove the hopper, clear the obstruction, reassemble, retry." },
+            { "problem": "Warning icon on display", "cause": "Burrs near end of rated life", "fix": "Plan replacement — the grinder still works until the limit hits." }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "If any issue persists after these steps, contact the dealer rather than opening the machine further — anything involving the motor or electronics is technician-only."
+          ]
+        },
+        {
+          "type": "checklist",
+          "heading": "Daily Checklist",
+          "groups": [
+            {
+              "label": "Opening",
+              "items": [
+                "Power on",
+                "Fill hopper if needed",
+                "Dial in grind on the first shots of the day — taste/pull test shots"
+              ]
+            },
+            {
+              "label": "Closing",
+              "items": [
+                "Power off, unplug",
+                "Empty and wash hopper",
+                "Brush/vacuum grinding chamber — no water",
+                "Remove, wash, dry and reinsert discharge tube",
+                "Wipe down exterior",
+                "Check power cable condition",
+                "Reassemble and refill for next shift"
+              ]
+            }
           ]
         }
       ]
@@ -39,13 +177,16 @@
     {
       "numeral": "II",
       "title": "The Espresso Machine",
-      "subtitle": "Sanremo Zoe Compact, 2 Group",
+      "subtitle": "Sanremo Zoe Compact 208V, 2 Group",
       "blocks": [
         {
           "type": "prose",
           "paragraphs": [
-            "The Zoe Compact is a 2-group machine with independently PID-controlled boilers per group — each side can be dialed to its own brew temperature, useful for running more than one bean on the bar at once.",
-            "Temperature stability depends on a full warm-up before service. A machine that is merely powered on is not necessarily ready — give the boilers and group heads time to stabilize before pulling shots for guests."
+            "The Zoe Compact is a heat-exchanger, volumetric-control 2-group machine — it brews and steams simultaneously from a single boiler. This section assumes the SED (electronic/programmable) control panel.",
+            {
+              "lead": "Voltage",
+              "text": "this unit is wired for 208V (standard US 3-phase-derived commercial voltage) rather than the EU 220–240V spec in the base manual — operation and controls are identical, only the electrical hookup differs. Confirm amp draw and breaker sizing against the unit's own rating label, not EU figures."
+            }
           ]
         },
         {
@@ -53,18 +194,200 @@
           "heading": "Specifications",
           "rows": [
             { "item": "Groups", "value": "2" },
-            { "item": "Boiler Control", "value": "Independent PID per group" },
-            { "item": "Warm-Up Time", "value": "30–45 min before service" }
+            { "item": "System Type", "value": "Heat exchanger (brew + steam simultaneously)" },
+            { "item": "Boiler Capacity", "value": "7 litres (copper)" },
+            { "item": "Boiler Working Pressure", "value": "0.8–1 bar" },
+            { "item": "Coffee Delivery Pressure", "value": "8–9 bar" },
+            { "item": "Max Mains Water Pressure", "value": "6 bar (install a pressure reducer if higher)" },
+            { "item": "Dimensions (W × D × H)", "value": "530 × 528 × 543 mm" },
+            { "item": "Net Weight", "value": "~45 kg" }
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Controls Reference",
+          "headers": ["Control", "Function"],
+          "columns": ["item", "value"],
+          "rows": [
+            { "item": "B — Steam knobs", "value": "Two on this 2-group; turn counter-clockwise to open, clockwise to close." },
+            { "item": "C — Hot water spout", "value": "Dispenses hot water, controlled by M6." },
+            { "item": "D — Main power switch", "value": "0 = Off · 1 = Pump + electronics on · 2 = + heating element on." },
+            { "item": "E — Portafilter", "value": "Holds the filter basket; twist counter-clockwise into the group to lock." },
+            { "item": "F — Group head", "value": "The portafilter seat where shots brew." },
+            { "item": "M1–M4 — Dose buttons (SED)", "value": "Short single, long single, short double, long double." },
+            { "item": "M5 — Continuous / manual", "value": "Starts and stops a manual pour; also the programming button." },
+            { "item": "M6 — Hot water button", "value": "Press to start, press again to stop." },
+            { "item": "N — Pump pressure gauge", "value": "Shows pump/extraction pressure while pulling a shot." },
+            { "item": "P — Boiler pressure gauge", "value": "Double gauge — shows both boiler and pump pressure." },
+            { "item": "T — Cup warmer switch", "value": "If fitted, powers the cup-warming surface." }
           ]
         },
         {
           "type": "steps",
-          "heading": "Startup & Care",
+          "heading": "Daily Startup",
           "items": [
-            "[Placeholder] Describe the daily startup procedure here (power on, warm-up time, target temperatures).",
-            "[Placeholder] Describe the daily backflushing routine here (detergent, cycles, which groups).",
-            "[Placeholder] Describe the closing shutdown procedure here.",
-            "[Placeholder] Describe the weekly deep-clean here (steam wands, drip tray, gaskets)."
+            "Before switching on, confirm the water supply is open, the softener/filter line is connected with no leaks, and the drain line is properly positioned.",
+            "Open a steam knob, then turn the main switch to position 1. Wait for the boiler to auto-fill to its set level (probe-controlled) — this can take up to ~90 seconds.",
+            "Once filled, turn the switch to position 2 — this powers the heating element.",
+            "Close the steam knob once steam starts coming out, and watch the boiler pressure gauge: it should settle and hold at 0.8–1 bar.",
+            "The machine is ready once boiler pressure is stable — let it sit at temperature for 15–20 minutes before pulling shots for guests."
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "If the boiler doesn't finish filling within the timeout, the pump stops and the keypad LEDs flash — turn the switch to 0, then back to 1, to resume filling. Before every session, visually check: power plug fully seated, water inlet open, no visible leaks, drain hose clear."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Pulling Shots",
+          "items": [
+            "Insert the portafilter into the group by twisting counter-clockwise to lock it in.",
+            "Press M1 for a short/normal single, M2 for a long single, M3 for a short/normal double, or M4 for a long double.",
+            "M5 starts and stops a continuous manual pour, for a free-poured shot outside the programmed volumes."
+          ]
+        },
+        {
+          "type": "prose",
+          "heading": "Steam & Hot Water",
+          "paragraphs": [
+            "Steam: turn the knob counter-clockwise to open, clockwise to close. Nozzles are ball-jointed and swing or retract — use caution, risk of burns.",
+            "Hot water: press M6 to start, press again to stop. Delivery auto-stops after 4 minutes or 4 litres as a safety cutoff regardless.",
+            "Check the boiler pressure gauge shows 0.5–1 bar before drawing hot water or steam."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Programming Dose Volumes (SED)",
+          "items": [
+            "On the left-most group, hold M5 for more than 5 seconds. All M5 LEDs across groups start blinking.",
+            "Press the dose button to program (M1–M4). Let it pour to the target volume, then press that same button again to save.",
+            "Repeat for each of the 4 dose buttons. The hot water button (M6) can be programmed the same way.",
+            "Once the left group is programmed, the other groups automatically copy those settings — any group can still be reprogrammed independently afterward."
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "If a dose button's LED blinks after pressing it, that signals an electronic fault or a lack of water supply — dispensing still auto-stops after 4 min / 4 litres regardless."
+          ]
+        },
+        {
+          "type": "prose",
+          "heading": "Pre-Infusion (SED, Single-Dose Only)",
+          "paragraphs": [
+            "Pre-infusion wets the puck for 0.6 sec, then pauses 1.2 sec before full extraction.",
+            {
+              "lead": "To enable",
+              "text": "with the machine off, turn the switch to 1 while holding M1 on the left group until the M5 LED stays lit, then release M1. Turn the switch to 0, then back to 2, to save."
+            },
+            {
+              "lead": "To disable",
+              "text": "same process, holding M2 instead of M1, then power-cycle the switch to save."
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Daily Backflush (Each Group)",
+          "items": [
+            "Scrub the group head seal and dispersion screen with a group brush to clear loose grounds.",
+            "Place a blind (rubber or solid) filter basket into the portafilter.",
+            "Add a small, pea-sized amount of commercial espresso machine cleaning powder (e.g. Cafetto or Puly Caff) into the blind filter.",
+            "Lock the portafilter tightly into the group head.",
+            "Press buttons 1 and 5 together to start the automatic wash cycle. Let it run through its pre-set cycles — it will cycle water and pressure on/off several times and stop by itself.",
+            "Remove the portafilter, rinse it thoroughly under clean water, and dump out any dirty residue.",
+            {
+              "lead": "Rinse",
+              "text": "lock the same blind filter — no detergent this time — back into the group head. Press buttons 1 and 5 again to run a clean-water rinse cycle."
+            },
+            "Once the cycle finishes, remove the portafilter and wipe down the group area. Repeat the full backflush and rinse sequence for every group head."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Other Daily & Closing Tasks",
+          "items": [
+            "Rinse the filter basket and portafilter with hot water after the last coffee of the session. Replace if damaged, worn or clogged.",
+            "Remove the drip tray and grid frequently — clean off coffee residue and standing water to avoid odor or fermentation buildup, and run hot water through the drain to flush the tray.",
+            "Clean the exterior body and steel panels with a soft sponge or cloth only. No abrasive powders, solvents or steel wool — they will scratch the steel."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Periodic Maintenance",
+          "headers": ["Task", "Frequency"],
+          "columns": ["item", "value"],
+          "rows": [
+            { "item": "Replace inline water filter cartridge", "value": "~Every 3 months (adjust to water usage/quality)" },
+            { "item": "Flush boiler (fill/drain cycles) + run water & coffee to waste", "value": "Every 2–3 months, or after any period of disuse" },
+            { "item": "Water softener regeneration", "value": "Per softener manufacturer's schedule" },
+            { "item": "Check power cable condition", "value": "Regularly — replace only via a Sanremo service center" }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "A water softener/filter is not optional: unfiltered or hard water will damage internal components (pump, boiler, solenoid valves) and shortens the machine's life. Keep the inline filter clean — a clogged filter can starve the pump and cause cavitation damage."
+          ]
+        },
+        {
+          "type": "warning",
+          "heading": "Critical Don'ts",
+          "items": [
+            "Never run the pump dry — this overheats and destroys the pump, and damage from dry-running is not covered under warranty.",
+            "Never clean with a water jet, and never submerge the machine.",
+            "Don't install or operate near heat sources or outdoors.",
+            "Keep the machine level for safe operation, in an ambient temperature of 5°C–35°C.",
+            "The service area behind the panels is for trained personnel only — always disconnect power before removing any panel."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Basic Troubleshooting",
+          "headers": ["Symptom", "Likely Cause", "What to Check"],
+          "columns": ["symptom", "cause", "check"],
+          "rows": [
+            { "symptom": "Machine won't power on / boiler won't fill", "cause": "Power failure or no water supply", "check": "Check plug/outlet, confirm the water main is open and the supply line has no leaks or kinks." },
+            { "symptom": "Keypad LEDs flashing after startup", "cause": "Boiler didn't fill within the 90-sec timeout", "check": "Cycle the main switch: 0 → 1 to restart the fill." },
+            { "symptom": "Dose button LED blinks when pressed", "cause": "Electronic fault or lack of water supply", "check": "Check the water supply; if it persists, call a qualified Sanremo service tech." },
+            { "symptom": "Water/steam delivery stops on its own", "cause": "Built-in 4-minute / 4-litre safety cutoff", "check": "Normal safety behavior — restart delivery as needed." },
+            { "symptom": "Boiler pressure not holding 0.8–1 bar", "cause": "Pressure switch needs adjustment", "check": "Technician-only adjustment via an internal screw — don't DIY unless trained." },
+            { "symptom": "Noisy pump / pressure irregular", "cause": "Possible pump misalignment, dirty filter, or scale buildup", "check": "Check/replace the impurities filter; if persistent, call service — don't run the pump dry." }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "For any fault not listed here, or if a fix doesn't resolve the issue, contact a qualified Sanremo service center — do not open the machine body; always unplug it first if inspection is needed."
+          ]
+        },
+        {
+          "type": "checklist",
+          "heading": "Daily Checklist",
+          "groups": [
+            {
+              "label": "Opening",
+              "items": [
+                "Confirm water supply open, no leaks",
+                "Power switch: position 1 → wait for boiler fill → position 2",
+                "Confirm boiler pressure settles at 0.8–1 bar",
+                "Let the machine sit ~15–20 min to stabilize before first shots",
+                "Purge steam wands briefly"
+              ]
+            },
+            {
+              "label": "Closing",
+              "items": [
+                "Backflush all groups with blind filter + cleaner, then rinse cycle",
+                "Rinse filter baskets and portafilters",
+                "Remove and clean drip tray/grid",
+                "Wipe down exterior with soft cloth — no abrasives",
+                "Wipe steam wands, purge once more",
+                "Visual check of power cable and water lines for damage/leaks"
+              ]
+            }
           ]
         }
       ]
@@ -203,7 +526,7 @@
               "term": "Cleaning Kit",
               "spec": "Blind basket, group brush, detergent",
               "use": [
-                "Backflush at the intervals set out in The Espresso Machine's Startup & Care.",
+                "Backflush daily per The Espresso Machine's Daily Backflush steps.",
                 "Brush the group head daily; deep-clean the shower screen and gasket weekly."
               ],
               "note": "A clean group head is a taste issue before it's a hygiene one — old coffee oils turn rancid fast."

@@ -136,6 +136,15 @@ def stylesheet() -> str:
         border-collapse: collapse;
     }
     table.specs tr { break-inside: avoid; }
+    table.specs th {
+        text-align: left;
+        font-size: 8.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        padding: 0 10px 4px 0;
+        border-bottom: 1px solid #1a1a1a;
+    }
     table.specs td {
         padding: 5px 10px 5px 0;
         border-bottom: 1px solid #ddd;
@@ -150,6 +159,7 @@ def stylesheet() -> str:
     table.specs td.value {
         color: #333;
     }
+    table.specs.multi td.item { width: auto; }
 
     ol.steps {
         margin: 0;
@@ -199,10 +209,48 @@ def stylesheet() -> str:
         border-left: 3px solid #1a1a1a;
         background: #f3f3f3;
         padding: 8px 10px;
+        font-size: 9.5px;
+    }
+    .warning.single {
         font-weight: 700;
         text-transform: uppercase;
-        font-size: 9.5px;
         letter-spacing: 0.02em;
+    }
+    .warning ul {
+        margin: 0;
+        padding-left: 16px;
+    }
+    .warning li {
+        margin: 0 0 4px 0;
+        font-weight: 700;
+    }
+    .warning li:last-child { margin-bottom: 0; }
+
+    .checklist { display: flex; gap: 24px; }
+    .checklist .group { flex: 1; }
+    .checklist .group h4 {
+        font-size: 9.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #333;
+        margin: 0 0 6px 0;
+    }
+    .checklist ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .checklist li {
+        margin: 0 0 5px 0;
+        padding-left: 16px;
+        position: relative;
+    }
+    .checklist li::before {
+        content: "\\2610";
+        position: absolute;
+        left: 0;
+        color: #666;
     }
     """
 
@@ -213,13 +261,21 @@ def _lead_html(entry) -> str:
     return escape(entry)
 
 
-def build_table(rows) -> str:
+def build_table(rows, headers=None, columns=None) -> str:
+    columns = columns or ["item", "value"]
+    thead = ""
+    css_class = "specs"
+    if headers:
+        thead = "<thead><tr>" + "".join(f"<th>{escape(h)}</th>" for h in headers) + "</tr></thead>"
+        css_class += " multi"
     trs = "".join(
-        f'<tr><td class="item">{escape(r["item"])}</td>'
-        f'<td class="value">{escape(r["value"])}</td></tr>'
+        "<tr>" + "".join(
+            f'<td class="{"item" if i == 0 else "value"}">{escape(r[col])}</td>'
+            for i, col in enumerate(columns)
+        ) + "</tr>"
         for r in rows
     )
-    return f'<table class="specs">{trs}</table>'
+    return f'<table class="{css_class}">{thead}{trs}</table>'
 
 
 def build_steps(items) -> str:
@@ -245,6 +301,17 @@ def build_deflist(items) -> str:
     return f'<dl class="deflist">{"".join(entries)}</dl>'
 
 
+def build_checklist(groups) -> str:
+    cols = "".join(
+        '<div class="group">'
+        f'<h4>{escape(g["label"])}</h4>'
+        "<ul>" + "".join(f"<li>{escape(item)}</li>" for item in g["items"]) + "</ul>"
+        "</div>"
+        for g in groups
+    )
+    return f'<div class="checklist">{cols}</div>'
+
+
 def build_block(block) -> str:
     kind = block["type"]
     heading = f'<h3>{escape(block["heading"])}</h3>' if block.get("heading") else ""
@@ -253,13 +320,19 @@ def build_block(block) -> str:
         body = "".join(f"<p>{_lead_html(p)}</p>" for p in block["paragraphs"])
         return f'<div class="block prose">{heading}{body}</div>'
     if kind == "table":
-        return f'<div class="block">{heading}{build_table(block["rows"])}</div>'
+        table = build_table(block["rows"], block.get("headers"), block.get("columns"))
+        return f'<div class="block">{heading}{table}</div>'
     if kind == "steps":
         return f'<div class="block">{heading}{build_steps(block["items"])}</div>'
     if kind == "deflist":
         return f'<div class="block">{heading}{build_deflist(block["items"])}</div>'
+    if kind == "checklist":
+        return f'<div class="block">{heading}{build_checklist(block["groups"])}</div>'
     if kind == "warning":
-        return f'<div class="block warning">{escape(block["text"])}</div>'
+        if block.get("items"):
+            body = "<ul>" + "".join(f"<li>{escape(t)}</li>" for t in block["items"]) + "</ul>"
+            return f'<div class="block warning">{heading}{body}</div>'
+        return f'<div class="block warning single">{escape(block["text"])}</div>'
     raise ValueError(f"unknown block type: {kind}")
 
 
