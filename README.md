@@ -190,9 +190,10 @@ Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo,
 
 **Syrups** — Vanilla, Banana Bread, Strawberry and Mango are real, confirmed recipes.
 Caramel and Honey Cinnamon are draft reference recipes (a lightly salted caramel sauce; a
-gently warmed honey-and-cinnamon syrup) standing in until the real ones are confirmed —
-each says so in its own `note`. **Cold Foam** is filled in too — the 2:1:1 cream/milk/syrup
-ratio, the base batch, and the two-stage whip-then-texture method.
+gently warmed honey-and-cinnamon syrup) standing in until the real ones are confirmed — the
+page itself reads clean, with no draft/pending language on it; the status lives here in the
+README instead. **Cold Foam** is filled in too — the 2:1:1 cream/milk/syrup ratio, the base
+batch, and the two-stage whip-then-texture method.
 
 ### Adding a syrup
 
@@ -252,7 +253,9 @@ Same brand system again, three chapters:
 > number, and needs a pass once the espresso bean tasting lands to match the actual beans,
 > machine and house pours. Two of the four syrups behind Signature Coffees (Caramel, Honey
 > Cinnamon) are themselves draft recipes in `syrups.json` for the same reason — see that
-> section above.
+> section above. None of this shows up as visible draft/pending language on the pages
+> themselves — by request, the PDF reads clean; this status note is the only place it's
+> tracked.
 
 ## Equipment & Bar Manual (`data/equipment-manual.json`)
 

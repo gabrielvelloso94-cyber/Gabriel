@@ -219,8 +219,7 @@
           "photo": "vanilla-latte.jpg",
           "measures": [
             { "item": "Vanilla Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
-          ],
-          "note": "Standard recipe, pending confirmation after the espresso bean tasting."
+          ]
         },
         {
           "name": "Caramel Latte",
@@ -228,7 +227,7 @@
           "measures": [
             { "item": "Caramel Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
           ],
-          "note": "Standard recipe, pending confirmation after the espresso bean tasting. Optional garnish — a light caramel drizzle on top."
+          "note": "Optional garnish — a light caramel drizzle on top."
         },
         {
           "name": "Honey Cinnamon Latte",
@@ -236,15 +235,14 @@
           "measures": [
             { "item": "Honey Cinnamon Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
           ],
-          "note": "Standard recipe, pending confirmation after the espresso bean tasting. Optional garnish — a light dusting of ground cinnamon on top."
+          "note": "Optional garnish — a light dusting of ground cinnamon on top."
         },
         {
           "name": "Banana Bread Latte",
           "photo": "banana-bread-latte.jpg",
           "measures": [
             { "item": "Banana Bread Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
-          ],
-          "note": "Standard recipe, pending confirmation after the espresso bean tasting."
+          ]
         }
       ]
     }
