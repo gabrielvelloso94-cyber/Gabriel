@@ -71,6 +71,44 @@
           "note": "Keeps refrigerated for 3–4 weeks."
         },
         {
+          "name": "Caramel Syrup",
+          "ingredients": [
+            { "item": "Sugar", "qty": "1 cup" },
+            { "item": "Water", "qty": "1/4 cup" },
+            { "item": "Heavy Cream, warmed", "qty": "1/2 cup" },
+            { "item": "Unsalted Butter", "qty": "2 tbsp" },
+            { "item": "Salt", "qty": "1/2 tsp" }
+          ],
+          "method": [
+            "Warm the cream (stovetop or microwave) and set aside.",
+            "Combine the sugar and water in a saucepan over medium heat. Don't stir — swirl the pan occasionally to help it dissolve evenly.",
+            "Cook until the sugar turns a deep amber color, watching closely — it can go from amber to burnt in seconds.",
+            "Remove from heat and carefully whisk in the warm cream — it will bubble vigorously.",
+            "Whisk in the butter and salt until smooth.",
+            "Let cool, then transfer to a bottle or jar."
+          ],
+          "yield": "Yield — ≈ 360 ml",
+          "note": "Draft recipe, standard reference pending confirmation — a lightly salted caramel. Keeps refrigerated for about 2 weeks; warm slightly if it thickens too much in the fridge."
+        },
+        {
+          "name": "Honey Cinnamon Syrup",
+          "ingredients": [
+            { "item": "Honey", "qty": "1 cup" },
+            { "item": "Water", "qty": "1/2 cup" },
+            { "item": "Cinnamon Sticks", "qty": "2" },
+            { "item": "Salt", "qty": "pinch" }
+          ],
+          "method": [
+            "Combine the honey, water and cinnamon sticks in a saucepan over low-medium heat.",
+            "Warm gently, stirring to dissolve the honey into the water — do not boil, to protect the honey's flavor.",
+            "Once combined, remove from heat and let the cinnamon steep for 15–20 minutes.",
+            "Remove the cinnamon sticks, stir in a pinch of salt, then let cool.",
+            "Transfer to a bottle or jar."
+          ],
+          "yield": "Yield — ≈ 360 ml",
+          "note": "Draft recipe, standard reference pending confirmation. Keeps refrigerated for about 2 weeks."
+        },
+        {
           "name": "Mango Syrup",
           "ingredients": [
             { "item": "Mango, fresh or frozen", "qty": "250 g" },

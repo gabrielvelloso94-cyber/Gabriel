@@ -10,7 +10,7 @@ stylesheet and page builder in `build/generate_equipment.py`.
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 11 pages | Content complete, 2 draft recipes — see note below |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
 | Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 8 pages | Mostly real content — see note below |
 
@@ -62,9 +62,15 @@ divider + its pages). A section's `"kind"` decides what its pages look like:
 
 | `kind` | Pages | Used by |
 | --- | --- | --- |
-| *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas |
+| *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas, Signature Coffees |
 | `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam, Espresso Basics |
 | `"simple"` | One plain recipe per item — name, one spec/ingredients list, Method. No photo; sized 12oz/16oz columns if the item sets `"sized": true`, one plain quantity column otherwise. A section can rename the two column headings via `specLabel` / `methodLabel` (default "Ingredients" / "Method") | Syrups, Espresso Classics, Barista Tools ("Specs" / "Use") |
+
+A default-kind item normally has one `method`. When a drink is served both ways, give it
+`methodHot` and `methodIced` instead (or set `defaultMethodHot`/`defaultMethodIced` at the
+section level, like Signature Coffees does) — the Method column splits into two side-by-side
+sub-columns instead of one, each independently numbered. This only activates when both are
+present; a plain `method` list still renders as the single full-width column it always has.
 
 A section can also be `"expandable": true` (independent of `kind`), which gives it the
 "Open chapter" index treatment and a closing "More to come" card instead of ending flush —
@@ -182,9 +188,11 @@ heading), and `method`. To change any of it, edit those keys in `catalog.json` a
 Same brand system as the Matcha Catalogue, deliberately simpler pages: no photo, no
 12oz/16oz split, since these are build components, not menu drinks.
 
-**Syrups** (Vanilla, Banana Bread, Strawberry, Mango) are real recipes. **Cold Foam** is
-filled in too — the 2:1:1 cream/milk/syrup ratio, the base batch, and the two-stage
-whip-then-texture method.
+**Syrups** — Vanilla, Banana Bread, Strawberry and Mango are real, confirmed recipes.
+Caramel and Honey Cinnamon are draft reference recipes (a lightly salted caramel sauce; a
+gently warmed honey-and-cinnamon syrup) standing in until the real ones are confirmed —
+each says so in its own `note`. **Cold Foam** is filled in too — the 2:1:1 cream/milk/syrup
+ratio, the base batch, and the two-stage whip-then-texture method.
 
 ### Adding a syrup
 
@@ -230,17 +238,21 @@ Same brand system again, three chapters:
   (shot / milk / foam) rather than a recipe — these are fixed drinks, not proprietary
   ones. Cappuccino and both Lattes are `"sized": true` (12oz/16oz columns, `yield` reads
   "Serves 1"); the rest are one plain quantity column with `yield` as a Cup-size caption.
-- **Signature Coffees** (default `kind`, full drink page) — the four iced lattes, carried
-  over from the Matcha Catalogue when it split out. Same shape as Signature Matchas: photo
-  (or placeholder), sized Measures, Method.
+- **Signature Coffees** (default `kind`, full drink page) — the four lattes (Vanilla,
+  Caramel, Honey Cinnamon, Banana Bread), each built on the house double shot and its own
+  homemade syrup (1 oz / 1.5 oz, same scaling as Signature Matchas), served hot or iced.
+  Method splits into two side-by-side columns — `defaultMethodHot` / `defaultMethodIced` at
+  the section level, since all four follow the same pour, only the syrup differs — rather
+  than one Method list per drink.
 
-> **Status: draft.** The house double shot (2 oz) is the number already confirmed for
-> Signature Coffees. Everything built on top of it — Espresso Basics' dose (18 g) and
-> extraction time (25–30 sec), and every Espresso Classic's milk/foam/cup spec — is a
-> standard barista-training default, not this bar's confirmed number, and needs a pass to
-> match your actual beans, machine and house pours. Signature Coffees is untouched
-> placeholder, same starting point Signature Matchas had before its real syrups and method
-> came in.
+> **Status: draft, standard reference.** The house double shot (2 oz) is the number already
+> confirmed for Signature Coffees. Everything built on top of it — Espresso Basics' dose
+> (18 g) and extraction time (25–30 sec), every Espresso Classic's milk/foam/cup spec, and
+> the Signature Coffees' hot/iced method — is a standard default, not this bar's confirmed
+> number, and needs a pass once the espresso bean tasting lands to match the actual beans,
+> machine and house pours. Two of the four syrups behind Signature Coffees (Caramel, Honey
+> Cinnamon) are themselves draft recipes in `syrups.json` for the same reason — see that
+> section above.
 
 ## Equipment & Bar Manual (`data/equipment-manual.json`)
 

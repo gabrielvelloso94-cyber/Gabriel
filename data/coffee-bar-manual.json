@@ -197,15 +197,55 @@
       "id": "signature-coffees",
       "label": "Signature Coffees",
       "numeral": "III",
-      "blurb": "Single-origin espresso, built slow and served cold.",
+      "blurb": "Single-origin espresso and homemade syrup, served hot or over ice.",
       "defaultMeasures": [
         { "item": "Espresso (double shot)", "qty12": "2 oz", "qty16": "2 oz" }
       ],
+      "defaultMethodHot": [
+        "Add the syrup to the cup.",
+        "Pull the double shot directly over the syrup and stir to combine.",
+        "Steam milk to a thin microfoam and pour to fill, finishing with a thin foam layer.",
+        "Serve immediately."
+      ],
+      "defaultMethodIced": [
+        "Add the syrup to the cup, then fill with ice.",
+        "Pour milk of choice over the ice, leaving room for the espresso.",
+        "Pull the double shot over the ice and let it cascade through.",
+        "Stir and serve."
+      ],
       "drinks": [
-        { "name": "Vanilla Latte", "photo": "vanilla-latte.jpg" },
-        { "name": "Caramel Latte", "photo": "caramel-latte.jpg" },
-        { "name": "Honey Cinnamon Latte", "photo": "honey-cinnamon-latte.jpg" },
-        { "name": "Banana Bread Latte", "photo": "banana-bread-latte.jpg" }
+        {
+          "name": "Vanilla Latte",
+          "photo": "vanilla-latte.jpg",
+          "measures": [
+            { "item": "Vanilla Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ],
+          "note": "Standard recipe, pending confirmation after the espresso bean tasting."
+        },
+        {
+          "name": "Caramel Latte",
+          "photo": "caramel-latte.jpg",
+          "measures": [
+            { "item": "Caramel Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ],
+          "note": "Standard recipe, pending confirmation after the espresso bean tasting. Optional garnish — a light caramel drizzle on top."
+        },
+        {
+          "name": "Honey Cinnamon Latte",
+          "photo": "honey-cinnamon-latte.jpg",
+          "measures": [
+            { "item": "Honey Cinnamon Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ],
+          "note": "Standard recipe, pending confirmation after the espresso bean tasting. Optional garnish — a light dusting of ground cinnamon on top."
+        },
+        {
+          "name": "Banana Bread Latte",
+          "photo": "banana-bread-latte.jpg",
+          "measures": [
+            { "item": "Banana Bread Syrup", "qty12": "1 oz", "qty16": "1.5 oz" }
+          ],
+          "note": "Standard recipe, pending confirmation after the espresso bean tasting."
+        }
       ]
     }
   ],

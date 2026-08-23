@@ -531,6 +531,16 @@ html,body{
   color:var(--sage);
 }
 
+.method-split{display:flex;flex-direction:row;gap:6mm;}
+.method-split .method-col{flex:1;min-width:0;}
+.method-split .method li{
+  font-size:9pt;
+  line-height:1.32;
+  padding-left:7mm;
+  padding-bottom:1.8mm;
+}
+.method-split .method li::before{font-size:6pt;}
+
 .note{
   margin-top:auto;
   padding-top:3mm;
@@ -813,6 +823,8 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
     # Ice, milk and cold foam aren't measured, so they live in the Method text
     # instead of a fabricated "to taste" ingredients row.
     measures = [*section.get("defaultMeasures", []), *drink.get("measures", [])]
+    method_hot = drink.get("methodHot") or section.get("defaultMethodHot")
+    method_iced = drink.get("methodIced") or section.get("defaultMethodIced")
     method = drink.get("method") or section.get("defaultMethod") or defaults["method"]
     serves = drink.get("serves", defaults.get("serves", ""))
     note = drink.get("note")  # no fallback: an unfinished note would read as real copy
@@ -839,8 +851,31 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
       {serves_html}
     </div>"""
 
-    method_html = "".join(f"<li>{escape(step)}</li>" for step in method)
     note_html = f'<div class="note">{escape(note)}</div>' if note else ""
+
+    if method_hot and method_iced:
+        hot_html = "".join(f"<li>{escape(step)}</li>" for step in method_hot)
+        iced_html = "".join(f"<li>{escape(step)}</li>" for step in method_iced)
+        method_section = f"""
+    <div class="col-method method-split">
+      <div class="method-col">
+        <div class="caps col-label">Method &mdash; Hot</div>
+        <ol class="method">{hot_html}</ol>
+      </div>
+      <div class="method-col">
+        <div class="caps col-label">Method &mdash; Iced</div>
+        <ol class="method">{iced_html}</ol>
+      </div>
+    </div>
+    {note_html}"""
+    else:
+        method_html = "".join(f"<li>{escape(step)}</li>" for step in method)
+        method_section = f"""
+    <div class="col-method">
+      <div class="caps col-label">Method</div>
+      <ol class="method">{method_html}</ol>
+      {note_html}
+    </div>"""
 
     singular = section["label"].rstrip("s") if section["label"].endswith("s") else section["label"]
 
@@ -855,12 +890,7 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
     <div class="script">{escape(drink["name"])}</div>
   </div>
   {build_shot(drink)}
-  <div class="recipe">{measures_block}
-    <div class="col-method">
-      <div class="caps col-label">Method</div>
-      <ol class="method">{method_html}</ol>
-      {note_html}
-    </div>
+  <div class="recipe">{measures_block}{method_section}
   </div>
   <div class="drink-foot">
     {mark_img("logo-script", "sage", "mark") or f'<span class="mark-text script">{escape(brand["scriptName"])}</span>'}
