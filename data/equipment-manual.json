@@ -1,234 +1,198 @@
 {
-  "brand": {
-    "scriptName": "Matcha",
-    "serifName": "On Ice",
-    "capsName": "Cafe",
-    "tagline": "Equipment, Setup & Technical Sheets",
-    "year": "2026",
-    "footer": "Matcha On Ice Cafe"
-  },
   "documentTitle": "Matcha On Ice Cafe — Equipment & Bar Manual",
-  "sections": [
+  "footer": "Matcha On Ice Cafe — Equipment & Bar Manual",
+  "chapters": [
     {
-      "id": "grinder",
-      "kind": "foundation",
-      "label": "The Grinder",
       "numeral": "I",
-      "blurb": "Fiorenzato E64 Evo Pro — 64mm flat burrs, on-demand dosing, stepless adjustment.",
-      "story": {
-        "eyebrow": "The Grinder",
-        "heading": "Fiorenzato E64 Evo Pro",
-        "shortLabel": "About",
-        "body": [
-          "The E64 Evo Pro is a 64mm flat-burr commercial grinder built for on-demand dosing — it grinds fresh for each shot rather than sitting pre-ground in a hopper, dosed through a programmable touchscreen rather than a mechanical doser.",
-          "Grind size is set with a stepless micrometric adjustment collar, so there's no click-stops to count. Dial in gradually and taste — or better, time the shot — rather than chasing a specific number on the collar."
-        ],
-        "callout": {
-          "label": "Grind Adjustment",
-          "range": "Stepless",
-          "sub": "no click-stops",
-          "note": "There's no \"correct number\" — only what lands the shot in the 25–30 sec window from Espresso Basics. Adjust in small increments and re-taste."
-        }
-      },
-      "measureBlocks": [
+      "title": "The Grinder",
+      "subtitle": "Fiorenzato E64 Evo Pro",
+      "blocks": [
         {
-          "type": "single",
-          "label": "Specifications",
+          "type": "prose",
+          "paragraphs": [
+            "The E64 Evo Pro is a 64 mm flat-burr commercial grinder built for on-demand dosing — it grinds fresh for each shot rather than sitting pre-ground in a hopper, dosed through a programmable touchscreen rather than a mechanical doser.",
+            "Grind size is set with a stepless micrometric adjustment collar, so there are no click-stops to count. Dial in gradually and taste — or better, time the shot — rather than chasing a specific number on the collar. There is no single correct setting: only what lands the shot in the 25–30 second extraction window (see Coffee Bar Manual, Espresso Basics). Adjust in small increments and re-taste."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Specifications",
           "rows": [
-            { "item": "Burr Size", "qty": "64 mm" },
-            { "item": "Burr Type", "qty": "Flat" },
-            { "item": "Dosing", "qty": "On-demand" },
-            { "item": "Adjustment", "qty": "Stepless" }
+            { "item": "Burr Size", "value": "64 mm" },
+            { "item": "Burr Type", "value": "Flat" },
+            { "item": "Dosing", "value": "On-demand" },
+            { "item": "Adjustment", "value": "Stepless (no click-stops)" }
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Dial-In & Care",
+          "items": [
+            "[Placeholder] Describe the daily startup procedure here (power on, warm-up time before the first grind).",
+            "[Placeholder] Describe how to select or program a dose on the touchscreen here.",
+            "[Placeholder] Describe the daily cleaning routine here (hopper, chute, exterior).",
+            "[Placeholder] Describe the weekly deep-clean here (burr removal, brush-down)."
           ]
         }
-      ],
-      "recipesPage": { "heading": "Dial-In & Care", "shortLabel": "Dial-In & Care" },
-      "method": [
-        "Step 1: Describe the daily startup procedure here (power on, warm-up time before the first grind).",
-        "Step 2: Describe how to select or program a dose on the touchscreen here.",
-        "Step 3: Describe the daily cleaning routine here (hopper, chute, exterior).",
-        "Step 4: Describe the weekly deep-clean here (burr removal, brush-down)."
-      ],
-      "drinks": [
-        { "name": "Fiorenzato E64 Evo Pro" },
-        { "name": "Dial-In & Care" }
       ]
     },
     {
-      "id": "espresso-machine",
-      "kind": "foundation",
-      "label": "The Espresso Machine",
       "numeral": "II",
-      "blurb": "Sanremo Zoe Compact, 2 group — independent PID-controlled boilers per group.",
-      "story": {
-        "eyebrow": "The Espresso Machine",
-        "heading": "Sanremo Zoe Compact",
-        "shortLabel": "About",
-        "body": [
-          "The Zoe Compact is a 2-group machine with independently PID-controlled boilers per group — each side can be dialed to its own brew temperature, useful for running more than one bean on the bar at once.",
-          "Temperature stability depends on a full warm-up before service. A machine that's merely \"on\" isn't necessarily ready — give the boilers and group heads time to stabilize before pulling shots for guests."
-        ],
-        "callout": {
-          "label": "Warm-Up Time",
-          "range": "30–45 min",
-          "sub": "before service",
-          "note": "Pull and discard a couple of shots once warm to confirm both groups are stable and matched."
-        }
-      },
-      "measureBlocks": [
+      "title": "The Espresso Machine",
+      "subtitle": "Sanremo Zoe Compact, 2 Group",
+      "blocks": [
         {
-          "type": "single",
-          "label": "Specifications",
+          "type": "prose",
+          "paragraphs": [
+            "The Zoe Compact is a 2-group machine with independently PID-controlled boilers per group — each side can be dialed to its own brew temperature, useful for running more than one bean on the bar at once.",
+            "Temperature stability depends on a full warm-up before service. A machine that is merely powered on is not necessarily ready — give the boilers and group heads time to stabilize before pulling shots for guests."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Specifications",
           "rows": [
-            { "item": "Groups", "qty": "2" },
-            { "item": "Boiler Control", "qty": "Independent PID per group" }
+            { "item": "Groups", "value": "2" },
+            { "item": "Boiler Control", "value": "Independent PID per group" },
+            { "item": "Warm-Up Time", "value": "30–45 min before service" }
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Startup & Care",
+          "items": [
+            "[Placeholder] Describe the daily startup procedure here (power on, warm-up time, target temperatures).",
+            "[Placeholder] Describe the daily backflushing routine here (detergent, cycles, which groups).",
+            "[Placeholder] Describe the closing shutdown procedure here.",
+            "[Placeholder] Describe the weekly deep-clean here (steam wands, drip tray, gaskets)."
           ]
         }
-      ],
-      "recipesPage": { "heading": "Startup & Care", "shortLabel": "Startup & Care" },
-      "method": [
-        "Step 1: Describe the daily startup procedure here (power on, warm-up time, target temperatures).",
-        "Step 2: Describe the daily backflushing routine here (detergent, cycles, which groups).",
-        "Step 3: Describe the closing shutdown procedure here.",
-        "Step 4: Describe the weekly deep-clean here (steam wands, drip tray, gaskets)."
-      ],
-      "drinks": [
-        { "name": "Sanremo Zoe Compact" },
-        { "name": "Startup & Care" }
       ]
     },
     {
-      "id": "steaming-milk",
-      "kind": "foundation",
-      "label": "Steaming Milk",
       "numeral": "III",
-      "blurb": "Stretch, then texture — the two stages behind velvety microfoam.",
-      "story": {
-        "eyebrow": "Steaming Milk",
-        "heading": "Microfoam",
-        "shortLabel": "About",
-        "body": [
-          "Good microfoam is glossy and velvety, with no visible bubbles — thick enough to hold latte art, light enough to integrate into the drink rather than sitting on top like dry foam.",
-          "It's built in two stages, the same logic as Cold Foam: first stretch, incorporating air near the surface while the milk is still cool and the volume grows; then texture, submerging the wand to spin that air into the milk until it's smooth."
-        ],
-        "callout": {
-          "label": "Target Temperature",
-          "range": "150°F – 155°F",
-          "sub": "65°C – 68°C",
-          "note": "Stop just before this range — residual heat carries it the rest of the way. Past 170°F / 77°C, milk scalds and turns sweet-flat."
-        }
-      },
-      "measureBlocks": [
+      "title": "Steaming Milk",
+      "subtitle": "Microfoam Technique",
+      "blocks": [
         {
-          "type": "single",
-          "label": "Steam Wand Setup",
+          "type": "prose",
+          "paragraphs": [
+            "Good microfoam is glossy and velvety with no visible bubbles — thick enough to hold latte art, light enough to integrate into the drink rather than sitting on top like dry foam.",
+            "It is built in two stages, the same logic as Cold Foam: first stretch, incorporating air near the surface while the milk is still cool and the volume grows; then texture, submerging the wand to spin that air into the milk until smooth."
+          ]
+        },
+        {
+          "type": "table",
+          "heading": "Setup & Target",
           "rows": [
-            { "item": "Pitcher Fill (before steaming)", "qty": "1/3 – 1/2 full" },
-            { "item": "Tip Depth — Stretch", "qty": "Just below the surface" },
-            { "item": "Tip Depth — Texture", "qty": "Fully submerged, angled to spin" }
+            { "item": "Target Temperature", "value": "150°F – 155°F (65°C – 68°C)" },
+            { "item": "Pitcher Fill (before steaming)", "value": "1/3 – 1/2 full" },
+            { "item": "Tip Depth — Stretch", "value": "Just below the surface" },
+            { "item": "Tip Depth — Texture", "value": "Fully submerged, angled to spin" }
+          ]
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "Stop just before the target range — residual heat carries it the rest of the way. Past 170°F / 77°C, milk scalds and turns sweet-flat."
+          ]
+        },
+        {
+          "type": "steps",
+          "heading": "Technique",
+          "items": [
+            "Purge the wand briefly to clear condensation before steaming.",
+            "Submerge the tip just below the surface, slightly off-center, to begin stretching — a light hissing or tearing sound means air is incorporating.",
+            "Once the volume has grown by about a third, submerge the tip fully and angle it to create a whirlpool, texturing out any large bubbles.",
+            "Keep spinning the milk until the pitcher is warm to the touch and near the target temperature.",
+            "Purge and wipe the wand immediately after every use.",
+            "Tap the pitcher on the counter and swirl to pop any remaining bubbles before pouring."
           ]
         }
-      ],
-      "recipesPage": { "heading": "Technique", "shortLabel": "Technique" },
-      "method": [
-        "Purge the wand briefly to clear condensation before steaming.",
-        "Submerge the tip just below the surface, slightly off-center, to begin stretching — a light hissing or tearing sound means air is incorporating.",
-        "Once the volume has grown by about a third, submerge the tip fully and angle it to create a whirlpool, texturing out any large bubbles.",
-        "Keep spinning the milk until the pitcher is warm to the touch and near the target temperature.",
-        "Purge and wipe the wand immediately after every use.",
-        "Tap the pitcher on the counter and swirl to pop any remaining bubbles before pouring."
-      ],
-      "drinks": [
-        { "name": "Microfoam" },
-        { "name": "Technique" }
       ]
     },
     {
-      "id": "barista-tools",
-      "kind": "simple",
-      "label": "Barista Tools",
       "numeral": "IV",
-      "blurb": "The kit on the bar — what each piece is for, and how to keep it that way.",
-      "specLabel": "Specs",
-      "methodLabel": "Use",
-      "drinks": [
+      "title": "Barista Tools",
+      "subtitle": "The Kit on the Bar",
+      "blocks": [
         {
-          "name": "Tamper",
-          "ingredients": [
-            { "item": "Size", "qty": "58 mm" },
-            { "item": "Base", "qty": "Flat" }
-          ],
-          "method": [
-            "Distribute the grounds evenly before tamping.",
-            "Tamp level and firm, straight down — consistent pressure, not forced."
-          ],
-          "note": "An off-level tamp is one of the most common causes of channeling."
+          "type": "deflist",
+          "heading": "Tools",
+          "items": [
+            {
+              "term": "Tamper",
+              "spec": "58 mm, flat base",
+              "use": [
+                "Distribute the grounds evenly before tamping.",
+                "Tamp level and firm, straight down — consistent pressure, not forced."
+              ],
+              "note": "An off-level tamp is one of the most common causes of channeling."
+            },
+            {
+              "term": "WDT Tool",
+              "spec": "Fine-gauge tines",
+              "use": [
+                "Stir through the dose in a circular motion after grinding, before tamping.",
+                "Break up any clumps and redistribute the grounds evenly across the basket."
+              ],
+              "note": "Especially useful on darker roasts, which clump more from surface oils."
+            },
+            {
+              "term": "Digital Scale",
+              "spec": "0.1 g precision",
+              "use": [
+                "Weigh the dose before grinding.",
+                "Weigh the shot as it pulls, to hit the target yield."
+              ],
+              "note": "Dose, yield and time together — not the clock alone — is what makes a shot repeatable."
+            },
+            {
+              "term": "Milk Pitchers",
+              "spec": "12 oz / 20 oz / 32 oz",
+              "use": [
+                "Match the pitcher to the drink — a smaller pour is easier to control in a smaller pitcher.",
+                "Fill no more than halfway before steaming, to leave room for the milk to expand."
+              ],
+              "note": "Rinse immediately after each use — dried milk is the hardest to get out."
+            },
+            {
+              "term": "Knock Box",
+              "spec": "Rubber-lined",
+              "use": [
+                "Knock the spent puck out of the portafilter with a firm, single motion.",
+                "Empty and rinse it out through service, not just at close."
+              ],
+              "note": "A full knock box slows everyone down — empty it before it's overflowing."
+            },
+            {
+              "term": "Puck Screen",
+              "spec": "58 mm",
+              "use": [
+                "Place on top of the dose before tamping.",
+                "Wipe clean between shots; it keeps the group head cleaner and reduces channeling."
+              ],
+              "note": "Not a substitute for a good distribution and tamp — it just keeps the mess contained."
+            },
+            {
+              "term": "Cleaning Kit",
+              "spec": "Blind basket, group brush, detergent",
+              "use": [
+                "Backflush at the intervals set out in The Espresso Machine's Startup & Care.",
+                "Brush the group head daily; deep-clean the shower screen and gasket weekly."
+              ],
+              "note": "A clean group head is a taste issue before it's a hygiene one — old coffee oils turn rancid fast."
+            }
+          ]
         },
         {
-          "name": "WDT Tool",
-          "ingredients": [
-            { "item": "Tines", "qty": "Fine gauge" }
-          ],
-          "method": [
-            "Stir through the dose in a circular motion after grinding, before tamping.",
-            "Break up any clumps and redistribute the grounds evenly across the basket."
-          ],
-          "note": "Especially useful on darker roasts, which clump more from surface oils."
-        },
-        {
-          "name": "Digital Scale",
-          "ingredients": [
-            { "item": "Precision", "qty": "0.1 g" }
-          ],
-          "method": [
-            "Weigh the dose before grinding.",
-            "Weigh the shot as it pulls, to hit the target yield."
-          ],
-          "note": "Dose, yield and time together — not the clock alone — is what makes a shot repeatable."
-        },
-        {
-          "name": "Milk Pitchers",
-          "ingredients": [
-            { "item": "Sizes", "qty": "12 oz / 20 oz / 32 oz" }
-          ],
-          "method": [
-            "Match the pitcher to the drink — a smaller pour is easier to control in a smaller pitcher.",
-            "Fill no more than halfway before steaming, to leave room for the milk to expand."
-          ],
-          "note": "Rinse immediately after each use — dried milk is the hardest to get out."
-        },
-        {
-          "name": "Knock Box",
-          "ingredients": [
-            { "item": "Type", "qty": "Rubber-lined" }
-          ],
-          "method": [
-            "Knock the spent puck out of the portafilter with a firm, single motion.",
-            "Empty and rinse it out through service, not just at close."
-          ],
-          "note": "A full knock box slows everyone down — empty it before it's overflowing."
-        },
-        {
-          "name": "Puck Screen",
-          "ingredients": [
-            { "item": "Size", "qty": "58 mm" }
-          ],
-          "method": [
-            "Place on top of the dose before tamping.",
-            "Wipe clean between shots; it keeps the group head cleaner and reduces channeling."
-          ],
-          "note": "Not a substitute for a good distribution and tamp — it just keeps the mess contained."
-        },
-        {
-          "name": "Cleaning Kit",
-          "ingredients": [
-            { "item": "Includes", "qty": "Blind basket, group brush, detergent" }
-          ],
-          "method": [
-            "Backflush at the intervals set out in The Espresso Machine's Startup & Care.",
-            "Brush the group head daily; deep-clean the shower screen and gasket weekly."
-          ],
-          "note": "A clean group head is a taste issue before it's a hygiene one — old coffee oils turn rancid fast."
+          "type": "prose",
+          "heading": "Workstation Setup",
+          "paragraphs": [
+            "Lay the station out in the order of the shot — grinder, portafilter, tamper, machine — left to right (or mirrored, for a left-handed bar), so every shot moves in one direction without doubling back.",
+            "Keep the knock box within arm's reach of the grinder, not the machine — pucks get knocked out right after grinding a new dose, not after pulling a shot.",
+            "Separate cloths by task: one dry for wiping the steam wand, one damp for the group heads and drip tray, and never the two swapped — milk residue on a group-head cloth spreads dried milk instead of removing it."
+          ]
         }
       ]
     }

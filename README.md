@@ -1,15 +1,18 @@
 # Matcha On Ice Cafe — Documents
 
 A4 portrait catalogue / technical-sheet PDFs for Matcha On Ice Cafe. Each document is its
-own JSON file and build script, sharing one brand system — fonts, palette, cover, dividers,
-page furniture — defined once in `build/common.py`.
+own JSON file and build script. The three guest/recipe-facing documents share one brand
+system — fonts, palette, cover, dividers, page furniture — defined once in
+`build/common.py`. The Equipment & Bar Manual is a plain internal operational reference and
+deliberately opts out of that brand system (see its section below) — it has its own small
+stylesheet and page builder in `build/generate_equipment.py`.
 
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
-| Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 18 pages | Draft — see note below |
+| Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 4 pages | Draft — see note below |
 
 ## Build
 
@@ -37,7 +40,7 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `build/generate.py` | Matcha Catalogue: loads `data/catalog.json` |
 | `build/generate_syrups.py` | Syrups & Cold Foam: loads `data/syrups.json` |
 | `build/generate_coffee.py` | Coffee Bar Manual: loads `data/coffee-bar-manual.json` |
-| `build/generate_equipment.py` | Equipment & Bar Manual: loads `data/equipment-manual.json` |
+| `build/generate_equipment.py` | Equipment & Bar Manual: loads `data/equipment-manual.json`; self-contained, does not use `build/common.py`'s brand system |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `data/catalog.json` | Matcha Catalogue content |
 | `data/syrups.json` | Syrups & Cold Foam content |
@@ -49,6 +52,10 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `dist/` | Generated HTML and PDFs |
 
 ## Section shapes
+
+These shapes apply to the three brand-system documents (Matcha Catalogue, Syrups & Cold
+Foam, Coffee Bar Manual). The Equipment & Bar Manual uses its own, separate content model —
+see its section below.
 
 Every document is a `sections` array; each section is a chapter (cover index entry +
 divider + its pages). A section's `"kind"` decides what its pages look like:
@@ -237,19 +244,37 @@ Same brand system again, three chapters:
 
 ## Equipment & Bar Manual (`data/equipment-manual.json`)
 
-Same brand system again, four chapters:
+This is an internal operational reference, not a guest-facing piece, so it deliberately
+opts out of the café's brand system — no script font, no sage/cream palette, no
+one-item-per-page layout. It's plain sans-serif, black on white, dense tables and lists,
+in the style of a straightforward SOP/training-manual page. Its stylesheet and HTML
+builders live entirely in `build/generate_equipment.py` itself (it only borrows
+`render_pdf`/`ROOT` from `build/common.py`), and pages flow naturally with normal CSS print
+pagination (`page-break-before` / `break-inside: avoid`) rather than the fixed
+297 mm `.page` divs the other documents use — there's no need for one/two-page-per-item
+here.
 
-- **The Grinder** (`"kind": "foundation"`) — the Fiorenzato E64 Evo Pro: what it is (64mm
-  flat burrs, on-demand dosing, stepless adjustment), then a specs table and its dial-in
-  and care routine.
-- **The Espresso Machine** (`"kind": "foundation"`) — the Sanremo Zoe Compact, 2 group:
-  independent per-group PID boilers, a warm-up-time callout, then its startup and care
-  routine.
-- **Steaming Milk** (`"kind": "foundation"`) — the stretch-then-texture technique behind
-  microfoam, a target-temperature callout, then the full pour-by-pour method.
-- **Barista Tools** (`"kind": "simple"`, `specLabel`/`methodLabel` set to "Specs" / "Use")
-  — seven reference entries: Tamper, WDT Tool, Digital Scale, Milk Pitchers, Knock Box,
-  Puck Screen, Cleaning Kit.
+Content model — `documentTitle`, `footer`, and a `chapters` array. Each chapter is
+`{ numeral, title, subtitle, blocks }`, and each block in `blocks` is one of:
+
+| `type` | Renders as | Fields |
+| --- | --- | --- |
+| `"prose"` | Paragraphs, with an optional heading | `heading?`, `paragraphs` |
+| `"table"` | A two-column spec table | `heading?`, `rows`: `{ item, value }` |
+| `"steps"` | A numbered list | `heading?`, `items` |
+| `"deflist"` | A dense term/spec definition list, each entry with bulleted use-steps and an italic note | `heading?`, `items`: `{ term, spec, use[], note? }` |
+
+Four chapters:
+
+- **The Grinder** — the Fiorenzato E64 Evo Pro: what it is (64mm flat burrs, on-demand
+  dosing, stepless adjustment), a specs table, then its dial-in and care routine.
+- **The Espresso Machine** — the Sanremo Zoe Compact, 2 group: independent per-group PID
+  boilers, a specs table (including warm-up time), then its startup and care routine.
+- **Steaming Milk** — the stretch-then-texture technique behind microfoam, a setup/target
+  table, then the full pour-by-pour technique as numbered steps.
+- **Barista Tools** — a `"deflist"` of seven tools (Tamper, WDT Tool, Digital Scale, Milk
+  Pitchers, Knock Box, Puck Screen, Cleaning Kit), followed by a short "Workstation Setup"
+  prose section on laying out the bar.
 
 > **Status: draft, mixed confidence.** The identifying facts about the two machines (burr
 > size, dosing style, group count, independent PID boilers) are general, commonly
