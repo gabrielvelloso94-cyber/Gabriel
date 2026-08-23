@@ -872,18 +872,23 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
 
 
 def build_simple_recipe(item, section, brand, number, page_no) -> str:
-    """A plain recipe page: name, one ingredients list, method. No photo —
-    for straightforward build components (syrups) or drink spec sheets
-    (espresso classics). Ingredients are one quantity column by default, or
-    sized 12oz/16oz columns when the item sets "sized": true."""
+    """A plain recipe page: name, one spec/ingredients list, method. No
+    photo — for build components (syrups), drink spec sheets (espresso
+    classics), or reference items (barista tools). The list is one
+    quantity column by default, or sized 12oz/16oz columns when the item
+    sets "sized": true. A section can override the two column headings
+    (default "Ingredients" / "Method") via specLabel / methodLabel — e.g.
+    "Specs" / "Use" for a tools reference rather than a recipe."""
     ingredients = item.get("ingredients", [])
     method = item["method"]
     yield_ = item.get("yield", "")
     note = item.get("note")
+    spec_label = section.get("specLabel", "Ingredients")
+    method_label = section.get("methodLabel", "Method")
 
     block_html = _measure_block_html({
         "type": "sized" if item.get("sized") else "single",
-        "label": "Ingredients",
+        "label": spec_label,
         "rows": ingredients,
     })
     yield_html = f'<div class="caps serves">{escape(yield_)}</div>' if yield_ else ""
@@ -906,7 +911,7 @@ def build_simple_recipe(item, section, brand, number, page_no) -> str:
     <div class="foundation-recipe-body">{block_html}
       {yield_html}
       <div class="foundation-method">
-        <div class="caps col-label">Method</div>
+        <div class="caps col-label">{escape(method_label)}</div>
         <ol class="method">{method_html}</ol>
       </div>
       {note_html}

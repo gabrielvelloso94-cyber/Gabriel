@@ -9,6 +9,7 @@ page furniture — defined once in `build/common.py`.
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
+| Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 18 pages | Draft — see note below |
 
 ## Build
 
@@ -16,6 +17,7 @@ page furniture — defined once in `build/common.py`.
 python3 build/generate.py                 # Matcha Catalogue: HTML + PDF
 python3 build/generate_syrups.py           # Syrups & Cold Foam: HTML + PDF
 python3 build/generate_coffee.py           # Coffee Bar Manual: HTML + PDF
+python3 build/generate_equipment.py        # Equipment & Bar Manual: HTML + PDF
 python3 build/generate.py --html           # any script: HTML only
 ```
 
@@ -35,10 +37,12 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `build/generate.py` | Matcha Catalogue: loads `data/catalog.json` |
 | `build/generate_syrups.py` | Syrups & Cold Foam: loads `data/syrups.json` |
 | `build/generate_coffee.py` | Coffee Bar Manual: loads `data/coffee-bar-manual.json` |
+| `build/generate_equipment.py` | Equipment & Bar Manual: loads `data/equipment-manual.json` |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `data/catalog.json` | Matcha Catalogue content |
 | `data/syrups.json` | Syrups & Cold Foam content |
 | `data/coffee-bar-manual.json` | Coffee Bar Manual content |
+| `data/equipment-manual.json` | Equipment & Bar Manual content |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
 | `assets/photos/` | Drink photography — drop files here |
 | `assets/brand/` | Source logo plus the transparent marks derived from it |
@@ -53,7 +57,7 @@ divider + its pages). A section's `"kind"` decides what its pages look like:
 | --- | --- | --- |
 | *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas |
 | `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam, Espresso Basics |
-| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo; sized 12oz/16oz columns if the item sets `"sized": true`, one plain quantity column otherwise | Syrups, Espresso Classics |
+| `"simple"` | One plain recipe per item — name, one spec/ingredients list, Method. No photo; sized 12oz/16oz columns if the item sets `"sized": true`, one plain quantity column otherwise. A section can rename the two column headings via `specLabel` / `methodLabel` (default "Ingredients" / "Method") | Syrups, Espresso Classics, Barista Tools ("Specs" / "Use") |
 
 A section can also be `"expandable": true` (independent of `kind`), which gives it the
 "Open chapter" index treatment and a closing "More to come" card instead of ending flush —
@@ -230,3 +234,29 @@ Same brand system again, three chapters:
 > match your actual beans, machine and house pours. Signature Coffees is untouched
 > placeholder, same starting point Signature Matchas had before its real syrups and method
 > came in.
+
+## Equipment & Bar Manual (`data/equipment-manual.json`)
+
+Same brand system again, four chapters:
+
+- **The Grinder** (`"kind": "foundation"`) — the Fiorenzato E64 Evo Pro: what it is (64mm
+  flat burrs, on-demand dosing, stepless adjustment), then a specs table and its dial-in
+  and care routine.
+- **The Espresso Machine** (`"kind": "foundation"`) — the Sanremo Zoe Compact, 2 group:
+  independent per-group PID boilers, a warm-up-time callout, then its startup and care
+  routine.
+- **Steaming Milk** (`"kind": "foundation"`) — the stretch-then-texture technique behind
+  microfoam, a target-temperature callout, then the full pour-by-pour method.
+- **Barista Tools** (`"kind": "simple"`, `specLabel`/`methodLabel` set to "Specs" / "Use")
+  — seven reference entries: Tamper, WDT Tool, Digital Scale, Milk Pitchers, Knock Box,
+  Puck Screen, Cleaning Kit.
+
+> **Status: draft, mixed confidence.** The identifying facts about the two machines (burr
+> size, dosing style, group count, independent PID boilers) are general, commonly
+> published specs for this equipment, not verified against Fiorenzato's or Sanremo's own
+> documentation — worth a check. The day-to-day procedures (daily startup, dose
+> programming, backflushing, shutdown, deep-cleaning) are deliberately left as placeholder
+> steps rather than invented: getting an operational procedure wrong is a different order
+> of risk than a placeholder recipe, so those need to come from the actual equipment
+> manuals or your own training, not general knowledge. Steaming Milk and Barista Tools are
+> standard technique/reference content, same confidence tier as Espresso Basics.
