@@ -872,22 +872,21 @@ def build_drink(drink, section, brand, defaults, number, page_no) -> str:
 
 
 def build_simple_recipe(item, section, brand, number, page_no) -> str:
-    """A plain recipe page: name, one ingredients list, method. No photo, no
-    size split — for straightforward build components (syrups and the like)
-    rather than a menu drink."""
+    """A plain recipe page: name, one ingredients list, method. No photo —
+    for straightforward build components (syrups) or drink spec sheets
+    (espresso classics). Ingredients are one quantity column by default, or
+    sized 12oz/16oz columns when the item sets "sized": true."""
     ingredients = item.get("ingredients", [])
     method = item["method"]
     yield_ = item.get("yield", "")
     note = item.get("note")
 
-    rows = "".join(
-        '<li>'
-        f'<span class="item">{escape(row["item"])}</span>'
-        '<span class="dots"></span>'
-        f'<span class="qty-single">{escape(row["qty"])}</span>'
-        "</li>"
-        for row in ingredients
-    )
+    block_html = _measure_block_html({
+        "type": "sized" if item.get("sized") else "single",
+        "label": "Ingredients",
+        "rows": ingredients,
+    })
+    yield_html = f'<div class="caps serves">{escape(yield_)}</div>' if yield_ else ""
     method_html = "".join(f"<li>{escape(step)}</li>" for step in method)
     note_html = f'<p class="note" style="margin-top:6mm;">{escape(note)}</p>' if note else ""
 
@@ -904,12 +903,8 @@ def build_simple_recipe(item, section, brand, number, page_no) -> str:
     <div class="script">{escape(item["name"])}</div>
   </div>
   <div class="story-body">
-    <div class="foundation-recipe-body">
-      <div class="measures">
-        <span class="caps col-label">Ingredients</span>
-        <ul class="ing ing-batch">{rows}</ul>
-        {f'<div class="caps serves">{escape(yield_)}</div>' if yield_ else ""}
-      </div>
+    <div class="foundation-recipe-body">{block_html}
+      {yield_html}
       <div class="foundation-method">
         <div class="caps col-label">Method</div>
         <ol class="method">{method_html}</ol>

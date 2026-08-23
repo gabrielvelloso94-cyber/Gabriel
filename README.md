@@ -8,7 +8,7 @@ page furniture — defined once in `build/common.py`.
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 9 pages | Content complete |
-| Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 17 pages | Draft — see note below |
+| Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
 
 ## Build
 
@@ -53,7 +53,7 @@ divider + its pages). A section's `"kind"` decides what its pages look like:
 | --- | --- | --- |
 | *(default)* | One full page per item — photo (or a sage placeholder block), sized Measures (12oz/16oz), Method | Signature Matchas |
 | `"foundation"` | Two fixed pages — a story/explanation page, then a proportions/recipe page (`measureBlocks` + one Method) | The Matcha Base, Cold Foam, Espresso Basics |
-| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo, no size split | Syrups, Espresso Classics |
+| `"simple"` | One plain recipe per item — name, one ingredients list, Method. No photo; sized 12oz/16oz columns if the item sets `"sized": true`, one plain quantity column otherwise | Syrups, Espresso Classics |
 
 A section can also be `"expandable": true` (independent of `kind`), which gives it the
 "Open chapter" index treatment and a closing "More to come" card instead of ending flush —
@@ -214,9 +214,11 @@ Same brand system again, three chapters:
 - **Espresso Basics** (`"kind": "foundation"`) — what espresso is, the house double shot
   (dose, yield, extraction time), and the 25–30 sec extraction-time callout every classic
   and Signature Coffee is timed against.
-- **Espresso Classics** (`"kind": "simple"`) — Espresso, Americano, Macchiato, Cortado,
-  Flat White, Cappuccino, Latte. Each a spec sheet (shot / milk / foam, then Cup as the
-  `yield` caption) rather than a recipe — these are fixed drinks, not proprietary ones.
+- **Espresso Classics** (`"kind": "simple"`) — Espresso, Americano, Americano (Iced),
+  Macchiato, Cortado, Flat White, Cappuccino, Latte, Latte (Iced). Each a spec sheet
+  (shot / milk / foam) rather than a recipe — these are fixed drinks, not proprietary
+  ones. Cappuccino and both Lattes are `"sized": true` (12oz/16oz columns, `yield` reads
+  "Serves 1"); the rest are one plain quantity column with `yield` as a Cup-size caption.
 - **Signature Coffees** (default `kind`, full drink page) — the four iced lattes, carried
   over from the Matcha Catalogue when it split out. Same shape as Signature Matchas: photo
   (or placeholder), sized Measures, Method.

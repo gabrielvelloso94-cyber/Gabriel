@@ -89,6 +89,20 @@
           "note": "Water first, then espresso on top — pulling the shot before the water breaks up the crema."
         },
         {
+          "name": "Americano (Iced)",
+          "ingredients": [
+            { "item": "Espresso", "qty": "Double, 2 oz" },
+            { "item": "Ice", "qty": "Fill cup" },
+            { "item": "Cold Water", "qty": "4–6 oz" }
+          ],
+          "method": [
+            "Add ice and cold water to the cup.",
+            "Pull the double shot on top of the water."
+          ],
+          "yield": "Cup — 12 oz",
+          "note": "Same double shot as the hot Americano — just built over ice."
+        },
+        {
           "name": "Macchiato",
           "ingredients": [
             { "item": "Espresso", "qty": "Double, 2 oz" },
@@ -132,32 +146,50 @@
         },
         {
           "name": "Cappuccino",
+          "sized": true,
           "ingredients": [
-            { "item": "Espresso", "qty": "Double, 2 oz" },
-            { "item": "Steamed Milk", "qty": "3 oz" },
-            { "item": "Milk Foam", "qty": "1 cm cap" }
+            { "item": "Espresso", "qty12": "2 oz", "qty16": "2 oz" },
+            { "item": "Steamed Milk", "qty12": "7 oz", "qty16": "10 oz" },
+            { "item": "Milk Foam", "qty12": "3 oz", "qty16": "4 oz" }
           ],
           "method": [
             "Pull a double shot into the serving cup.",
             "Steam milk to a thick, airy foam.",
             "Pour to fill, finishing with a full foam cap."
           ],
-          "yield": "Cup — 6 oz",
+          "yield": "Serves 1",
           "note": "Traditionally close to equal thirds — espresso, steamed milk, foam."
         },
         {
           "name": "Latte",
+          "sized": true,
           "ingredients": [
-            { "item": "Espresso", "qty": "Double, 2 oz" },
-            { "item": "Steamed Milk", "qty": "6–8 oz, thin foam" }
+            { "item": "Espresso", "qty12": "2 oz", "qty16": "2 oz" },
+            { "item": "Steamed Milk (thin foam)", "qty12": "10 oz", "qty16": "14 oz" }
           ],
           "method": [
             "Pull a double shot into the serving cup.",
             "Steam milk to a thin microfoam — about 0.5 cm.",
             "Pour to fill, finishing with a thin foam layer."
           ],
-          "yield": "Cup — 8–12 oz",
+          "yield": "Serves 1",
           "note": "The most milk-forward of the classics — a mellow, rounded cup."
+        },
+        {
+          "name": "Latte (Iced)",
+          "sized": true,
+          "ingredients": [
+            { "item": "Espresso", "qty12": "2 oz", "qty16": "2 oz" },
+            { "item": "Ice", "qty12": "Fill cup", "qty16": "Fill cup" },
+            { "item": "Milk of Choice", "qty12": "To fill", "qty16": "To fill" }
+          ],
+          "method": [
+            "Add ice and the milk of choice to the cup.",
+            "Pour the espresso shot on top.",
+            "Stir and serve."
+          ],
+          "yield": "Serves 1",
+          "note": "Dairy, oat, almond — any milk works."
         }
       ]
     },
