@@ -10,7 +10,7 @@ stylesheet and page builder in `build/generate_equipment.py`.
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 11 pages | Content complete, 2 draft recipes — see note below |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 17 pages | Content complete, 2 draft recipes — see note below |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
 | Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 8 pages | Mostly real content — see note below |
 
@@ -72,11 +72,14 @@ section level, like Signature Coffees does) — the Method column splits into tw
 sub-columns instead of one, each independently numbered. This only activates when both are
 present; a plain `method` list still renders as the single full-width column it always has.
 
-A section can also be `"expandable": true` (independent of `kind`), which gives it the
-"Open chapter" index treatment and a closing "More to come" card instead of ending flush —
-the treatment Seasonal Add-Ons used before it split out of the Matcha Catalogue. The
-machinery (`build_endcard`) stays in `build/common.py`, unused, ready for whichever
-document picks up an open-ended chapter next.
+A section can also be `"expandable": true` (independent of `kind`, works with any of the
+three), which gives it "Open chapter" on the cover index instead of a page/drink count, a
+trailing "More to come each season" filler row, and a closing "More to come" card
+(`build_endcard`) instead of ending flush. Only that filler row is styled as pending — the
+section's real items still read as finished content, not placeholders. The card's copy can
+be overridden per section with `endcardSlotLabel` / `endcardBody`, since "Next drink" and
+"in the catalogue" won't fit every document — see Seasonal Add-Ons in `syrups.json` for an
+example ("Next flavor", "in this document").
 
 See `build_drink`, `build_foundation_story` / `build_foundation_recipes`, and
 `build_simple_recipe` in `build/common.py` for exactly what each shape renders.
@@ -201,11 +204,11 @@ batch, and the two-stage whip-then-texture method.
 
 ```json
 {
-  "name": "Pumpkin Spice Syrup",
+  "name": "Lavender Syrup",
   "ingredients": [
     { "item": "Brown sugar", "qty": "1 cup" },
     { "item": "Water", "qty": "1 cup" },
-    { "item": "Pumpkin spice blend", "qty": "1 tbsp" }
+    { "item": "Dried culinary lavender", "qty": "1 tbsp" }
   ],
   "method": [
     "Combine the ingredients in a saucepan.",
@@ -226,6 +229,16 @@ batch, and the two-stage whip-then-texture method.
 (the three components, the whip-then-texture process, the 2:1:1 ratio callout) and a
 recipe page (the batch, then Method). `measureBlocks` is a list, so a second block — a
 flavor variant, say — is just another entry away.
+
+### Seasonal Add-Ons
+
+`seasonal-add-ons` is `"kind": "simple"` and `"expandable": true` — the open-ended chapter
+the `expandable` machinery was originally built for, back when it lived in the Matcha
+Catalogue (see Section shapes above). It currently holds the Fall Collection: Brown Sugar
+Syrup, Pumpkin Spice Sauce, Salted Maple Cold Foam and Pumpkin Pie Cold Foam, all real,
+confirmed recipes. The section's `blurb` names the current collection ("Fall Collection —
+Pumpkin & Brown Sugar"); update it, add the new season's items, and rebuild when the next
+one launches — the cover index, endcard and page numbers all follow automatically.
 
 ## Coffee Bar Manual (`data/coffee-bar-manual.json`)
 

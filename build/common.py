@@ -10,8 +10,11 @@ build/generate_syrups.py for the thin per-document wrappers.
 
 Section shapes a document's JSON can use:
     (default)     a plain list of drinks/items, one full page each
-    "expandable"  same, plus an "Open chapter" index treatment and a
-                  closing "More to come" card (see build_endcard)
+    "expandable"  same, plus an "Open chapter" cover-index label, a
+                  trailing "More to come each season" filler row (only
+                  that row is styled as pending — real items still read
+                  as finished content), and a closing "More to come"
+                  card (see build_endcard)
     "foundation"  two fixed pages — a story/explanation page and a
                   proportions/recipe page — for chapters that are reference
                   content rather than a list of items (e.g. The Matcha Base)
@@ -725,9 +728,8 @@ def build_cover(brand, sections, page_map) -> str:
         rows = []
         for index, drink in enumerate(section["drinks"], start=1):
             page = page_map.get(id(drink))
-            pending = " pending" if section.get("expandable") else ""
             rows.append(
-                f'<li class="index-row{pending}">'
+                f'<li class="index-row">'
                 f'<span class="no">{index:02d}</span>'
                 f'<span class="name">{escape(drink["name"])}</span>'
                 f'<span class="dots"></span>'
@@ -1061,17 +1063,20 @@ def build_foundation_recipes(section, brand, page_no) -> str:
 """
 
 
-def build_endcard(brand) -> str:
+def build_endcard(brand, slot_label="Next drink", body=None) -> str:
     slots = "".join(
-        '<div class="slot">Next drink</div>' for _ in range(3)
+        f'<div class="slot">{escape(slot_label)}</div>' for _ in range(3)
+    )
+    body = body or (
+        "This chapter stays open. New seasonal drinks take their place here as they "
+        "launch, each with its own page in the catalogue."
     )
     return f"""
 <section class="page endcard">
   <div class="endcard-inner">
     <div class="script">More to come</div>
     <div class="body">
-      This chapter stays open. New seasonal drinks take their place here as they
-      launch, each with its own page in the catalogue.
+      {escape(body)}
     </div>
     <hr class="rule">
     <div class="slots">{slots}</div>
@@ -1113,17 +1118,20 @@ def build_document(catalog) -> str:
             story_page, recipes_page = section["drinks"]
             pages.append(build_foundation_story(section, brand, page_map[id(story_page)]))
             pages.append(build_foundation_recipes(section, brand, page_map[id(recipes_page)]))
-            continue
-        if kind == "simple":
+        elif kind == "simple":
             for number, item in enumerate(section["drinks"], start=1):
                 pages.append(build_simple_recipe(item, section, brand, number, page_map[id(item)]))
-            continue
-        for number, drink in enumerate(section["drinks"], start=1):
-            pages.append(
-                build_drink(drink, section, brand, defaults, number, page_map[id(drink)])
-            )
+        else:
+            for number, drink in enumerate(section["drinks"], start=1):
+                pages.append(
+                    build_drink(drink, section, brand, defaults, number, page_map[id(drink)])
+                )
         if section.get("expandable"):
-            pages.append(build_endcard(brand))
+            pages.append(build_endcard(
+                brand,
+                slot_label=section.get("endcardSlotLabel", "Next drink"),
+                body=section.get("endcardBody"),
+            ))
 
     return (
         "<!doctype html>\n"
