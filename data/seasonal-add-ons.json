@@ -1,0 +1,88 @@
+{
+  "brand": {
+    "scriptName": "Matcha",
+    "serifName": "On Ice",
+    "capsName": "Cafe",
+    "tagline": "Seasonal Add-Ons — Rotating Syrups & Cold Foams",
+    "year": "2026",
+    "footer": "Matcha On Ice Cafe"
+  },
+  "documentTitle": "Matcha On Ice Cafe — Seasonal Add-Ons",
+  "sections": [
+    {
+      "id": "seasonal-add-ons",
+      "kind": "simple",
+      "expandable": true,
+      "label": "Fall Collection",
+      "numeral": "I",
+      "blurb": "Pumpkin & Brown Sugar — this season's syrups, sauce and cold foams.",
+      "endcardSlotLabel": "Next flavor",
+      "endcardBody": "This chapter stays open. New seasonal syrups, sauces and cold foams take their place here as each collection launches, with its own page in this document.",
+      "drinks": [
+        {
+          "name": "Brown Sugar Syrup",
+          "ingredients": [
+            { "item": "Dark Brown Sugar", "qty": "2 cups" },
+            { "item": "Water", "qty": "1 cup" },
+            { "item": "Cinnamon Sticks", "qty": "6" }
+          ],
+          "method": [
+            "In a medium saucepan over medium heat, whisk together the brown sugar and water. Add the cinnamon sticks. Bring to a boil, stirring to dissolve the sugar.",
+            "Reduce heat and simmer about 2 minutes, until the sugar is completely dissolved.",
+            "Remove from heat and cool completely. Remove the cinnamon sticks, pour into a glass jar, and store in the refrigerator."
+          ],
+          "note": "Cooling before straining lets the cinnamon keep infusing the syrup."
+        },
+        {
+          "name": "Pumpkin Spice Sauce",
+          "ingredients": [
+            { "item": "Brown Sugar", "qty": "1 cup" },
+            { "item": "Maple Syrup (or +1/2 cup brown sugar)", "qty": "1/2 cup" },
+            { "item": "Pumpkin Puree", "qty": "1 cup" },
+            { "item": "Water (1 cup for a thicker sauce)", "qty": "2 cups" },
+            { "item": "Pumpkin Pie Spice", "qty": "1 tsp" },
+            { "item": "Cinnamon", "qty": "1 tsp" },
+            { "item": "Salt", "qty": "pinch" },
+            { "item": "Vanilla Bean Paste — add off heat", "qty": "1 tsp" }
+          ],
+          "method": [
+            "Combine the brown sugar, maple syrup, pumpkin purée, water, pumpkin pie spice, cinnamon and salt in a saucepan.",
+            "Bring to a low simmer and cook 10 minutes, stirring occasionally.",
+            "Remove from heat and stir in the vanilla bean paste."
+          ],
+          "note": "2 cups water = thinner, pourable syrup. 1 cup water = thicker sauce."
+        },
+        {
+          "name": "Salted Maple Cold Foam",
+          "ingredients": [
+            { "item": "Heavy Cream", "qty": "12 oz" },
+            { "item": "Whole Milk", "qty": "6 oz" },
+            { "item": "Maple Syrup", "qty": "6 oz" },
+            { "item": "Salt", "qty": "pinch" }
+          ],
+          "method": [
+            "Combine the heavy cream, whole milk, maple syrup and salt in a blender or with a milk frother.",
+            "Whip until light and foamy but still pourable — thick enough to float on top of a drink."
+          ],
+          "note": "2:1:1 (cream:milk:flavor) is the base ratio for every cold foam on the menu."
+        },
+        {
+          "name": "Pumpkin Pie Cold Foam",
+          "ingredients": [
+            { "item": "Heavy Cream", "qty": "12 oz" },
+            { "item": "Whole Milk", "qty": "6 oz" },
+            { "item": "Pumpkin Spice Sauce", "qty": "6 oz" },
+            { "item": "Salt", "qty": "pinch" },
+            { "item": "Pumpkin Pie Spice — for visible flecks", "qty": "1/4 tsp" }
+          ],
+          "method": [
+            "Combine the heavy cream, whole milk, Pumpkin Spice Sauce, salt and pumpkin pie spice in a blender or with a milk frother.",
+            "Whip until light and foamy but still pourable — thick enough to float on top of a drink.",
+            "Dust with an extra pinch of pumpkin pie spice on top right before serving, for visible flecks and aroma."
+          ],
+          "note": "Pumpkin Spice Sauce already carries sweetness and spice — it swaps 1:1 for maple syrup in the base ratio."
+        }
+      ]
+    }
+  ]
+}

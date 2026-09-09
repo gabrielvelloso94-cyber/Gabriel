@@ -1,16 +1,17 @@
 # Matcha On Ice Cafe — Documents
 
 A4 portrait catalogue / technical-sheet PDFs for Matcha On Ice Cafe. Each document is its
-own JSON file and build script. The three guest/recipe-facing documents share one brand
-system — fonts, palette, cover, dividers, page furniture — defined once in
-`build/common.py`. The Equipment & Bar Manual is a plain internal operational reference and
-deliberately opts out of that brand system (see its section below) — it has its own small
-stylesheet and page builder in `build/generate_equipment.py`.
+own JSON file and build script. Four of the five documents share one brand system — fonts,
+palette, cover, dividers, page furniture — defined once in `build/common.py`. The Equipment
+& Bar Manual is a plain internal operational reference and deliberately opts out of that
+brand system (see its section below) — it has its own small stylesheet and page builder in
+`build/generate_equipment.py`.
 
 | Document | Data | Build | Output | Status |
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
-| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 17 pages | Content complete, 2 draft recipes — see note below |
+| Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 11 pages | Content complete, 2 draft recipes — see note below |
+| Seasonal Add-Ons | `data/seasonal-add-ons.json` | `build/generate_seasonal.py` | [`dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf`](dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf) — 7 pages | Content complete, open-ended |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
 | Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 8 pages | Mostly real content — see note below |
 
@@ -19,6 +20,7 @@ stylesheet and page builder in `build/generate_equipment.py`.
 ```bash
 python3 build/generate.py                 # Matcha Catalogue: HTML + PDF
 python3 build/generate_syrups.py           # Syrups & Cold Foam: HTML + PDF
+python3 build/generate_seasonal.py         # Seasonal Add-Ons: HTML + PDF
 python3 build/generate_coffee.py           # Coffee Bar Manual: HTML + PDF
 python3 build/generate_equipment.py        # Equipment & Bar Manual: HTML + PDF
 python3 build/generate.py --html           # any script: HTML only
@@ -39,11 +41,13 @@ it is the only thing here that needs `numpy` and `Pillow`.
 | `build/common.py` | Shared brand system — stylesheet, page builders, PDF rendering |
 | `build/generate.py` | Matcha Catalogue: loads `data/catalog.json` |
 | `build/generate_syrups.py` | Syrups & Cold Foam: loads `data/syrups.json` |
+| `build/generate_seasonal.py` | Seasonal Add-Ons: loads `data/seasonal-add-ons.json` |
 | `build/generate_coffee.py` | Coffee Bar Manual: loads `data/coffee-bar-manual.json` |
 | `build/generate_equipment.py` | Equipment & Bar Manual: loads `data/equipment-manual.json`; self-contained, does not use `build/common.py`'s brand system |
 | `build/extract_logo.py` | Re-derives the logo artwork from the source file |
 | `data/catalog.json` | Matcha Catalogue content |
 | `data/syrups.json` | Syrups & Cold Foam content |
+| `data/seasonal-add-ons.json` | Seasonal Add-Ons content |
 | `data/coffee-bar-manual.json` | Coffee Bar Manual content |
 | `data/equipment-manual.json` | Equipment & Bar Manual content |
 | `assets/fonts/` | Embedded brand fonts (SIL Open Font License, texts included) |
@@ -53,9 +57,9 @@ it is the only thing here that needs `numpy` and `Pillow`.
 
 ## Section shapes
 
-These shapes apply to the three brand-system documents (Matcha Catalogue, Syrups & Cold
-Foam, Coffee Bar Manual). The Equipment & Bar Manual uses its own, separate content model —
-see its section below.
+These shapes apply to the four brand-system documents (Matcha Catalogue, Syrups & Cold
+Foam, Seasonal Add-Ons, Coffee Bar Manual). The Equipment & Bar Manual uses its own,
+separate content model — see its section below.
 
 Every document is a `sections` array; each section is a chapter (cover index entry +
 divider + its pages). A section's `"kind"` decides what its pages look like:
@@ -230,15 +234,24 @@ batch, and the two-stage whip-then-texture method.
 recipe page (the batch, then Method). `measureBlocks` is a list, so a second block — a
 flavor variant, say — is just another entry away.
 
-### Seasonal Add-Ons
+## Seasonal Add-Ons (`data/seasonal-add-ons.json`)
 
-`seasonal-add-ons` is `"kind": "simple"` and `"expandable": true` — the open-ended chapter
-the `expandable` machinery was originally built for, back when it lived in the Matcha
-Catalogue (see Section shapes above). It currently holds the Fall Collection: Brown Sugar
-Syrup, Pumpkin Spice Sauce, Salted Maple Cold Foam and Pumpkin Pie Cold Foam, all real,
-confirmed recipes. The section's `blurb` names the current collection ("Fall Collection —
-Pumpkin & Brown Sugar"); update it, add the new season's items, and rebuild when the next
-one launches — the cover index, endcard and page numbers all follow automatically.
+Its own document, separate from Syrups & Cold Foam, but the same brand system and the same
+plain "simple" recipe page (no photo, no 12oz/16oz split) — a small, standalone booklet for
+whatever's rotating in and out of the seasonal menu.
+
+Its one section so far, `seasonal-add-ons` (label "Fall Collection"), is marked
+`"expandable": true` — the open-ended chapter treatment the machinery was originally built
+for, back when it lived in the Matcha Catalogue (see Section shapes above): "Open chapter"
+on the cover index instead of a page count, a trailing "More to come each season" row, and
+a closing "More to come" card. It currently holds the Fall Collection: Brown Sugar Syrup,
+Pumpkin Spice Sauce, Salted Maple Cold Foam and Pumpkin Pie Cold Foam, all real, confirmed
+recipes.
+
+When the next season launches: either swap this section's `label`/`blurb`/`drinks` for the
+new collection (if the old one is retiring), or add a second section for it (if both should
+stay in the document at once — see the `numeral`/`id`/`label` pattern used across the other
+documents). Rebuild and the cover index, endcard and page numbers all follow automatically.
 
 ## Coffee Bar Manual (`data/coffee-bar-manual.json`)
 
