@@ -14,7 +14,9 @@ Section shapes a document's JSON can use:
                   trailing "More to come each season" filler row (only
                   that row is styled as pending — real items still read
                   as finished content), and a closing "More to come"
-                  card (see build_endcard)
+                  card (see build_endcard) — set "endcard": false on the
+                  section to keep the cover-index treatment without the
+                  closing card page
     "foundation"  two fixed pages — a story/explanation page and a
                   proportions/recipe page — for chapters that are reference
                   content rather than a list of items (e.g. The Matcha Base)
@@ -1106,7 +1108,7 @@ def build_document(catalog) -> str:
         for drink in section["drinks"]:
             page_map[id(drink)] = page_no
             page_no += 1
-        if section.get("expandable"):
+        if section.get("expandable") and section.get("endcard", True):
             page_no += 1  # end card
 
     # Pass 2 — render.
@@ -1126,7 +1128,7 @@ def build_document(catalog) -> str:
                 pages.append(
                     build_drink(drink, section, brand, defaults, number, page_map[id(drink)])
                 )
-        if section.get("expandable"):
+        if section.get("expandable") and section.get("endcard", True):
             pages.append(build_endcard(
                 brand,
                 slot_label=section.get("endcardSlotLabel", "Next drink"),

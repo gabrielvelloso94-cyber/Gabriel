@@ -11,7 +11,7 @@ brand system (see its section below) — it has its own small stylesheet and pag
 | --- | --- | --- | --- | --- |
 | Matcha Catalogue | `data/catalog.json` | `build/generate.py` | [`dist/Matcha-On-Ice-Cafe-Catalog.pdf`](dist/Matcha-On-Ice-Cafe-Catalog.pdf) — 11 pages | Content complete |
 | Syrups & Cold Foam | `data/syrups.json` | `build/generate_syrups.py` | [`dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf`](dist/Matcha-On-Ice-Cafe-Syrups-Cold-Foam.pdf) — 11 pages | Content complete, 2 draft recipes — see note below |
-| Seasonal Add-Ons | `data/seasonal-add-ons.json` | `build/generate_seasonal.py` | [`dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf`](dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf) — 7 pages | Content complete, open-ended |
+| Seasonal Add-Ons | `data/seasonal-add-ons.json` | `build/generate_seasonal.py` | [`dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf`](dist/Matcha-On-Ice-Cafe-Seasonal-Add-Ons.pdf) — 6 pages | Content complete, open-ended |
 | Coffee Bar Manual | `data/coffee-bar-manual.json` | `build/generate_coffee.py` | [`dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Coffee-Bar-Manual.pdf) — 19 pages | Draft — see note below |
 | Equipment & Bar Manual | `data/equipment-manual.json` | `build/generate_equipment.py` | [`dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf`](dist/Matcha-On-Ice-Cafe-Equipment-Bar-Manual.pdf) — 8 pages | Mostly real content — see note below |
 
@@ -78,12 +78,14 @@ present; a plain `method` list still renders as the single full-width column it 
 
 A section can also be `"expandable": true` (independent of `kind`, works with any of the
 three), which gives it "Open chapter" on the cover index instead of a page/drink count, a
-trailing "More to come each season" filler row, and a closing "More to come" card
-(`build_endcard`) instead of ending flush. Only that filler row is styled as pending — the
-section's real items still read as finished content, not placeholders. The card's copy can
-be overridden per section with `endcardSlotLabel` / `endcardBody`, since "Next drink" and
-"in the catalogue" won't fit every document — see Seasonal Add-Ons in `syrups.json` for an
-example ("Next flavor", "in this document").
+trailing "More to come each season" filler row, and — unless the section also sets
+`"endcard": false` — a closing "More to come" card (`build_endcard`) instead of ending
+flush. Only the filler row is styled as pending — the section's real items still read as
+finished content, not placeholders. The card's copy can be overridden per section with
+`endcardSlotLabel` / `endcardBody`, since "Next drink" and "in the catalogue" won't fit
+every document. Seasonal Add-Ons uses the cover-index treatment (`expandable: true`) but
+turns the closing card off (`endcard: false`) — its `endcardSlotLabel`/`endcardBody` are
+left in place, ready for whenever a future season wants the card back.
 
 See `build_drink`, `build_foundation_story` / `build_foundation_recipes`, and
 `build_simple_recipe` in `build/common.py` for exactly what each shape renders.
@@ -243,15 +245,17 @@ whatever's rotating in and out of the seasonal menu.
 Its one section so far, `seasonal-add-ons` (label "Fall Collection"), is marked
 `"expandable": true` — the open-ended chapter treatment the machinery was originally built
 for, back when it lived in the Matcha Catalogue (see Section shapes above): "Open chapter"
-on the cover index instead of a page count, a trailing "More to come each season" row, and
-a closing "More to come" card. It currently holds the Fall Collection: Brown Sugar Syrup,
-Pumpkin Spice Sauce, Salted Maple Cold Foam and Pumpkin Pie Cold Foam, all real, confirmed
-recipes.
+on the cover index instead of a page count, plus a trailing "More to come each season" row.
+The closing "More to come" card is turned off here (`"endcard": false`) — the document ends
+flush after Pumpkin Pie Cold Foam — though `endcardSlotLabel`/`endcardBody` are still set on
+the section, ready if a future season wants that card back. It currently holds the Fall
+Collection: Brown Sugar Syrup, Pumpkin Spice Sauce, Salted Maple Cold Foam and Pumpkin Pie
+Cold Foam, all real, confirmed recipes.
 
 When the next season launches: either swap this section's `label`/`blurb`/`drinks` for the
 new collection (if the old one is retiring), or add a second section for it (if both should
 stay in the document at once — see the `numeral`/`id`/`label` pattern used across the other
-documents). Rebuild and the cover index, endcard and page numbers all follow automatically.
+documents). Rebuild and the cover index and page numbers all follow automatically.
 
 ## Coffee Bar Manual (`data/coffee-bar-manual.json`)
 

@@ -13,6 +13,7 @@
       "id": "seasonal-add-ons",
       "kind": "simple",
       "expandable": true,
+      "endcard": false,
       "label": "Fall Collection",
       "numeral": "I",
       "blurb": "Pumpkin & Brown Sugar — this season's syrups, sauce and cold foams.",
@@ -42,13 +43,11 @@
             { "item": "Water (1 cup for a thicker sauce)", "qty": "2 cups" },
             { "item": "Pumpkin Pie Spice", "qty": "1 tsp" },
             { "item": "Cinnamon", "qty": "1 tsp" },
-            { "item": "Salt", "qty": "pinch" },
-            { "item": "Vanilla Bean Paste — add off heat", "qty": "1 tsp" }
+            { "item": "Salt", "qty": "pinch" }
           ],
           "method": [
             "Combine the brown sugar, maple syrup, pumpkin purée, water, pumpkin pie spice, cinnamon and salt in a saucepan.",
-            "Bring to a low simmer and cook 10 minutes, stirring occasionally.",
-            "Remove from heat and stir in the vanilla bean paste."
+            "Bring to a low simmer and cook 10 minutes, stirring occasionally."
           ],
           "note": "2 cups water = thinner, pourable syrup. 1 cup water = thicker sauce."
         },
